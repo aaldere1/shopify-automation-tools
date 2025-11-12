@@ -1,9 +1,14 @@
 # Shopify Admin Tools - Git Ignore File
 
 # Sensitive files - NEVER commit these
-*.csv
-*.txt
+# Note: We allow requirements.txt and example CSVs
 *.log
+
+# Sensitive data files (but not examples)
+orders_for_refund_*.csv
+refund_log_*.txt
+shopify_orders_*.csv
+shopify_orders_*.json
 
 # API credentials and tokens
 *token*

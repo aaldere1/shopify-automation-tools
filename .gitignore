@@ -1,0 +1,35 @@
+# Shopify Admin Tools - Git Ignore File
+
+# Sensitive files - NEVER commit these
+*.csv
+*.txt
+*.log
+
+# API credentials and tokens
+*token*
+*credentials*
+.env
+config.py
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

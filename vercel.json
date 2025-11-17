@@ -1,0 +1,17 @@
+{
+  "routes": [
+    { "src": "^/$", "dest": "/api/status-page" }
+  ],
+  "crons": [
+    {
+      "path": "/api/shopify-notion-sync",
+      "schedule": "*/15 * * * *"
+    }
+  ],
+  "functions": {
+    "api/shopify-notion-sync.ts": {
+      "maxDuration": 60
+    }
+  }
+}
+

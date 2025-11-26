@@ -809,10 +809,19 @@ function determineDeliveryStatus(order: ShopifyOrder): string {
   return 'pending';
 }
 
+// Remove invisible Unicode characters that can cause issues with Notion select options
+function sanitizeString(str: string | null | undefined): string | null {
+  if (!str) return null;
+  // Remove: WORD JOINER (2060), ZERO WIDTH SPACE (200B), ZERO WIDTH NON-JOINER (200C),
+  // ZERO WIDTH JOINER (200D), BYTE ORDER MARK (FEFF)
+  return str.replace(/[\u2060\u200B\u200C\u200D\uFEFF]/g, '').trim();
+}
+
 function deriveDeliveryMethod(order: ShopifyOrder): string | null {
   const line = order.shipping_lines?.[0];
   if (!line) return null;
-  return line.title || line.source || line.code || line.carrier_identifier || null;
+  const raw = line.title || line.source || line.code || line.carrier_identifier || null;
+  return sanitizeString(raw);
 }
 
 function formatChannel(sourceName: string | null | undefined): string {

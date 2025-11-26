@@ -163,12 +163,13 @@ async function updateOrderFields(
   existingProps: Record<string, any>,
 ) {
   return notionLimiter.execute(async () => {
+    // Check if any field needs updating - must match the check in processOrder
     const needsUpdate =
       !existingProps.Channel?.select?.name ||
       !existingProps['Payment Status']?.select?.name ||
       !existingProps['Fulfillment Status']?.select?.name ||
       !existingProps['Delivery Status']?.select?.name ||
-      (!existingProps['Delivery method']?.select?.name && deriveDeliveryMethod(order));
+      !existingProps['Delivery method']?.select?.name;
 
     if (!needsUpdate) {
       return false; // Already has all fields

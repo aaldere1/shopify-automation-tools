@@ -14,6 +14,8 @@ export type SyncOptions = {
   createdAtMin?: string;
   createdAtMax?: string;
   dryRun?: boolean;
+  ensureSchema?: boolean; // Set to false to skip schema updates (default: true)
+  fullBackfill?: boolean; // Set to true to load all pages and do full sync (for initial backfill only)
 };
 
 export type EnvConfig = {
@@ -125,18 +127,75 @@ type ShopifyAddress = {
   company?: string | null;
 };
 
-type ExistingPageMap = Map<number, string>;
-
 let cachedDataSourceId: string | null = null;
+
+/**
+ * Look up a single order by Order ID in Notion
+ * Returns the page ID if found, null otherwise
+ */
+async function findOrderInNotion(
+  notion: Client,
+  dataSourceId: string,
+  orderId: number,
+): Promise<string | null> {
+  try {
+    const response: any = await notion.dataSources.query({
+      data_source_id: dataSourceId,
+      page_size: 1,
+      filter: {
+        property: 'Order ID',
+        number: { equals: orderId },
+      },
+    } as any);
+
+    const results = response.results || [];
+    if (results.length > 0 && results[0].id) {
+      return results[0].id;
+    }
+    return null;
+  } catch (error) {
+    console.error(`❌ Error looking up order ${orderId}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Update only status-related properties on an existing order
+ * Does NOT touch page blocks or other content
+ */
+async function updateOrderStatusOnly(
+  notion: Client,
+  pageId: string,
+  order: ShopifyOrder,
+): Promise<void> {
+  // Only update status fields - nothing else
+  const statusProps: Record<string, any> = {
+    'Payment Status': order.financial_status
+      ? { select: { name: normalizeStatus(order.financial_status) } }
+      : { select: { name: 'Unknown' } },
+    'Fulfillment Status': order.fulfillment_status
+      ? { select: { name: normalizeStatus(order.fulfillment_status) } }
+      : { select: { name: 'unfulfilled' } },
+    'Delivery Status': { select: { name: determineDeliveryStatus(order) } },
+  };
+
+  await notion.pages.update({
+    page_id: pageId,
+    properties: statusProps,
+  });
+}
 
 export async function runShopifyNotionSync(options: SyncOptions = {}) {
   const env = getEnvConfig();
   const notion = new Client({ auth: env.notionToken, notionVersion: NOTION_VERSION });
   const dataSourceId = await resolveDataSourceId(notion, env, options);
 
-  await ensureDatabaseSchema(notion, dataSourceId);
-  const existingPages = await loadExistingOrderPageMap(notion, dataSourceId);
+  // Only ensure schema if explicitly requested (for initial setup)
+  if (options.ensureSchema !== false) {
+    await ensureDatabaseSchema(notion, dataSourceId);
+  }
 
+  // Fetch Shopify orders (cron mode = last 24 hours only)
   const orders = await fetchAllOrders(env, options);
   console.log(`📦 Shopify orders fetched: ${orders.length}`);
 
@@ -153,31 +212,72 @@ export async function runShopifyNotionSync(options: SyncOptions = {}) {
   let skipped = 0;
 
   for (const order of orders) {
-    const notionProps = buildNotionProperties(order);
-    const blocks = buildPageBlocks(order);
-    const existingPageId = existingPages.get(order.id);
+    // Check if this order already exists in Notion (single query, not loading all pages)
+    const existingPageId = await findOrderInNotion(notion, dataSourceId, order.id);
 
     if (existingPageId) {
-      await notion.pages.update({
-        page_id: existingPageId,
-        properties: notionProps,
-      });
-      updated += 1;
+      // Order exists - check if it needs status update
+      const isFulfilled = order.fulfillment_status === 'fulfilled';
+
+      if (isFulfilled) {
+        // Fulfilled orders don't need updates - skip entirely
+        skipped += 1;
+        continue;
+      }
+
+      // Unfulfilled order - only update status properties (NOT blocks/content)
+      try {
+        await updateOrderStatusOnly(notion, existingPageId, order);
+        updated += 1;
+
+        if (updated % 10 === 0) {
+          console.log(`🔄 Updated ${updated} order statuses so far...`);
+        }
+      } catch (error: any) {
+        console.error(`❌ Error updating order ${order.name}:`, error.message);
+        skipped += 1;
+      }
+
+      await delay(150); // Small delay for rate limits
       continue;
     }
 
-    await notion.pages.create({
-      parent: {
-        type: 'data_source_id',
-        data_source_id: dataSourceId,
-      } as any,
-      properties: notionProps,
-      children: blocks,
-    });
-    created += 1;
+    // New order - create it with full content
+    try {
+      const blocks = buildPageBlocks(order);
+      const notionProps = buildNotionProperties(order);
+
+      await notion.pages.create({
+        parent: {
+          type: 'data_source_id',
+          data_source_id: dataSourceId,
+        } as any,
+        properties: notionProps,
+        children: blocks,
+      });
+      created += 1;
+
+      if (created % 10 === 0) {
+        console.log(`✅ Created ${created} new orders so far...`);
+      }
+    } catch (error: any) {
+      if (error.code === 'object_already_exists' || error.message?.includes('already exists')) {
+        console.warn(`⚠️  Order ${order.name} already exists - skipping`);
+        skipped += 1;
+      } else {
+        console.error(`❌ Error creating order ${order.name}:`, error.message);
+        skipped += 1;
+      }
+    }
+
+    await delay(150); // Small delay for rate limits
   }
 
-  skipped = orders.length - created - updated;
+  console.log(`\n📊 Sync Summary:`);
+  console.log(`   📦 Total orders fetched: ${orders.length}`);
+  console.log(`   ✅ Created: ${created}`);
+  console.log(`   🔄 Updated (status only): ${updated}`);
+  console.log(`   ⏭️  Skipped: ${skipped}`);
 
   return {
     totalOrders: orders.length,
@@ -383,56 +483,31 @@ function buildPropertyConfig(
   return base;
 }
 
-async function loadExistingOrderPageMap(
-  notion: Client,
-  dataSourceId: string,
-): Promise<ExistingPageMap> {
-  const map: ExistingPageMap = new Map();
-  let cursor: string | undefined;
-
-  do {
-    const queryBody: Record<string, unknown> = {
-      data_source_id: dataSourceId,
-      page_size: 100,
-      filter: {
-        property: 'Order ID',
-        number: { is_not_empty: true },
-      },
-    };
-    if (cursor) {
-      queryBody.start_cursor = cursor;
-    }
-
-    const response: any = await notion.dataSources.query(queryBody as any);
-
-    for (const result of response.results as any[]) {
-      const orderId = result.properties?.['Order ID']?.number;
-      if (typeof orderId === 'number') {
-        map.set(orderId, result.id);
-      }
-    }
-
-    cursor = response.has_more ? response.next_cursor ?? undefined : undefined;
-  } while (cursor);
-
-  return map;
-}
-
 async function fetchAllOrders(env: EnvConfig, options: SyncOptions): Promise<ShopifyOrder[]> {
   const baseUrl = new URL(
     `https://${env.storeDomain}/admin/api/${SHOPIFY_API_VERSION}/orders.json`,
   );
   baseUrl.searchParams.set('status', 'any');
   baseUrl.searchParams.set('limit', '250');
-  baseUrl.searchParams.set('order', 'created_at asc');
+  baseUrl.searchParams.set('order', 'created_at desc'); // Most recent first for cron
 
   const createdAtMin = options.createdAtMin ?? process.env.SHOPIFY_CREATED_AT_MIN;
   const createdAtMax = options.createdAtMax ?? process.env.SHOPIFY_CREATED_AT_MAX;
-  if (createdAtMin) {
-    baseUrl.searchParams.set('created_at_min', createdAtMin);
-  }
-  if (createdAtMax) {
-    baseUrl.searchParams.set('created_at_max', createdAtMax);
+  
+  // If no date range specified and this is a cron run (not manual backfill),
+  // only fetch orders from the last 24 hours to avoid processing everything
+  if (!createdAtMin && !createdAtMax && !process.env.SHOPIFY_CREATED_AT_MIN) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    baseUrl.searchParams.set('created_at_min', yesterday.toISOString());
+    console.log(`📅 Fetching orders from last 24 hours only (cron mode)`);
+  } else {
+    if (createdAtMin) {
+      baseUrl.searchParams.set('created_at_min', createdAtMin);
+    }
+    if (createdAtMax) {
+      baseUrl.searchParams.set('created_at_max', createdAtMax);
+    }
   }
 
   const headers = {

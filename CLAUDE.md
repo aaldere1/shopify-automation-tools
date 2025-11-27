@@ -4,178 +4,157 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Python-based toolkit for automating Shopify Admin API operations. The codebase consists of two main standalone scripts that work together but can be used independently:
+A toolkit for Shopify Admin API automation and integrations. The codebase has two main parts:
 
-1. **shopify_order_fetcher.py** - Fetches and filters orders from Shopify
-2. **shopify_batch_refund.py** - Processes batch refunds for orders
-
-Both scripts are command-line tools with `argparse` for argument handling. No build system or package manager beyond pip is used.
+1. **Python CLI Tools** - Standalone scripts for order fetching, batch refunds, replacement orders, and third-party API clients (Amplifier, Printful)
+2. **TypeScript/Vercel Integration** - Shopify→Notion sync running on Vercel cron (every 15 minutes)
 
 ## Architecture
 
-### Two-Tool Workflow Pattern
-The typical workflow is: fetch → review → refund
+### Python Tools (CLI)
 
+All Python scripts are self-contained with class-based architecture and `argparse` for argument handling.
+
+**Core Order Management:**
+- `shopify_order_fetcher.py` - Fetch/filter orders → exports CSV/JSON
+- `shopify_batch_refund.py` - Process batch refunds from CSV
+- `create_replacement_order.py` - Create $0 replacement orders for customers who didn't receive shipments
+
+**Third-Party Clients:**
+- `amplifier_client.py` - Amplifier fulfillment API client
+- `printful_client.py` - Printful API v2 client
+
+**Typical Workflow:**
 ```
 shopify_order_fetcher.py → CSV file → shopify_batch_refund.py
 ```
 
-Each script is self-contained with its own class-based architecture:
-- `ShopifyOrderFetcher` class handles all order fetching logic
-- `ShopifyRefundProcessor` class handles all refund logic
+### TypeScript/Vercel (Automated Sync)
 
-### Shopify API Integration
-- API Version: `2025-10` (hardcoded in both scripts)
-- Authentication: Admin API access token via header `X-Shopify-Access-Token`
-- Required scopes: `read_orders` (fetcher), `write_orders` (refund)
+Deployed on Vercel with cron job running every 15 minutes.
 
-### Key Design Decisions
+**Key Files:**
+- `lib/shopifyNotionSync.ts` - Core sync logic (Shopify orders → Notion database)
+- `api/shopify-notion-sync.ts` - Vercel serverless function endpoint
+- `api/status-page.ts` - Status dashboard (root route)
 
-**Rate Limiting:**
-- Refund processor: Default 12-second delay between refunds (5 per minute max)
-- Order fetcher: Automatic pagination with Link header parsing
-- Both handle Shopify's rate limits automatically
+**Sync Behavior:**
+- Cron runs fetch only last 24 hours of orders
+- Creates new pages for new orders, updates unfulfilled orders
+- Skips fulfilled orders (they rarely change)
+- Uses Notion Data Sources API
 
-**Transaction Detection:**
-- Refunds require finding payment transactions with `kind` in `['capture', 'sale']` and `status == 'success'`
-- This is critical - Shopify stores may use either "capture" or "sale" transaction types
-
-**CSV Flexibility:**
-- Refund script accepts multiple column name variations for order numbers
-- Column detection is case-insensitive with normalization (spaces → underscores)
-- Accepted column names: `order_number`, `order_name`, `order`, `name`, `number` (and variations)
-
-## Running the Tools
+## Commands
 
 ### Setup
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt  # Python dependencies
+npm install                       # TypeScript/Vercel dependencies
+vercel env pull .env              # Pull credentials from Vercel
 ```
 
-### Order Fetcher Examples
+### Python Tools
 ```bash
-# Fetch with price filter
-python3 shopify_order_fetcher.py --store store.myshopify.com --token shpat_xxx --price 0.99
+# Fetch orders with filters
+python3 shopify_order_fetcher.py --store $SHOPIFY_STORE --token $TOKEN --price 0.99
 
-# Fetch with date range and export to JSON
-python3 shopify_order_fetcher.py --store store.myshopify.com --token shpat_xxx \
-  --from-date 2025-01-01 --to-date 2025-01-31 --format json
+# Batch refund (ALWAYS dry-run first)
+python3 shopify_batch_refund.py --store $SHOPIFY_STORE --token $TOKEN --input orders.csv --dry-run
 
-# Fetch from specific order number
-python3 shopify_order_fetcher.py --store store.myshopify.com --token shpat_xxx \
-  --from-order CC5377 --price 0.99
+# Create replacement order (sends confirmation email)
+python3 create_replacement_order.py CC5875
+python3 create_replacement_order.py CC5875 --dry-run
+python3 create_replacement_order.py CC5875 --no-email
 ```
 
-### Batch Refund Examples
+### TypeScript/Notion Sync
 ```bash
-# Always test with dry-run first
-python3 shopify_batch_refund.py --store store.myshopify.com --token shpat_xxx \
-  --input orders.csv --dry-run
-
-# Process full refunds
-python3 shopify_batch_refund.py --store store.myshopify.com --token shpat_xxx \
-  --input orders.csv --yes
-
-# Partial refund with notification
-python3 shopify_batch_refund.py --store store.myshopify.com --token shpat_xxx \
-  --input orders.csv --amount 10.00 --notify
+npm run sync:notion              # Manual sync
+npm run backfill:existing        # Backfill existing orders
+npm run backfill:progress        # Check backfill progress
 ```
 
-### Complete Workflow
-```bash
-# 1. Fetch orders
-python3 shopify_order_fetcher.py --store store.com --token $TOKEN \
-  --from-date 2025-10-24 --price 0.99 --output orders_to_refund
+## Environment Variables
 
-# 2. Review CSV
-cat orders_to_refund.csv
+Stored in Vercel, pull locally with `vercel env pull .env`:
 
-# 3. Test with dry-run
-python3 shopify_batch_refund.py --store store.com --token $TOKEN \
-  --input orders_to_refund.csv --dry-run
+| Variable | Description |
+|----------|-------------|
+| `SHOPIFY_STORE_DOMAIN` | Store URL (e.g., shop.myshopify.com) |
+| `SHOPIFY_ADMIN_TOKEN` | Admin API token (shpat_xxx) |
+| `NOTION_TOKEN` | Notion integration token |
+| `NOTION_DATABASE_ID` | Target Notion database |
+| `NOTION_DATA_SOURCE_ID` | Notion data source (optional) |
 
-# 4. Execute refunds
-python3 shopify_batch_refund.py --store store.com --token $TOKEN \
-  --input orders_to_refund.csv --yes
-```
+**Required Shopify Scopes:** `read_orders`, `write_orders`, `write_draft_orders`
 
-## Common Modifications
+## Shopify API Integration
 
-### Changing API Version
-Both scripts hardcode `self.api_version = '2025-10'`. Update this in both files if Shopify deprecates this version.
+- **API Version:** `2025-10` (hardcoded in Python scripts and `lib/shopifyNotionSync.ts`)
+- **Authentication:** `X-Shopify-Access-Token` header
+- **Rate Limiting:**
+  - Refund processor: 12-second delay (5/minute)
+  - Order fetcher: Automatic pagination via Link header
+  - Notion sync: 200-300ms delays between API calls
 
-### Adding New Filters to Order Fetcher
-1. Add argument in `main()` argparse setup
-2. Pass parameter to `fetch_orders()` method (for API-level filters) or `filter_orders()` method (for client-side filters)
-3. API-level filters go in the `params` dict before the request
-4. Client-side filters are list comprehensions in `filter_orders()`
+**Transaction Detection for Refunds:**
+- Requires finding transactions with `kind` in `['capture', 'sale']` and `status == 'success'`
+- Shopify stores may use either transaction type
 
-### Adding New Refund Options
-1. Add argument in `main()` argparse setup
-2. Pass to `process_refund()` then `create_refund()` method
-3. Modify the `payload` dict structure in `create_refund()` method
+## Key Design Patterns
 
-## Credentials and Security
+**Order Creation via API:**
+- Use `send_receipt: true` to trigger confirmation email
+- Use `send_fulfillment_receipt: true` for shipping notifications
+- $0 orders work with `financial_status: 'paid'` and no transaction
 
-**Environment Variables (Recommended):**
-```bash
-export SHOPIFY_STORE="store.myshopify.com"
-export SHOPIFY_TOKEN="shpat_xxxxx"
-```
-
-Then use: `--store $SHOPIFY_STORE --token $SHOPIFY_TOKEN`
-
-**What .gitignore Blocks:**
-- All generated order/refund files: `orders_for_refund_*.csv`, `refund_log_*.txt`
-- All output files: `shopify_orders_*.csv`, `shopify_orders_*.json`
-- `.env` files, anything with `token` or `credentials` in the name
-
-## Testing Approach
-
-**No formal test suite exists.** Testing is done manually:
-
-1. **Order Fetcher Testing:**
-   - Test with `--no-summary` and small datasets first
-   - Verify CSV output structure matches expected columns
-   - Check JSON output is valid with: `python3 -m json.tool output.json`
-
-2. **Refund Testing:**
-   - **ALWAYS use `--dry-run` first** - this is critical
-   - Test with 1-2 orders before bulk processing
-   - Verify transaction detection works (check for "capture" or "sale" transactions)
-   - Monitor for rate limit compliance (12-second delays should be visible)
-
-3. **Production Verification:**
-   - The codebase was production-tested with 427 successful refunds
-   - Known working: $0.99 refunds, capture-type transactions, rate limiting
+**Notion Sync:**
+- Uses `Order ID` (Shopify numeric ID) as unique identifier
+- Preserves manual tag edits while syncing
+- Rebuilds page blocks on updates for fresh timeline/tracking data
 
 ## Common Issues
 
-**"Cannot refund more items than were purchased"**
-- Order already refunded or partially refunded
-- Check `financial_status` in Shopify Admin
+**"Cannot refund more items than were purchased"** - Order already refunded
 
-**"Refund amount must be greater than 0"**
-- The `calculate` endpoint returns $0 for some edge cases
-- Scripts bypass this by using explicit amounts from `total_price`
+**"No payment transaction found"** - Check for both 'capture' and 'sale' transaction kinds
 
-**"No payment transaction found"**
-- Looking for wrong transaction type
-- Scripts check for both 'capture' and 'sale' kinds
-- Verify transaction has `status == 'success'`
+**Rate Limiting** - Don't run multiple refund instances simultaneously
 
-**Rate Limiting**
-- Default is 12 seconds between refunds (5/minute)
-- Adjustable via `--delay` flag
-- Do not run multiple instances simultaneously
+**API Scope Errors** - Verify token has required scopes; may need to recreate app if adding scopes doesn't work
 
-## Output Files
+**Notion Sync Duplicates** - Check `Order ID` property; sync uses this as unique key
 
-**Order Fetcher Generates:**
-- `shopify_orders_TIMESTAMP.csv` (or custom name via `--output`)
-- `shopify_orders_TIMESTAMP.json` (if `--format json` or `--format both`)
+---
 
-**Refund Processor Generates:**
-- `refund_log_TIMESTAMP.txt` (summary of refund run)
+## Detailed Shopify→Notion Sync Documentation
 
-All timestamped files use format: `YYYYMMDD_HHMMSS`
+**For comprehensive documentation on the Notion sync system, see: `SHOPIFY_NOTION_SYNC_README.md`**
+
+This includes:
+- Architecture diagrams and data flow
+- Notion database schema (all 12 properties)
+- Cron job behavior (fulfilled vs unfulfilled orders)
+- Backfill script configuration
+- Field mapping tables
+- Known issues and fixes
+- Troubleshooting guide
+
+### Key Sync Behaviors (Quick Reference)
+
+**Cron Job (every 15 min):**
+- Fetches last 24 hours of orders from Shopify
+- **Fulfilled orders**: SKIPPED entirely (never touched)
+- **Unfulfilled orders**: Updates Payment Status, Fulfillment Status, Delivery Status only
+- **New orders**: Creates full page with all properties and content blocks
+
+**Backfill Script:**
+- Run with `npm run backfill:existing`
+- Updates missing fields: Channel, Payment Status, Fulfillment Status, Delivery Status, Delivery method
+- Uses rate limiting (3 concurrent, 3 req/sec Notion, 2 req/sec Shopify)
+
+### Recent Fixes (November 2024)
+
+1. **Unicode sanitization**: Added `sanitizeString()` to strip invisible characters (U+2060) from Shopify shipping titles that caused Notion select value errors
+
+2. **Backfill Delivery method bug**: Fixed condition in `updateOrderFields` that skipped Delivery method updates for orders without Shopify shipping_lines. Now correctly defaults to "Standard Shipping"

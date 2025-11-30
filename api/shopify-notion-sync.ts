@@ -15,7 +15,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const dryRunParam = typeof req.query.dryRun === 'string' ? req.query.dryRun : undefined;
     const dryRun = dryRunParam === 'true';
 
-    const result = await runShopifyNotionSync({ dryRun });
+    // For cron runs, skip schema updates to avoid any potential interference
+    // Schema should already be set up from initial deployment
+    const result = await runShopifyNotionSync({ 
+      dryRun,
+      ensureSchema: false, // Skip schema updates on cron runs
+    });
     return res.status(200).json({
       ok: true,
       timestamp: new Date().toISOString(),

@@ -209,6 +209,35 @@ The Admin API token needs these scopes:
 - `read_orders` - Fetch order data
 - `write_orders` - (Optional, for other scripts)
 
+### Retrieve from 1Password (CineConcerts Team)
+
+API credentials are stored securely in 1Password:
+
+| Field | Description |
+|-------|-------------|
+| **Account** | `alderete-family.1password.com` |
+| **Vault** | Private |
+| **Item** | "CineConcerts - API Keys" |
+
+```bash
+# View all credentials
+op item get "CineConcerts - API Keys" \
+  --vault="Private" \
+  --account="alderete-family.1password.com" \
+  --reveal
+
+# Export to .env.local
+op item get "CineConcerts - API Keys" \
+  --vault="Private" \
+  --account="alderete-family.1password.com" \
+  --format=json | \
+  jq -r '.fields[] | select(.value != null and .label != "notesPlain" and .id != "validFrom" and .id != "expires") | "\(.label)=\"\(.value)\""' > .env.local
+```
+
+**Available credentials:** `SHOPIFY_STORE`, `SHOPIFY_TOKEN`, `AMPLIFIER_API_KEY`, `PRINTFUL_TOKEN`
+
+> **Note:** For Vercel deployment, also add `NOTION_TOKEN` and `NOTION_DATABASE_ID` to your environment.
+
 ---
 
 ## Commands

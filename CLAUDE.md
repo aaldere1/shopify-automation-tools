@@ -88,6 +88,23 @@ Stored in Vercel, pull locally with `vercel env pull .env`:
 
 **Required Shopify Scopes:** `read_orders`, `write_orders`, `write_draft_orders`
 
+### 1Password Credentials (CineConcerts Team)
+
+API credentials are stored in 1Password:
+- **Account:** `alderete-family.1password.com`
+- **Vault:** Private
+- **Item:** "CineConcerts - API Keys"
+
+```bash
+# View all credentials
+op item get "CineConcerts - API Keys" --vault="Private" --account="alderete-family.1password.com" --reveal
+
+# Export to .env.local
+op item get "CineConcerts - API Keys" --vault="Private" --account="alderete-family.1password.com" --format=json | jq -r '.fields[] | select(.value != null and .label != "notesPlain" and .id != "validFrom" and .id != "expires") | "\(.label)=\"\(.value)\""' > .env.local
+```
+
+**Available:** `SHOPIFY_STORE`, `SHOPIFY_TOKEN`, `AMPLIFIER_API_KEY`, `PRINTFUL_TOKEN`
+
 ## Shopify API Integration
 
 - **API Version:** `2025-10` (hardcoded in Python scripts and `lib/shopifyNotionSync.ts`)

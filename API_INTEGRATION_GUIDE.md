@@ -30,6 +30,39 @@ This toolkit integrates three major systems:
 - Base URL: `https://api.printful.com`
 - Auth: Bearer token
 
+### Retrieve from 1Password (CineConcerts Team)
+
+API credentials are stored securely in 1Password:
+
+| Field | Description |
+|-------|-------------|
+| **Account** | `alderete-family.1password.com` |
+| **Vault** | Private |
+| **Item** | "CineConcerts - API Keys" |
+
+```bash
+# View all credentials
+op item get "CineConcerts - API Keys" \
+  --vault="Private" \
+  --account="alderete-family.1password.com" \
+  --reveal
+
+# Export to .env.local
+op item get "CineConcerts - API Keys" \
+  --vault="Private" \
+  --account="alderete-family.1password.com" \
+  --format=json | \
+  jq -r '.fields[] | select(.value != null and .label != "notesPlain" and .id != "validFrom" and .id != "expires") | "\(.label)=\"\(.value)\""' > .env.local
+
+# Get single value
+op item get "CineConcerts - API Keys" \
+  --vault="Private" \
+  --account="alderete-family.1password.com" \
+  --fields SHOPIFY_TOKEN
+```
+
+**Available credentials:** `SHOPIFY_STORE`, `SHOPIFY_TOKEN`, `AMPLIFIER_API_KEY`, `PRINTFUL_TOKEN`
+
 ---
 
 ## Current Inventory Stats

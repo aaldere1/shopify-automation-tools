@@ -1,0 +1,8 @@
+{
+  "in": "query",
+  "name": "order_id",
+  "schema": {
+    "type": "integer"
+  },
+  "description": "Order ID."
+}

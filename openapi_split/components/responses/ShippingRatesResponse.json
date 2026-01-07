@@ -1,0 +1,78 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "required": [
+                "shipping",
+                "shipping_method_name",
+                "rate",
+                "currency",
+                "shipments"
+              ],
+              "type": "object",
+              "properties": {
+                "shipping": {
+                  "type": "string",
+                  "description": "Shipping method ID",
+                  "example": "STANDARD"
+                },
+                "shipping_method_name": {
+                  "type": "string",
+                  "description": "A descriptive name of the shipping method including an estimate that can be displayed to customers",
+                  "example": "Flat Rate (Estimated delivery: May 19\u201324) "
+                },
+                "rate": {
+                  "type": "string",
+                  "description": "Shipping rate",
+                  "example": "13.60"
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "Currency code in which the rate is returned",
+                  "example": "EUR"
+                },
+                "min_delivery_days": {
+                  "type": "integer",
+                  "description": "Estimated minimum delivery days. <span style=\"color:orange\">Warning! This value may not be present in response.</span>",
+                  "example": 4
+                },
+                "max_delivery_days": {
+                  "type": "integer",
+                  "description": "Estimated maximum delivery days. <span style=\"color:orange\">Warning! This value may not be present in response.</span>",
+                  "example": 7
+                },
+                "min_delivery_date": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Estimated minimum delivery date. <span style=\"color:orange\">Warning! This value may not be present in response.</span>",
+                  "example": "2022-10-17"
+                },
+                "max_delivery_date": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Estimated maximum delivery date. <span style=\"color:orange\">Warning! This value may not be present in response.</span>",
+                  "example": "2022-10-20"
+                },
+                "shipments": {
+                  "type": "array",
+                  "description": "List of shipments.",
+                  "items": {
+                    "$ref": "#/components/schemas/Shipment-2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

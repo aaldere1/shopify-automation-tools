@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Shipment delivered",
+    "operationId": "shipmentDelivered",
+    "description": "Is called when a shipment is marked as delivered.\n\nThis event is triggered when the tracking information indicates that the shipment has been successfully delivered to the recipient.\n",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentDelivered"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

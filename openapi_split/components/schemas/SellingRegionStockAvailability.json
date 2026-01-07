@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "title": "SellingRegionStockAvailability",
+  "required": [
+    "name",
+    "availability",
+    "placement_option_availability"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name of the selling region for which the stock availability apply",
+      "type": "string",
+      "enum": [
+        "worldwide",
+        "north_america",
+        "canada",
+        "europe",
+        "spain",
+        "latvia",
+        "uk",
+        "france",
+        "germany",
+        "australia",
+        "japan",
+        "new_zealand",
+        "italy",
+        "brazil",
+        "southeast_asia",
+        "republic_of_korea"
+      ]
+    },
+    "availability": {
+      "type": "string",
+      "description": "Availability status:\n  * in stock: The product is stocked in this region and fulfillable with the specified technique\n  * out of stock: Product went out of stock at the supplier in this region but is fulfillable with the specified technique\n  * not fulfillable: (a) Printful does not stock this product in this region; or (b) the product is not fulfillable with the specified technique in this region\n  * unknown: The exact stock status could not be determined\n",
+      "enum": [
+        "in stock",
+        "out of stock",
+        "not fulfillable",
+        "unknown"
+      ]
+    },
+    "placement_option_availability": {
+      "description": "Availability of a placement options for a catalog variant in a specified selling region. If a placement option is present in this array and availability is set to true it means it is available for this product. If it is set to false it means that the placement option is available for the variant, but not currently fulfillable for the given selling region settings. If an option is not present in the array but is present as an option on the product (see: [Retrieve a single catalog product](#tag/Catalog-v2/operation/getProducts)) it means the option is always available for that product.\n",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "unlimited_color"
+          },
+          "availability": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      }
+    }
+  }
+}

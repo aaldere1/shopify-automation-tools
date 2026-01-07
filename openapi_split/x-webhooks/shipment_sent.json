@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Shipment sent",
+    "operationId": "shipmentSent",
+    "description": "Is called when a shipment with all or part of the ordered items is shipped.\n\n If the order is shipped in multiple shipments, this event will be called for every shipment sent.\n\n If some items are reshipped, a shipping notification will be sent again for the same items.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentSent"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

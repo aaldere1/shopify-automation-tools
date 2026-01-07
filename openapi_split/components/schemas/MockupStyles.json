@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "title": "MockupStyles",
+  "description": "Data containing information about the available mockup styles",
+  "required": [
+    "placement",
+    "display_name",
+    "technique",
+    "print_area_width",
+    "print_area_height",
+    "print_area_type",
+    "dpi",
+    "mockup_styles"
+  ],
+  "properties": {
+    "placement": {
+      "type": "string",
+      "description": "Catalog product placement for which the mockup styles defined in `mockup_style_ids` could be used.",
+      "example": "front"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Placement display name that can be shown to end-customers.",
+      "example": "Front print"
+    },
+    "technique": {
+      "type": "string",
+      "description": "Technique name",
+      "example": "dtg"
+    },
+    "print_area_width": {
+      "type": "number",
+      "format": "float",
+      "description": "Print area width of a placement defined in inches",
+      "example": 5
+    },
+    "print_area_height": {
+      "type": "number",
+      "format": "float",
+      "description": "Print area height of a placement defined in inches",
+      "example": 5
+    },
+    "print_area_type": {
+      "description": "Type of the print area.",
+      "nullable": true,
+      "type": "string",
+      "enum": [
+        "simple",
+        "advanced"
+      ]
+    },
+    "dpi": {
+      "type": "integer",
+      "description": "Print area DPI",
+      "example": 150
+    },
+    "mockup_styles": {
+      "type": "array",
+      "description": "A list of available mockup styles for example:\n  * On the hanger\n  * On the Male/Female model\n  * Flat on the table\n  * etc.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category_name",
+          "view_name",
+          "restricted_to_variants"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifier of mockup style. This value is intended to be used when specifying the mockup styles during mockup generator task creation _[Create mockup generator tasks](#operation/createMockupGeneratorTasks)_.",
+            "example": 1
+          },
+          "category_name": {
+            "type": "string",
+            "description": "The category name of the mockup style",
+            "example": "Couple's"
+          },
+          "view_name": {
+            "type": "string",
+            "description": "Display name of mockup view. View determines a point of view of the camera. E.g to the right or left to the mockup.",
+            "example": "Front"
+          },
+          "restricted_to_variants": {
+            "type": "array",
+            "nullable": true,
+            "description": "A list of variants that this style is restricted to. If `null`, this means that there are no restrictions and the style can be used with all variants",
+            "example": [
+              4,
+              15032,
+              10750
+            ]
+          }
+        }
+      }
+    }
+  }
+}

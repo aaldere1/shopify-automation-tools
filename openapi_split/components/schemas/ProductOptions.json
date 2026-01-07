@@ -1,0 +1,45 @@
+{
+  "description": "List of product options",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/components/schemas/InsidePocketOption"
+      },
+      {
+        "$ref": "#/components/schemas/StitchColorOption"
+      },
+      {
+        "$ref": "#/components/schemas/NotesOption"
+      },
+      {
+        "$ref": "#/components/schemas/LifelikeOption"
+      },
+      {
+        "$ref": "#/components/schemas/CustomBorderColorOption"
+      },
+      {
+        "$ref": "#/components/schemas/KnitwearBaseColor"
+      },
+      {
+        "$ref": "#/components/schemas/KnitwearTrimColor"
+      },
+      {
+        "$ref": "#/components/schemas/KnitwearColorReductionMode"
+      }
+    ],
+    "discriminator": {
+      "propertyName": "name",
+      "mapping": {
+        "inside_pocket": "#/components/schemas/InsidePocketOption",
+        "stitch_color": "#/components/schemas/StitchColorOption",
+        "notes": "#/components/schemas/NotesOption",
+        "lifelike": "#/components/schemas/LifelikeOption",
+        "custom_border_color": "#/components/schemas/CustomBorderColorOption",
+        "base_color": "#/components/schemas/KnitwearBaseColor",
+        "trim_color": "#/components/schemas/KnitwearTrimColor",
+        "color_reduction_mode": "#/components/schemas/KnitwearColorReductionMode"
+      }
+    }
+  }
+}

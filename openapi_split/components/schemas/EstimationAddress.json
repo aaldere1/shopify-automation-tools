@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "title": "Estimation address",
+  "description": "Information about the address for estimations.",
+  "required": [
+    "country_code",
+    "zip"
+  ],
+  "properties": {
+    "state_code": {
+      "description": "State code.",
+      "type": "string",
+      "example": "CA"
+    },
+    "country_code": {
+      "description": "Country code",
+      "type": "string",
+      "example": "US"
+    },
+    "zip": {
+      "description": "ZIP/Postal code",
+      "type": "string",
+      "example": "91311"
+    }
+  }
+}

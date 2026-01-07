@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "title": "TotalPaidOrders",
+  "description": "Total paid orders report",
+  "required": [
+    "value",
+    "relative_difference"
+  ],
+  "properties": {
+    "value": {
+      "type": "integer",
+      "description": "Number of unique orders for period"
+    },
+    "relative_difference": {
+      "type": "string",
+      "nullable": true,
+      "description": "Relative difference from the value from the previous period. -1 means 100% decrease, 1 means 100% increase. 0 is returned if there is no change or the previous value was 0."
+    }
+  }
+}

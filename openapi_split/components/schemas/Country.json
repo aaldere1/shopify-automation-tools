@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "title": "Country",
+  "required": [
+    "code",
+    "name",
+    "states"
+  ],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Country code",
+      "example": "AU"
+    },
+    "name": {
+      "type": "string",
+      "description": "Country name",
+      "example": "Australia"
+    },
+    "states": {
+      "type": "array",
+      "description": "This array contains all states available for a country. If states are not required or not applicable for a given country this array will be empty.",
+      "items": {
+        "type": "object",
+        "title": "State",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "State code",
+            "example": "ACT"
+          },
+          "name": {
+            "type": "string",
+            "description": "State name",
+            "example": "Australian Capital Territory"
+          }
+        }
+      }
+    }
+  }
+}

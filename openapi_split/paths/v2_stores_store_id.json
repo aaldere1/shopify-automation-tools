@@ -1,0 +1,51 @@
+{
+  "get": {
+    "summary": "Retrieve a single store",
+    "description": "Get information about a single store.",
+    "operationId": "getStoreById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Stores v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId-2"
+      },
+      {
+        "$ref": "#/components/parameters/StoreIdNotRequired"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/StoreSchema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized-2"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound-2"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

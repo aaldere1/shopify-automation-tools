@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "title": "Address",
+  "description": "Information about the address",
+  "properties": {
+    "name": {
+      "description": "Full name",
+      "type": "string",
+      "example": "John Smith"
+    },
+    "company": {
+      "description": "Company name",
+      "type": "string",
+      "example": "John Smith Inc"
+    },
+    "address1": {
+      "description": "Address line 1",
+      "type": "string",
+      "example": "19749 Dearborn St"
+    },
+    "address2": {
+      "description": "Address line 2",
+      "type": "string"
+    },
+    "city": {
+      "description": "City",
+      "type": "string",
+      "example": "Chatsworth"
+    },
+    "state_code": {
+      "description": "State code",
+      "type": "string",
+      "example": "CA"
+    },
+    "state_name": {
+      "description": "State name",
+      "type": "string",
+      "example": "California"
+    },
+    "country_code": {
+      "description": "Country code",
+      "type": "string",
+      "example": "US"
+    },
+    "country_name": {
+      "description": "Country name",
+      "type": "string",
+      "example": "United States"
+    },
+    "zip": {
+      "description": "ZIP/Postal code",
+      "type": "string",
+      "example": "91311"
+    },
+    "phone": {
+      "description": "Phone number",
+      "example": "2312322334",
+      "type": "string"
+    },
+    "email": {
+      "description": "Email address",
+      "example": "firstname.secondname@domain.com",
+      "type": "string"
+    },
+    "tax_number": {
+      "description": "TAX number (`optional`, but in case of Brazil country this field becomes `required` and will be used as CPF/CNPJ number)<br> CPF format is 000.000.000-00 (14 characters);<br> CNPJ format is 00.000.000/0000-00 (18 characters).",
+      "type": "string",
+      "example": "123.456.789-10"
+    }
+  }
+}

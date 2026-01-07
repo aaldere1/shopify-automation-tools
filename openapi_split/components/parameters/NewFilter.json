@@ -1,0 +1,16 @@
+{
+  "in": "query",
+  "name": "new",
+  "schema": {
+    "type": "boolean",
+    "default": false
+  },
+  "examples": {
+    "true": {
+      "summary": "Return only new products",
+      "value": true
+    }
+  },
+  "required": false,
+  "description": "If true only new Products will be returned."
+}

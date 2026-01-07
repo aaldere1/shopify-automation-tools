@@ -1,0 +1,38 @@
+{
+  "description": "Order updated.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `order_updated`",
+                "example": "order_updated"
+              },
+              "data": {
+                "description": "Updated order data",
+                "title": "UpdateInfo",
+                "required": [
+                  "order"
+                ],
+                "properties": {
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

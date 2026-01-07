@@ -1,0 +1,42 @@
+{
+  "description": "Order put on hold.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `order_put_hold`",
+                "example": "order_put_hold"
+              },
+              "data": {
+                "title": "OrderStatusChange",
+                "required": [
+                  "reason",
+                  "order"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the order status was changed."
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

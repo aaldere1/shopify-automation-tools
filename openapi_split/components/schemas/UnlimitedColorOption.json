@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "UnlimitedColorOption",
+  "description": "Specify if the design should use unlimited color technique",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "unlimited_color",
+      "enum": [
+        "unlimited_color"
+      ]
+    },
+    "value": {
+      "description": "Whether the design should use unlimited color technique.",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

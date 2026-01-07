@@ -1,0 +1,28 @@
+{
+  "in": "query",
+  "name": "category_ids",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "integer"
+    }
+  },
+  "explode": false,
+  "examples": {
+    "oneID": {
+      "summary": "Using a single category ID",
+      "value": [
+        4
+      ]
+    },
+    "multipleIDs": {
+      "summary": "Multiple category IDs",
+      "value": [
+        4,
+        7
+      ]
+    }
+  },
+  "required": false,
+  "description": "One or more category IDs to return only products in those categories. The IDs can be found in the response of the\noperation _[Get Categories](#operation/getCategories)_.\n"
+}

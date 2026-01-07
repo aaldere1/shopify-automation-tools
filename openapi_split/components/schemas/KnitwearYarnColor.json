@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "title": "KnitwearYarnColorsOption",
+  "description": "Used to specify the yarn colors for the whole product. These are the colors that will be used across the whole product.",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "yarn_colors",
+      "enum": [
+        "yarn_colors"
+      ]
+    },
+    "value": {
+      "description": "Option value",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/KnitwearOptionValue"
+      }
+    }
+  }
+}

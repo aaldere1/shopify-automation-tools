@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "show_expired",
+  "description": "If this parameter is passed with value `true`, expired settings will be returned instead of a 404 warning.",
+  "schema": {
+    "type": "boolean"
+  },
+  "required": false
+}

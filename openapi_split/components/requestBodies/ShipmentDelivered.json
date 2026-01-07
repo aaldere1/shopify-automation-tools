@@ -1,0 +1,44 @@
+{
+  "description": "Shipment delivered.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `shipment_delivered`",
+                "enum": [
+                  "shipment_delivered"
+                ]
+              },
+              "data": {
+                "description": "Shipment and order data",
+                "title": "DeliveryInfo",
+                "required": [
+                  "shipment",
+                  "order"
+                ],
+                "properties": {
+                  "shipment": {
+                    "$ref": "#/components/schemas/WebhookShipmentData"
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

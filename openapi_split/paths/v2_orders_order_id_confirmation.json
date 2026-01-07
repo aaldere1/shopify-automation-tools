@@ -1,0 +1,36 @@
+{
+  "post": {
+    "summary": "Confirm an order",
+    "description": "This endpoint allows customers to confirm the order and start the fulfillment in the production facility.",
+    "operationId": "confirmOrder",
+    "security": [
+      {
+        "OAuth": [
+          "orders"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/ConfirmOrderById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

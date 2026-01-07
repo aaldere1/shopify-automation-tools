@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "title": "DesignPlacement",
+  "description": "Information about the product placements that can be used to specify the design placement",
+  "required": [
+    "placement",
+    "technique",
+    "layers"
+  ],
+  "properties": {
+    "placement": {
+      "description": "Name of placement that can be used to place design in a correct spot on a product",
+      "type": "string",
+      "example": "back"
+    },
+    "technique": {
+      "description": "Indicates technique for which the placements are available",
+      "type": "string",
+      "example": "embroidery"
+    },
+    "layers": {
+      "description": "Available layers for that product",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/FileLayer"
+          }
+        ]
+      }
+    },
+    "placement_options": {
+      "description": "Possible placement options",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CatalogOption"
+      },
+      "example": [
+        {
+          "name": "unlimited_color",
+          "techniques": [
+            "embroidery"
+          ],
+          "type": "boolean",
+          "values": [
+            true,
+            false
+          ]
+        }
+      ]
+    }
+  }
+}

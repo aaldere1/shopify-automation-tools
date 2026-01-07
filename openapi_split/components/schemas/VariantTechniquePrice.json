@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "title": "VariantTechniquePrice",
+  "description": "Product prices information",
+  "required": [
+    "technique_key",
+    "technique_display_name",
+    "price",
+    "discounted_price",
+    "retail_price",
+    "retail_discounted_price"
+  ],
+  "properties": {
+    "technique_key": {
+      "description": "Key associated to the technique",
+      "type": "string",
+      "example": "digital"
+    },
+    "technique_display_name": {
+      "description": "Full technique name",
+      "type": "string",
+      "example": "Digital printing"
+    },
+    "price": {
+      "description": "Price converted to the region currency",
+      "type": "string",
+      "example": "9.50"
+    },
+    "discounted_price": {
+      "description": "Discounted price per region",
+      "type": "string",
+      "example": "8.50"
+    }
+  }
+}

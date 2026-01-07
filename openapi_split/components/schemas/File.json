@@ -1,0 +1,154 @@
+{
+  "type": "object",
+  "title": "File",
+  "description": "Information about the File",
+  "required": [
+    "id",
+    "url",
+    "hash",
+    "filename",
+    "mime_type",
+    "size",
+    "width",
+    "height",
+    "dpi",
+    "status",
+    "created",
+    "thumbnail_url",
+    "preview_url",
+    "visible",
+    "is_temporary",
+    "_links"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "File ID",
+      "example": 123,
+      "readOnly": true
+    },
+    "url": {
+      "type": "string",
+      "description": "Source URL where the file was downloaded from.",
+      "example": "\u200bhttps://www.example.com/files/tshirts/example.png"
+    },
+    "hash": {
+      "type": "string",
+      "description": "MD5 checksum of the file",
+      "example": "ea44330b887dfec278dbc4626a759547",
+      "nullable": true,
+      "readOnly": true
+    },
+    "filename": {
+      "type": "string",
+      "description": "File name",
+      "nullable": true,
+      "example": "shirt1.png"
+    },
+    "mime_type": {
+      "type": "string",
+      "description": "MIME type of the file",
+      "example": "image/png",
+      "nullable": true,
+      "readOnly": true
+    },
+    "size": {
+      "type": "integer",
+      "description": "Size in bytes",
+      "example": 45582633,
+      "readOnly": true
+    },
+    "width": {
+      "type": "integer",
+      "description": "Width in pixels",
+      "example": 1000,
+      "nullable": true,
+      "readOnly": true
+    },
+    "height": {
+      "type": "integer",
+      "description": "Height in pixels",
+      "example": 1000,
+      "nullable": true,
+      "readOnly": true
+    },
+    "dpi": {
+      "type": "integer",
+      "description": "Resolution DPI.<br>**Note:** for vector files this may be indicated as only 72dpi, but it doesn't affect print quality since the vector files are resolution independent.",
+      "example": 300,
+      "nullable": true,
+      "readOnly": true
+    },
+    "status": {
+      "type": "string",
+      "example": "ok",
+      "enum": [
+        "waiting",
+        "ok",
+        "failed",
+        "deleted"
+      ],
+      "description": "File processing status",
+      "x-enumDescriptions": {
+        "waiting": "File is waiting to be processed",
+        "ok": "File processed correctly and ready to use",
+        "failed": "File failed to process",
+        "deleted": "File was deleted"
+      },
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "description": "File creation date",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Small thumbnail URL",
+      "example": "https://files.cdn.printful.com/files/ea4/ea44330b887dfec278dbc4626a759547_thumb.png",
+      "nullable": true,
+      "readOnly": true
+    },
+    "preview_url": {
+      "type": "string",
+      "description": "Medium preview image URL",
+      "example": "https://files.cdn.printful.com/files/ea4/ea44330b887dfec278dbc4626a759547_thumb.png",
+      "nullable": true,
+      "readOnly": true
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "Whether the file is shown in the Printfile Library.",
+      "example": true
+    },
+    "is_temporary": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Whether it is a temporary printfile.",
+      "example": false
+    },
+    "_links": {
+      "type": "object",
+      "readOnly": true,
+      "description": "HATEOAS links",
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "description": "Link to same resource",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/files/123"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

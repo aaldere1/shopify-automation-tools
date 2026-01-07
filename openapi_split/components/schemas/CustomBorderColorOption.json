@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "CustomBorderColorOption",
+  "description": "Used to specify the border color of a sticker",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "custom_border_color",
+      "enum": [
+        "custom_border_color"
+      ]
+    },
+    "value": {
+      "description": "Color defined in hexadecimal format",
+      "type": "string",
+      "example": "#FF0000"
+    }
+  }
+}

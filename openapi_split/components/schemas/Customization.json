@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "title": "Customization",
+  "description": "The Order's customization values",
+  "properties": {
+    "gift": {
+      "$ref": "#/components/schemas/Gift"
+    },
+    "packing_slip": {
+      "$ref": "#/components/schemas/PackingSlip"
+    }
+  }
+}

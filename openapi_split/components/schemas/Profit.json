@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "title": "Profit",
+  "description": "Profit report",
+  "required": [
+    "value",
+    "relative_difference"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "The difference between Sales and Fulfillment. If retail price data is not available, profit might be negative"
+    },
+    "relative_difference": {
+      "type": "string",
+      "nullable": true,
+      "description": "Relative difference from the value from the previous period. -1 means 100% decrease, 1 means 100% increase. 0 is returned if there is no change or the previous value was 0."
+    }
+  }
+}

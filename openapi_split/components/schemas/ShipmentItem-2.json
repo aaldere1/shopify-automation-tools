@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "title": "ShipmentItem",
+  "description": "Basic info about the shipment item.",
+  "required": [
+    "catalog_variant_id",
+    "quantity"
+  ],
+  "properties": {
+    "catalog_variant_id": {
+      "type": "number",
+      "format": "integer",
+      "description": "Catalog Variant ID of the shipment item.",
+      "example": 4011
+    },
+    "quantity": {
+      "description": "List of items included in the shipment.",
+      "type": "number",
+      "format": "integer",
+      "example": 3
+    }
+  }
+}

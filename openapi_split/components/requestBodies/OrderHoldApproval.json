@@ -1,0 +1,49 @@
+{
+  "description": "Order put on hold because it needs customer approval. You will receive an approval sheet with suggested changes and a confirmation hash so you can approve the changes if you agree with them.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `order_put_hold_approval`",
+                "example": "order_put_hold_approval"
+              },
+              "data": {
+                "title": "OrderRequiresApproval",
+                "required": [
+                  "reason",
+                  "approval_files",
+                  "order"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the order was put on hold and requires approval."
+                  },
+                  "approval_files": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ApprovalSheetWebhookFile"
+                    }
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

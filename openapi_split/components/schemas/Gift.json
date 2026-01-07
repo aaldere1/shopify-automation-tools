@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "title": "Gift",
+  "description": "The gift subject and message",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "Gift message subject",
+      "example": "To John"
+    },
+    "message": {
+      "type": "string",
+      "description": "Gift message",
+      "example": "Happy birthday!"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "in": "query",
+  "name": "colors",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "explode": false,
+  "examples": {
+    "oneColor": {
+      "summary": "Grey.",
+      "value": [
+        "grey"
+      ]
+    },
+    "oneUrlEncodedColor": {
+      "summary": "Heather grey color.",
+      "value": [
+        "heather%20grey"
+      ]
+    },
+    "multipleColors": {
+      "summary": "Grey or heather grey color",
+      "value": [
+        "grey",
+        "heather%20grey"
+      ]
+    }
+  },
+  "required": false,
+  "description": "One or more color names to return only products with variants of one the those colors.\n"
+}

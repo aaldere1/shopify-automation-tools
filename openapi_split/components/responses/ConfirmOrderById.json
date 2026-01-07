@@ -1,0 +1,78 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Order"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "required": [
+              "self",
+              "order",
+              "order_items",
+              "shipments"
+            ],
+            "properties": {
+              "self": {
+                "description": "Link to the order details",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/confirmation"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "order": {
+                "description": "Link to order",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "order_items": {
+                "description": "Link to all order items associated with the order",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/order-items"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "shipments": {
+                "description": "Link to the shipments associated with the order",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/shipments"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

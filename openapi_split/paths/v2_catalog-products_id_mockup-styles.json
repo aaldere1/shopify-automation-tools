@@ -1,0 +1,52 @@
+{
+  "get": {
+    "summary": "Retrieve catalog product mockup styles",
+    "description": "Returns information about available mockup styles for specified catalog product.\n",
+    "operationId": "retrieveMockupStylesByProductId",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductId"
+      },
+      {
+        "$ref": "#/components/parameters/MockupPlacementsFilter"
+      },
+      {
+        "$ref": "#/components/parameters/DefaultMockupStylesFilter"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegion"
+      },
+      {
+        "$ref": "#/components/parameters/Offset-2"
+      },
+      {
+        "$ref": "#/components/parameters/Limit-2"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetCatalogProductMockupsStyles"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized-2"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound-2"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

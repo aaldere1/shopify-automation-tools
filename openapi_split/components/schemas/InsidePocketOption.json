@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "InsidePocketOption",
+  "description": "Specify if inside pocket should be added to the product",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "inside_pocket",
+      "enum": [
+        "inside_pocket"
+      ]
+    },
+    "value": {
+      "description": "Whether inside pocket should be added to the product.",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

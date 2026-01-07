@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Shipment returned",
+    "operationId": "shipmentReturned",
+    "description": " Is called when a shipment is processed as returned to the fulfillment facility. To learn more about the reasons why a shipment might be returned, take a look at [Printful's Return Policy](https://www.printful.com/policies/returns) ",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentReturned"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

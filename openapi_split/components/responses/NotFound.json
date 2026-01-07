@@ -1,0 +1,35 @@
+{
+  "description": "Not found",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Response status code `404`",
+            "example": 404
+          },
+          "result": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "Not found"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "example": "NotFound"
+              },
+              "message": {
+                "type": "string",
+                "example": "Not found"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

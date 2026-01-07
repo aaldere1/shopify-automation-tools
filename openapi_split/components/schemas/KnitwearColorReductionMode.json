@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "title": "KnitwearColorReductionMode",
+  "description": "Used to set the color reduction mode for a knitwear product",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "color_reduction_mode",
+      "enum": [
+        "color_reduction_mode"
+      ]
+    },
+    "value": {
+      "description": "Option value",
+      "type": "string",
+      "enum": [
+        "solid",
+        "pixelated"
+      ],
+      "example": "pixelated"
+    }
+  }
+}

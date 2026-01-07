@@ -1,0 +1,60 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/VariantPrices"
+          },
+          "_links": {
+            "description": "HATEOAS links",
+            "type": "object",
+            "properties": {
+              "self": {
+                "description": "Link to the same resource",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-variants/4011/prices"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "product_prices": {
+                "description": "Link to product prices",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/prices"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "product_details": {
+                "description": "Link to product details",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "type": "array",
+  "title": "SalesAndCostsValue",
+  "description": "Sales and costs report",
+  "items": {
+    "type": "object",
+    "required": [
+      "date",
+      "sales",
+      "fulfillment",
+      "profit",
+      "sales_discount",
+      "fulfillment_discount",
+      "sales_shipping",
+      "fulfillment_shipping"
+    ],
+    "properties": {
+      "date": {
+        "type": "string",
+        "description": "The date of the value: day in `Y-m-d` format, month in `Y-m` format or \"Total\" for the first element of the list which shows the total values for the whole requested period"
+      },
+      "sales": {
+        "type": "string",
+        "description": "Order retail price data. Available only if retail price fields are properly set up on the integration's side"
+      },
+      "fulfillment": {
+        "type": "string",
+        "description": "Product fulfillment, digitization, branding, shipping costs and taxes that are charged by Printful"
+      },
+      "profit": {
+        "type": "string",
+        "description": "The difference between Sales and Fulfillment. If retail price data is not available, profit might be negative"
+      },
+      "sales_discount": {
+        "type": "string",
+        "description": "Any retail price discounts set up on the integration's side"
+      },
+      "fulfillment_discount": {
+        "type": "string",
+        "description": "Any fulfillment discounts (such as the monthly discount) set up on Printful's side"
+      },
+      "sales_shipping": {
+        "type": "string",
+        "description": "The retail shipping price that was paid by the buyer"
+      },
+      "fulfillment_shipping": {
+        "type": "string",
+        "description": "Shipping costs that were charged by Printful"
+      }
+    }
+  }
+}

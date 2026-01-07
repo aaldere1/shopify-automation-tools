@@ -1,0 +1,59 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "paging",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VariantImages"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "required": [
+              "self",
+              "product_details"
+            ],
+            "properties": {
+              "self": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ],
+                "description": "Link to same resource",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog/products/71/images"
+                }
+              },
+              "product_details": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to product details",
+                    "example": {
+                      "href": "https://api.printful.com/v2/catalog-products/71"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

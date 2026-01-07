@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "title": "Placement",
+  "description": "A placement is used to represent the physical area in which a design will be printed, and the technique used. It includes the layers that will be printed on the placement.",
+  "required": [
+    "placement",
+    "technique",
+    "layers",
+    "status",
+    "status_explanation"
+  ],
+  "properties": {
+    "placement": {
+      "description": "Name of the placement",
+      "type": "string",
+      "example": "front"
+    },
+    "technique": {
+      "description": "Placement's technique",
+      "type": "string",
+      "example": "dtg"
+    },
+    "print_area_type": {
+      "description": "Type of the print area. Defaults to simple. Advanced type might be specified only for some specific products\nfor example All-over Tote bag. In that case both sides of the product will be designed.\nAdvanced designs are often more complicated so it's advised to refer to the [mockup templates endpoint](#tag/Catalog-v2/operation/getMockupTemplatesByProductId) when using advanced designs.\nAvailable print area types for a specific product can be found in [Mockup Styles endpoint](/docs/#operation/createMockupGeneratorTasks).\n",
+      "type": "string",
+      "writeOnly": true,
+      "default": "simple",
+      "enum": [
+        "simple",
+        "advanced"
+      ]
+    },
+    "layers": {
+      "description": "Information about placement's layers",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Layer"
+      }
+    },
+    "placement_options": {
+      "$ref": "#/components/schemas/PlacementOptions"
+    },
+    "status": {
+      "type": "string",
+      "readOnly": true,
+      "enum": [
+        "ok",
+        "failed"
+      ],
+      "description": "Status of the placement design"
+    },
+    "status_explanation": {
+      "type": "string",
+      "readOnly": true,
+      "example": "Product with ID: 656 cannot have disjointed design elements.",
+      "description": "Reason behind failed status"
+    }
+  }
+}

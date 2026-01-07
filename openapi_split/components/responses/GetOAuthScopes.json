@@ -1,0 +1,42 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OAuthScope"
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "required": [
+              "self"
+            ],
+            "properties": {
+              "self": {
+                "description": "Link to the order details",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/oauth-scopes"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

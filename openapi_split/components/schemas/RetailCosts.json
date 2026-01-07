@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "title": "RetailCosts",
+  "description": "The Order's retail costs",
+  "readOnly": true,
+  "required": [
+    "calculation_status",
+    "currency",
+    "subtotal",
+    "discount",
+    "shipping",
+    "vat",
+    "tax",
+    "total"
+  ],
+  "properties": {
+    "calculation_status": {
+      "$ref": "#/components/schemas/CalculationStatus"
+    },
+    "currency": {
+      "description": "The code of the currency in which the retail costs are returned.",
+      "type": "string",
+      "example": "EUR"
+    },
+    "subtotal": {
+      "description": "Total cost of all items.",
+      "type": "string",
+      "nullable": true,
+      "example": "26.55"
+    },
+    "discount": {
+      "description": "Discount sum.",
+      "type": "string",
+      "example": "0.00"
+    },
+    "shipping": {
+      "description": "Shipping costs.",
+      "type": "string",
+      "example": "4.79"
+    },
+    "vat": {
+      "description": "Sum of VAT (not included in the item price).",
+      "type": "string",
+      "example": "0.00"
+    },
+    "tax": {
+      "description": "Sum of taxes (not included in the item price).",
+      "type": "string",
+      "example": "0.00"
+    },
+    "total": {
+      "description": "Grand Total (subtotal-discount+tax+vat+shipping).",
+      "type": "string",
+      "nullable": true,
+      "example": "31.34"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Catalog stock updated",
+    "operationId": "catalogStockUpdated",
+    "description": "Is called when stock is updated for some of a product's variants.\n\n Contains information about the availability of product variants that have changed.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/CatalogStockUpdated"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

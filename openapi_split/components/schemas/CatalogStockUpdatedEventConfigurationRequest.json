@@ -1,0 +1,46 @@
+{
+  "title": "CatalogStockUpdatedEventConfiguration",
+  "allOf": [
+    {
+      "required": [
+        "params"
+      ]
+    },
+    {
+      "$ref": "#/components/schemas/DefaultEventConfigurationRequest"
+    },
+    {
+      "properties": {
+        "params": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ProductsParam"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "name",
+              "mapping": {
+                "products": "#/components/schemas/ProductsParam"
+              }
+            }
+          },
+          "example": [
+            {
+              "name": "products",
+              "value": [
+                {
+                  "id": 1
+                },
+                {
+                  "id": 71
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "StitchColorOption",
+  "description": "Specified what color should be used for stitches",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "stitch_color",
+      "enum": [
+        "stitch_color"
+      ]
+    },
+    "value": {
+      "description": "Option value",
+      "type": "string",
+      "example": "white"
+    }
+  }
+}

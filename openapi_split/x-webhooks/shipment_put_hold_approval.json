@@ -1,0 +1,19 @@
+{
+  "post": {
+    "summary": "Shipment put hold approval",
+    "operationId": "shipmentPutHoldApproval",
+    "security": [],
+    "description": "Is called when shipment is put on hold and there are changes that must be approved by the customer before fulfillment.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentHoldApproval"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

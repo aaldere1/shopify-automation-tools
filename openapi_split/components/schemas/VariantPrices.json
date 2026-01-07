@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "title": "VariantPrice",
+  "description": "Variant prices information",
+  "required": [
+    "currency",
+    "product",
+    "variant"
+  ],
+  "properties": {
+    "currency": {
+      "description": "Currency in which prices are returned",
+      "type": "string",
+      "example": "EUR"
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Product Identifier",
+          "type": "integer",
+          "example": 1
+        },
+        "placements": {
+          "description": "Array containing the pricing information about the placement prices",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AdditionalPlacements"
+          }
+        }
+      }
+    },
+    "variant": {
+      "$ref": "#/components/schemas/VariantsPriceData"
+    }
+  }
+}

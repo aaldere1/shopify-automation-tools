@@ -1,0 +1,37 @@
+{
+  "get": {
+    "summary": "Retrieve a single warehouse product",
+    "description": "Get information about a single warehouse product with it's stock location.",
+    "operationId": "getWarehouseProductById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Warehouse Products v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/WarehouseProductId"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetWarehouseProduct"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized-2"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound-2"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

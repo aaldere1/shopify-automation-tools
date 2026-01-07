@@ -1,0 +1,12 @@
+{
+  "type": "string",
+  "enum": [
+    "dtg",
+    "digital",
+    "cut-sew",
+    "uv",
+    "embroidery",
+    "sublimation",
+    "dtfilm"
+  ]
+}

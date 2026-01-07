@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "title": "AdditionalPlacement",
+  "description": "Info about additional product placements prices.",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "technique_key",
+    "price",
+    "discounted_price",
+    "retail_price",
+    "retail_discounted_price",
+    "placement_options",
+    "layers"
+  ],
+  "properties": {
+    "id": {
+      "description": "ID or key of placement",
+      "type": "string",
+      "example": "default"
+    },
+    "title": {
+      "description": "Title of the placement related",
+      "type": "string",
+      "example": "Print file"
+    },
+    "type": {
+      "description": "Placement type",
+      "type": "string",
+      "example": "Digital printing"
+    },
+    "technique_key": {
+      "description": "Key associated to the available technique",
+      "type": "string",
+      "example": "digital"
+    },
+    "price": {
+      "description": "Price converted to the region currency",
+      "type": "string",
+      "example": "19.75"
+    },
+    "discounted_price": {
+      "description": "Discounted price per region",
+      "type": "string",
+      "example": "18.75"
+    },
+    "placement_options": {
+      "description": "Array containing the pricing information about the file options used",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FileOptionPrices"
+      }
+    },
+    "layers": {
+      "description": "Array containing the pricing information about the layers.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Layers"
+      }
+    }
+  }
+}

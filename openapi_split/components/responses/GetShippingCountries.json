@@ -1,0 +1,22 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "paging",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingCountry"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "title": "Address",
+  "description": "Information about the address.\n\n**Required fields:**\n- `country_code`: Always required\n\n**Conditionally required fields:**\n- `state_code`: Required for United States (US), Australia (AU), and Canada (CA)\n\n**Optional fields:**\n- All other fields are optional but providing more information may produce more precise results and more shipping options.\n",
+  "required": [
+    "country_code"
+  ],
+  "properties": {
+    "address1": {
+      "description": "Address line 1",
+      "type": "string",
+      "example": "19749 Dearborn St"
+    },
+    "address2": {
+      "description": "Address line 2",
+      "type": "string",
+      "nullable": true
+    },
+    "city": {
+      "description": "City",
+      "type": "string",
+      "example": "Chatsworth"
+    },
+    "state_code": {
+      "description": "State/province code. Required for United States (US), Australia (AU), and Canada (CA).\nFor other countries, this field is optional.\n",
+      "type": "string",
+      "example": "CA",
+      "nullable": true
+    },
+    "country_code": {
+      "description": "Country code",
+      "type": "string",
+      "example": "US"
+    },
+    "zip": {
+      "description": "ZIP/Postal code",
+      "type": "string",
+      "example": "91311",
+      "nullable": true
+    }
+  }
+}

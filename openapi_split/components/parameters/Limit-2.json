@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "limit",
+  "schema": {
+    "type": "integer"
+  },
+  "required": false,
+  "description": "Number of items per page (max 100)"
+}

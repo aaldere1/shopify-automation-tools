@@ -1,0 +1,47 @@
+{
+  "title": "WebhookInfo",
+  "properties": {
+    "default_url": {
+      "type": "string",
+      "nullable": true,
+      "description": "Webhook URL (HTTPS-only) that will receive store's event notifications if no URL is set for the event.",
+      "example": "\u200bhttps://www.example.com/printful/webhook"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z",
+      "nullable": true,
+      "description": "Date-time indicating when the configuration should expire. The default value is `null` meaning it won't expire."
+    },
+    "events": {
+      "type": "array",
+      "description": "Array of enabled webhook event configurations",
+      "items": {
+        "$ref": "#/components/schemas/EventConfigurationRequest"
+      },
+      "example": [
+        {
+          "type": "shipment_sent",
+          "url": "\u200bhttps://www.example.com/printful/webhook/shipment_sent"
+        },
+        {
+          "type": "catalog_stock_updated",
+          "params": [
+            {
+              "name": "products",
+              "value": [
+                {
+                  "id": 1
+                },
+                {
+                  "id": 71
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "allOf": [
+    {
+      "type": "object",
+      "title": "Item",
+      "description": "Information about the Item",
+      "required": [
+        "placements",
+        "catalog_variant_id",
+        "source"
+      ],
+      "properties": {
+        "source": {
+          "description": "Catalog source",
+          "type": "string",
+          "enum": [
+            "catalog"
+          ]
+        },
+        "catalog_variant_id": {
+          "description": "ID of catalog variant",
+          "type": "integer",
+          "example": 4011
+        }
+      }
+    },
+    {
+      "$ref": "#/components/schemas/Item"
+    }
+  ]
+}

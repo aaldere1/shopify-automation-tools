@@ -1,0 +1,46 @@
+{
+  "get": {
+    "summary": "Retrieve catalog product mockup templates",
+    "description": "Returns positional data for specified catalog product mockups. The data from this endpoint could be used\nto generate your own mockups without the need to use Printful's mockup generator.\n![Mockup template](images/mockups/mockup_template.png)\n",
+    "operationId": "getMockupTemplatesByProductId",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductId"
+      },
+      {
+        "$ref": "#/components/parameters/PlacementsFilter"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegion"
+      },
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetCatalogProductMockupsTemplates"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

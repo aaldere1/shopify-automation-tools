@@ -1,0 +1,20 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MockupGeneratorTask"
+            }
+          }
+        }
+      }
+    }
+  }
+}

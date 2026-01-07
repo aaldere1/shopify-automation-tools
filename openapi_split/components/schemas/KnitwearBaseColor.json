@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "title": "KnitwearBaseColorOption",
+  "description": "Used to specify the base color on a knitwear product.",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "base_color",
+      "enum": [
+        "base_color"
+      ]
+    },
+    "value": {
+      "$ref": "#/components/schemas/KnitwearOptionValue"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "get": {
+    "summary": "Retrieve catalog variant stock availability",
+    "description": "Provides information about the catalog variant stock status. Stock availability is grouped by variants &rarr; techniques &rarr; selling regions.\n",
+    "operationId": "getVariantStockAvailabilityById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/VariantId"
+      },
+      {
+        "$ref": "#/components/parameters/TechniquesFilter"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegion"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetVariantStockAvailabilityById"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "403": {
+        "$ref": "#/components/responses/Forbidden"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

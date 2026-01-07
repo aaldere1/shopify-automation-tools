@@ -1,0 +1,62 @@
+{
+  "description": "POST request body",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": [
+          "recipient",
+          "order_items"
+        ],
+        "properties": {
+          "external_id": {
+            "description": "Order ID from the external system",
+            "type": "string",
+            "example": "4235234213"
+          },
+          "shipping": {
+            "description": "Shipping method. Defaults to 'STANDARD'",
+            "type": "string",
+            "example": "STANDARD"
+          },
+          "recipient": {
+            "description": "The recipient data.",
+            "title": "Address",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "order_items": {
+            "type": "array",
+            "description": "Array of order items",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/CatalogItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ProductTemplateItem"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "catalog": "#/components/schemas/CatalogItem",
+                  "product_template": "#/components/schemas/ProductTemplateItem"
+                }
+              }
+            }
+          },
+          "customization": {
+            "$ref": "#/components/schemas/Customization"
+          },
+          "retail_costs": {
+            "$ref": "#/components/schemas/RetailCosts-2"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "offset",
+  "schema": {
+    "type": "integer"
+  },
+  "required": false,
+  "description": "Result set offset"
+}

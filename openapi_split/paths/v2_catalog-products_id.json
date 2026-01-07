@@ -1,0 +1,37 @@
+{
+  "get": {
+    "summary": "Retrieve a single catalog product",
+    "description": "Returns information about a single specified catalog product. [See catalog product](#tag/Catalog-v2/What-is-a-catalog-product)\n",
+    "operationId": "getProductById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductId"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegion"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetProductById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

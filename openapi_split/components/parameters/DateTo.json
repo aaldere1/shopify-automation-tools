@@ -1,0 +1,11 @@
+{
+  "in": "query",
+  "name": "date_to",
+  "description": "The end of the period to get the statistics from (date in `Y-m-d` format).",
+  "schema": {
+    "type": "string",
+    "format": "date",
+    "example": "2022-08-31"
+  },
+  "required": true
+}

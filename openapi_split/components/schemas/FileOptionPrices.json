@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "title": "FileOptionPrice",
+  "description": "Info about additional product file option prices",
+  "required": [
+    "name",
+    "type",
+    "values",
+    "description",
+    "price",
+    "retail_price"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option name",
+      "type": "string",
+      "example": "unlimited_color"
+    },
+    "type": {
+      "description": "Option value type",
+      "type": "string",
+      "example": "array"
+    },
+    "values": {
+      "description": "Possible option values",
+      "type": "array",
+      "example": [
+        true,
+        false
+      ]
+    },
+    "description": {
+      "description": "Option description",
+      "type": "string",
+      "example": "Unlimited color"
+    },
+    "price": {
+      "description": "Additional price expressed in the region currency",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "false": "0.00",
+        "true": "3.50"
+      }
+    }
+  }
+}

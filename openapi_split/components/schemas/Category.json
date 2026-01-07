@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "title": "Category",
+  "description": "Information about the Category",
+  "required": [
+    "id",
+    "parent_id",
+    "image_url",
+    "title",
+    "_links"
+  ],
+  "properties": {
+    "id": {
+      "description": "Category ID",
+      "type": "integer",
+      "example": 24
+    },
+    "parent_id": {
+      "description": "ID of the parent Category. If there is no parent Category, null is returned.",
+      "type": "integer",
+      "nullable": true,
+      "example": 6
+    },
+    "image_url": {
+      "description": "The URL of the Category image",
+      "type": "string",
+      "example": "https://s3-printful.stage.printful.dev/upload/catalog_category/b1/b1513c82696405fcc316fc611c57f132_t?v=1646395980"
+    },
+    "title": {
+      "description": "Category title",
+      "type": "string",
+      "example": "T-Shirts"
+    },
+    "_links": {
+      "description": "HATEOAS links",
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "description": "Link to single category",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-categories/1"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

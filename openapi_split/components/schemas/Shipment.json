@@ -1,0 +1,153 @@
+{
+  "type": "object",
+  "title": "Shipment",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "order_id": {
+      "type": "integer",
+      "example": 2
+    },
+    "order_external_id": {
+      "type": "string",
+      "nullable": true,
+      "example": "my_custom_id_1234"
+    },
+    "carrier": {
+      "type": "string",
+      "nullable": true,
+      "example": "USPS",
+      "description": "The carrier that will fulfill the shipment."
+    },
+    "service": {
+      "type": "string",
+      "nullable": true,
+      "example": "USPS Priority Mail",
+      "description": "The service being used to fulfill the shipment."
+    },
+    "shipment_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "onhold",
+        "canceled",
+        "packaged",
+        "shipped",
+        "returned",
+        "outstock"
+      ],
+      "example": "canceled"
+    },
+    "shipped_at": {
+      "type": "string",
+      "nullable": true,
+      "format": "date-time",
+      "example": "2023-06-15T16:35:35Z"
+    },
+    "delivery_status": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "delivered",
+        "pre_transit",
+        "in_transit",
+        "out_for_delivery",
+        "available_for_pickup",
+        "return_to_sender",
+        "failure",
+        "canceled"
+      ]
+    },
+    "delivered_at": {
+      "type": "string",
+      "nullable": true,
+      "format": "date-time",
+      "example": "2023-06-15T16:35:35Z"
+    },
+    "departure_address": {
+      "type": "object",
+      "properties": {
+        "country_name": {
+          "type": "string",
+          "example": "United States"
+        },
+        "country_code": {
+          "type": "string",
+          "example": "US"
+        },
+        "state_code": {
+          "type": "string",
+          "example": "CA"
+        }
+      }
+    },
+    "is_reshipment": {
+      "type": "boolean",
+      "description": "If there is an issue with items in a shipment, a reshipment might be necessary. This property will be false if it is the original shipment and true if it is a reshipment"
+    },
+    "tracking_url": {
+      "type": "string",
+      "example": "\u200bhttps://myorders.com/tracking/39925631"
+    },
+    "tracking_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrackingEvent"
+      }
+    },
+    "estimated_delivery": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "from_date": {
+          "type": "string",
+          "format": "date",
+          "example": "2023-06-15",
+          "description": "Earliest estimated date the shipment will arrive"
+        },
+        "to_date": {
+          "type": "string",
+          "format": "date",
+          "example": "2023-06-15",
+          "description": "Latest estimated date the shipment will arrive"
+        },
+        "calculated_at": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-15T16:35:35Z"
+        }
+      }
+    },
+    "shipment_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ShipmentItem"
+      }
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "example": "\u200bhttps://api.printful.com/v2/shipments/1"
+            }
+          }
+        },
+        "order": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "example": "\u200bhttps://api.printful.com/v2/orders/2"
+            }
+          }
+        }
+      }
+    }
+  }
+}

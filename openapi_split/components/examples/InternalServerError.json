@@ -1,0 +1,10 @@
+{
+  "summary": "Internal Server Error",
+  "value": {
+    "type": "https://developers.printful.com/docs/v2-beta/#errors/internal-server-error",
+    "status": 500,
+    "title": "Internal Server Error",
+    "details": "An error occurred and we have been notified. You can contact us for more information.",
+    "instance": "tag:api.printful.com,2023-10-04:errors/86657"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "title": "VariantImages",
+  "required": [
+    "catalog_variant_id",
+    "color",
+    "primary_hex_color",
+    "secondary_hex_color",
+    "images"
+  ],
+  "properties": {
+    "catalog_variant_id": {
+      "description": "Variant ID",
+      "type": "integer",
+      "example": 4017
+    },
+    "color": {
+      "description": "Variant color",
+      "type": "string",
+      "nullable": true,
+      "example": "Turquoise"
+    },
+    "primary_hex_color": {
+      "description": "Primary variant hex color used. Use this hex color to fill the mockup.",
+      "type": "string",
+      "nullable": true,
+      "example": "#15d0d2"
+    },
+    "secondary_hex_color": {
+      "description": "Secondary variant hex color used. Use this hex color to fill the mockup.",
+      "nullable": true,
+      "type": "string",
+      "example": null
+    },
+    "images": {
+      "description": "Variant's images",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VariantImage"
+      }
+    }
+  }
+}

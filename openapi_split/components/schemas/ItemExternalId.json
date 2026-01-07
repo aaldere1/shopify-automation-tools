@@ -1,0 +1,6 @@
+{
+  "description": "Item user specified external ID",
+  "type": "string",
+  "nullable": true,
+  "example": "123_abc"
+}

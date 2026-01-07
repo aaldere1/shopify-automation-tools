@@ -1,0 +1,116 @@
+{
+  "get": {
+    "summary": "Retrieve a single order",
+    "description": "Retrieve a single order from the specified store. The result object will contain links to the same resource, order items, and shipments.",
+    "operationId": "getOrder",
+    "security": [
+      {
+        "OAuth": [
+          "orders/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrderById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "delete": {
+    "summary": "Delete an order",
+    "description": "<div class=\"alert alert-danger\">\n  <strong>Warning:</strong> The DELETE HTTP method in version 2 of order in the \n  API will delete the order if the order can be deleted. This is distinct from \n  version 1 where the DELETE method will actually cancel the order rather than \n  delete it. Please, keep this in mind if you are migrating to version 2 from \n  version 1\n</div>\n\nDelete the order if it can be deleted. An order can be deleted if it's status is\n`draft`, `failed` or `cancelled`. The order must also have not been charged yet\nand there must be no payments pending.\n",
+    "operationId": "deleteOrder",
+    "security": [
+      {
+        "OAuth": [
+          "orders"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      }
+    ],
+    "responses": {
+      "204": {
+        "$ref": "#/components/responses/NoContent"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "409": {
+        "$ref": "#/components/responses/Conflict"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "patch": {
+    "summary": "Update an order",
+    "description": "Make a partial update of an order.",
+    "operationId": "updateOrder",
+    "security": [
+      {
+        "OAuth": [
+          "orders"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderPatchInput"
+    },
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrderById"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

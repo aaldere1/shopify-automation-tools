@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "title": "ItemOptionPrice",
+  "description": "Info about additional product item option prices",
+  "required": [
+    "name",
+    "type",
+    "values",
+    "description",
+    "price",
+    "retail_price"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option name",
+      "type": "string",
+      "example": "3d_puff"
+    },
+    "type": {
+      "description": "Option value type",
+      "type": "string",
+      "example": "array"
+    },
+    "values": {
+      "description": "Possible option values",
+      "type": "array",
+      "example": [
+        true,
+        false
+      ]
+    },
+    "description": {
+      "description": "Option description",
+      "type": "string",
+      "example": "3D puff"
+    },
+    "price": {
+      "description": "Additional price expressed in the region currency",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "false": "0.00",
+        "true": "1.50"
+      }
+    }
+  }
+}

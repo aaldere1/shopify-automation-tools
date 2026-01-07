@@ -1,0 +1,46 @@
+{
+  "get": {
+    "summary": "Retrieve blank images for a catalog product",
+    "description": "This feature helps to fetch blank images for a catalog product. These blank images are always white and semi-transparent and can be colored by the user on the client-side as per the specified color in the `data.images.background_color` field. For some mockups the `data.images.background_image` could apply. The endpoint allows filtering of the result based on the type of the mockup, the placement, and the color of the product.\n",
+    "operationId": "getProductImagesById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductId"
+      },
+      {
+        "$ref": "#/components/parameters/MockupStyleIds"
+      },
+      {
+        "$ref": "#/components/parameters/VariantColor"
+      },
+      {
+        "$ref": "#/components/parameters/Placement"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      },
+      {
+        "$ref": "#/components/parameters/LimitTwenty"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetProductImagesById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

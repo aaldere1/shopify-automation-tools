@@ -1,0 +1,52 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "filter_settings",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/VariantStockAvailability"
+          },
+          "filter_settings": {
+            "$ref": "#/components/schemas/FilterSettings"
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "properties": {
+              "self": {
+                "description": "Link to the same resource",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-variants/4011/availability"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "variant": {
+                "description": "Link to the catalog variant details",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-variants/4011"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "description": "Order canceled.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `order_canceled`",
+                "example": "order_canceled"
+              },
+              "data": {
+                "description": "Cancel reason and order data",
+                "title": "CancelInfo",
+                "required": [
+                  "reason",
+                  "order"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the order has been canceled."
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

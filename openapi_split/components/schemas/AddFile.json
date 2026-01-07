@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "title": "File",
+  "description": "Information about the added File",
+  "required": [
+    "url"
+  ],
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "printfile",
+        "label",
+        "preview"
+      ],
+      "default": "printfile",
+      "description": "Role of the file",
+      "example": "printfile"
+    },
+    "url": {
+      "type": "string",
+      "description": "Source URL where the file is to be downloaded from. The use of .ai, .psd, and .tiff files has been deprecated, if your application uses these file types or accepts these types from users you will need to add validation.",
+      "example": "\u200bhttps://www.example.com/files/tshirts/example.png"
+    },
+    "filename": {
+      "type": "string",
+      "description": "If the filename is not provided, and something looking like a filename is present in the URL (e.g. \"something.jpg\"), it will be used.\nOtherwise, it will default to `{file_id}.{file_extension}`, with file extension determined based on the media type of the file.\n",
+      "example": "shirt1.png"
+    },
+    "visible": {
+      "type": "boolean",
+      "description": "Show file in the Printfile Library",
+      "default": true,
+      "example": true
+    }
+  }
+}

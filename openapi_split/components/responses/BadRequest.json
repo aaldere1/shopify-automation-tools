@@ -1,0 +1,35 @@
+{
+  "description": "Bad Request",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Response status code `400`",
+            "example": 400
+          },
+          "result": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "Missing required parameters"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "example": "BadRequest"
+              },
+              "message": {
+                "type": "string",
+                "example": "Missing required parameters"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

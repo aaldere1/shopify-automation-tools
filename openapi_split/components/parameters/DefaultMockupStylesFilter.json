@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "default_mockup_styles",
+  "schema": {
+    "type": "boolean",
+    "default": false,
+    "description": "When set to true only the default mockup styles will be returned.\nFor example mockup styles such as Halloween or Lifestyle won't be returned.\n"
+  }
+}

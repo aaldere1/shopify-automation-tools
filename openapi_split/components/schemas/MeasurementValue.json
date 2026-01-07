@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "title": "MeasurementValue",
+  "description": "The measurement value for a specific size",
+  "required": [
+    "size"
+  ],
+  "properties": {
+    "size": {
+      "description": "The size with which the value is associated",
+      "type": "string",
+      "example": "S"
+    },
+    "value": {
+      "description": "The single value associated with a size (whether this or `min_value` and `max_value` will be present)",
+      "type": "string",
+      "example": "23.5"
+    },
+    "min_value": {
+      "description": "The lower boundary of the value range (whether this and `max_value` or `value` will be present)",
+      "type": "string",
+      "example": "20"
+    },
+    "max_value": {
+      "description": "The upper boundary of the value range (whether this and `min_value` or `value` will be present)",
+      "type": "string",
+      "example": "20"
+    }
+  }
+}

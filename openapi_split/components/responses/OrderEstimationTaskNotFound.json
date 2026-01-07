@@ -1,0 +1,38 @@
+{
+  "description": "Not found",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": [
+          "data",
+          "error"
+        ],
+        "properties": {
+          "data": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "Couldn't find order estimation with this UUID."
+          },
+          "error": {
+            "type": "object",
+            "required": [
+              "reason",
+              "message"
+            ],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "example": "NotFound"
+              },
+              "message": {
+                "type": "string",
+                "example": "Couldn't find order estimation with this UUID."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

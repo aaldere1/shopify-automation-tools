@@ -11,6 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync:notion": "tsx scripts/manual-sync.ts",
     "backfill:all": "tsx scripts/backfill-all.ts",
+    "backfill:existing": "tsx scripts/backfill-existing-orders.ts",
     "backfill:progress": "bash scripts/check-backfill-progress.sh"
   },
   "repository": {

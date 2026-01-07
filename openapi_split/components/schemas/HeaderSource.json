@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "header": {
+      "type": "string",
+      "description": "Name of the header which is incorrect",
+      "example": "X-PF-Language"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "get": {
+    "summary": "Retrieve information about catalog product variants",
+    "description": "Returns information about all catalog variants associated with the specified\ncatalog product. [See catalog variant](#tag/Catalog-v2/What-is-a-catalog-variant)\n",
+    "operationId": "getProductVariantsById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductId"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetProductVariantsById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

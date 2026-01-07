@@ -1,0 +1,38 @@
+{
+  "description": "Shipment put on hold.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `shipment_put_hold`",
+                "example": "shipment_put_hold"
+              },
+              "data": {
+                "title": "ShipmentPutOnHold",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the shipment was put on hold."
+                  },
+                  "shipment": {
+                    "$ref": "#/components/schemas/WebhookShipmentData"
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

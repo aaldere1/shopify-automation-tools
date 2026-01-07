@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Catalog price changed",
+    "operationId": "catalogPriceChanged",
+    "description": "Is called when a catalog product price has changed.\n\n This webhook is related to the pricing endpoint.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/CatalogPriceChanged"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

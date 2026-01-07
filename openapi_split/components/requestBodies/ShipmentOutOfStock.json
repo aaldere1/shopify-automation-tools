@@ -1,0 +1,49 @@
+{
+  "description": "Shipment out of stock/back in stock.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `shipment_out_of_stock`",
+                "enum": [
+                  "shipment_out_of_stock"
+                ]
+              },
+              "data": {
+                "description": "Shipment and order data",
+                "title": "ShipmentOutOfStockInfo",
+                "required": [
+                  "is_out_of_stock",
+                  "shipment",
+                  "order"
+                ],
+                "properties": {
+                  "is_out_of_stock": {
+                    "type": "boolean",
+                    "description": "Tells whether the items in a shipment went out of stock (`true`) or came back in stock (`false`)."
+                  },
+                  "shipment": {
+                    "$ref": "#/components/schemas/WebhookShipmentData"
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

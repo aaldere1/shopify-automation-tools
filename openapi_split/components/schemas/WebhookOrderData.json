@@ -1,0 +1,46 @@
+{
+  "title": "WebhookOrderData",
+  "required": [
+    "id",
+    "external_id",
+    "status",
+    "store_id",
+    "dashboard_url",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Order's ID"
+    },
+    "external_id": {
+      "type": "string",
+      "description": "Order's External ID"
+    },
+    "status": {
+      "type": "string",
+      "description": "Order's status"
+    },
+    "store_id": {
+      "type": "integer",
+      "description": "ID of the store associated with the order"
+    },
+    "dashboard_url": {
+      "type": "string",
+      "description": "The URL to view the order in Printful dashboard"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z",
+      "description": "Order creation date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z",
+      "description": "Latest order's update date-time"
+    }
+  }
+}

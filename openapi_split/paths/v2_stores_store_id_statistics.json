@@ -1,0 +1,46 @@
+{
+  "get": {
+    "summary": "Retrieve statistics for a single store",
+    "description": "Returns statistics for specified report types.\n\nYou need to specify the report types you want to retrieve in the `report_types` query parameter as a comma-separated list,\ne.g. `report_types=sales_and_costs,profit`.\n\n**Note**: You cannot get statistics for a period longer than 6 months.\n\n#### Example\n\nTo get statistics in the default currency of a store for `sales_and_costs` and `profit` reports for August 2022, you can use the\nfollowing\nURL: https://api.printful.com/v2/stores/{id}/statistics?report_types=sales_and_costs,profit&date_from=2022-08-01&date_to=2022-08-31.\n\n### Report types\n\nCurrently, the following report types are available:\n\n| Report type                | Description                                              |\n|----------------------------|----------------------------------------------------------|\n| `sales_and_costs`          | Detailed information on sales and costs grouped by date. |\n| `sales_and_costs_summary`  | Short information on sales and costs grouped by date.    |\n| `printful_costs`           | Amount paid to Printful for fulfillment and shipping.    |\n| `profit`                   | Profit in the specified period.                          |\n| `total_paid_orders`        | The number of paid orders in the specified period.       |\n| `costs_by_amount`          | Information on costs by amount grouped by date.          |\n| `costs_by_product`         | Information on costs grouped by product.                 |\n| `costs_by_variant`         | Information on costs grouped by variant.                 |\n| `average_fulfillment_time` | Average time it took Printful to fulfill your orders.    |\n\nThe response structure for the specific reports is documented in the response schema (`result.store_statistics.[reportName]`).\n",
+    "operationId": "getReports",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Stores v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/PathStoreId"
+      },
+      {
+        "$ref": "#/components/parameters/DateFrom"
+      },
+      {
+        "$ref": "#/components/parameters/DateTo"
+      },
+      {
+        "$ref": "#/components/parameters/Currency-2"
+      },
+      {
+        "$ref": "#/components/parameters/ReportTypes"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/Statistics"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "get": {
+    "summary": "Retrieve a list of shipments",
+    "description": "Shipments contain information about how and when your orders items will be delivered and fulfilled.",
+    "operationId": "getShipments",
+    "security": [
+      {
+        "OAuth": [
+          "orders/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetShipments"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

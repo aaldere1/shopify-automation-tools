@@ -1,0 +1,46 @@
+{
+  "description": "POST request body",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": [
+          "recipient",
+          "order_items"
+        ],
+        "properties": {
+          "recipient": {
+            "description": "The recipient data.",
+            "title": "Address",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EstimationAddress"
+              }
+            ]
+          },
+          "order_items": {
+            "type": "array",
+            "description": "Array of order items",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "catalog": "#/components/schemas/CatalogItem",
+                  "product_template": "#/components/schemas/ProductTemplateItem"
+                }
+              }
+            }
+          },
+          "retail_costs": {
+            "$ref": "#/components/schemas/RetailCosts-2"
+          }
+        }
+      }
+    }
+  }
+}

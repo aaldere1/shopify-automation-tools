@@ -1,0 +1,5 @@
+{
+  "type": "integer",
+  "description": "ID of the resource, assigned by Printful",
+  "example": 1234
+}

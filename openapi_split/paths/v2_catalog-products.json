@@ -1,0 +1,64 @@
+{
+  "get": {
+    "summary": "Retrieve a list of catalog products",
+    "description": "This endpoint retrieves a list of the products available in Printful's catalog. The list is paginated and can be filtered using various filters. The information returned includes details on how each product can be designed, such as the available placements, techniques, and additional options.\nFor a visual representation of the design data, please see the following diagram:\n[<img src=\"images/catalog/design_data_diagram.png?center\" width=\"700\" alt=\"Design data diagram\"/>](images/catalog/design_data_diagram.png)\n",
+    "operationId": "getProducts",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductCategoryIds"
+      },
+      {
+        "$ref": "#/components/parameters/ColorsFilter"
+      },
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/NewFilter"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      },
+      {
+        "$ref": "#/components/parameters/PlacementsFilter"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegion"
+      },
+      {
+        "$ref": "#/components/parameters/SortDirection"
+      },
+      {
+        "$ref": "#/components/parameters/SortType"
+      },
+      {
+        "$ref": "#/components/parameters/TechniquesFilter"
+      },
+      {
+        "$ref": "#/components/parameters/DestinationCountry"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetProducts"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "title": "Mockup",
+  "description": "Result of mockup generator tasks.",
+  "required": [
+    "placement",
+    "display_name",
+    "technique",
+    "style_id",
+    "mockup_url"
+  ],
+  "properties": {
+    "placement": {
+      "type": "string",
+      "description": "Placement name for which the mockup was generated",
+      "example": "front"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "This is a name that can be displayed to end customers.",
+      "example": "Front Print"
+    },
+    "technique": {
+      "type": "string",
+      "description": "Technique name for which the mockup was generated",
+      "example": "dtg"
+    },
+    "style_id": {
+      "type": "integer",
+      "description": "Mockup style identifier. Available mockup styles can be found under _[Retrieve catalog product mockup styles](#operation/retrieveMockupStylesByProductId)_.",
+      "example": 1
+    },
+    "mockup_url": {
+      "type": "string",
+      "description": "Temporary URL to generated mockup image. Image will be removed from the hosting after a day so make sure to persist a copy if needed.",
+      "example": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/9c711aabb422cd386da3cb41735069f3/unisex-staple-t-shirt-white-front-659e8b94763bc.png"
+    }
+  }
+}

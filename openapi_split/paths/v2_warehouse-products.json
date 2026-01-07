@@ -1,0 +1,40 @@
+{
+  "get": {
+    "summary": "Retrieve a list of warehouse products",
+    "description": "This endpoint returns paginated results containing detailed information about warehouse products, including their variants, stock levels, and dimensions.",
+    "operationId": "getWarehouseProducts",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Warehouse Products v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/NameFilter"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetWarehouseProducts"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized-2"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

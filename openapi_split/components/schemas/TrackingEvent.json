@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "title": "Tracking Event",
+  "properties": {
+    "triggered_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-06-15T19:15:05Z"
+    },
+    "description": {
+      "type": "string",
+      "example": "Arrived At Destination"
+    }
+  }
+}

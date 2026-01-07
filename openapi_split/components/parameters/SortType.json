@@ -1,0 +1,15 @@
+{
+  "in": "query",
+  "name": "sort_type",
+  "schema": {
+    "type": "string",
+    "enum": [
+      "new",
+      "rating",
+      "price",
+      "bestseller"
+    ]
+  },
+  "required": false,
+  "description": "The sorting strategy to use when sorting the result. When it's not present, no specific order is guaranteed.\n"
+}

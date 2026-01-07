@@ -1,0 +1,35 @@
+{
+  "description": "Conflict",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Response status code `409`",
+            "example": 409
+          },
+          "result": {
+            "type": "string",
+            "description": "An error message describing a conflict between the request and the current state of the resource.",
+            "example": "Attempting to update a resource that is already being updated. Please try again after the previous update has completed"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "integer",
+                "example": 409
+              },
+              "message": {
+                "type": "string",
+                "example": "Attempting to update a resource that is already being updated. Please try again after the previous update has completed"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "_links": {
+            "description": "HATEOAS links",
+            "type": "object",
+            "required": [
+              "all_categories"
+            ],
+            "properties": {
+              "all_categories": {
+                "type": "object",
+                "description": "Link to all catalog categories",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-categories"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

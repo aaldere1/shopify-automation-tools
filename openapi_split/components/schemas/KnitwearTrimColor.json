@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "title": "KnitwearTrimColorOption",
+  "description": "Used to specify the color of the trim on a knitwear product.",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "trim_color",
+      "enum": [
+        "trim_color"
+      ]
+    },
+    "value": {
+      "$ref": "#/components/schemas/KnitwearOptionValue"
+    }
+  }
+}

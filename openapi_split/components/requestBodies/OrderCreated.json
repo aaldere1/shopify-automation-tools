@@ -1,0 +1,38 @@
+{
+  "description": "Order created.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `order_created`",
+                "example": "order_created"
+              },
+              "data": {
+                "description": "Created order data",
+                "title": "CreateInfo",
+                "required": [
+                  "order"
+                ],
+                "properties": {
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

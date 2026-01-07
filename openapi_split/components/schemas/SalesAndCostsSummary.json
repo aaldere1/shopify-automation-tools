@@ -1,0 +1,32 @@
+{
+  "type": "array",
+  "title": "SalesAndCostsSummaryValue",
+  "description": "Sales and costs summary report",
+  "required": [
+    "date",
+    "order_count",
+    "costs",
+    "profit"
+  ],
+  "items": {
+    "type": "object",
+    "properties": {
+      "date": {
+        "type": "string",
+        "description": "The date of the value: day in `Y-m-d` format, month in `Y-m` format or \"Total\" for the first element of the list which shows the total values for the whole requested period"
+      },
+      "order_count": {
+        "type": "number",
+        "description": "The order count in the aggregation period"
+      },
+      "costs": {
+        "type": "string",
+        "description": "Product fulfillment, digitization, branding, shipping costs and taxes that are charged by Printful"
+      },
+      "profit": {
+        "type": "string",
+        "description": "The difference between Sales and Fulfillment. If retail price data is not available, profit might be negative"
+      }
+    }
+  }
+}

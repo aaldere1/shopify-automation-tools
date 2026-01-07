@@ -1,0 +1,125 @@
+{
+  "get": {
+    "summary": "Get webhook configuration",
+    "description": "Returns a configured webhook URL and a list of webhook event types enabled for the store",
+    "operationId": "getWebhooks",
+    "security": [
+      {
+        "OAuth": [
+          "webhooks/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Webhook v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/ShowExpired"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/WebhookInfo"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    },
+    "x-codeSamples": [
+      {
+        "lang": "Curl",
+        "source": "curl --location --request GET 'https://api.printful.com/v2/webhooks' \\\n--header 'Authorization: Bearer {oauth_token}'"
+      }
+    ]
+  },
+  "post": {
+    "summary": "Set up webhook configuration",
+    "description": "Use this endpoint to enable a webhook URL for a store and select webhook event types that will be sent to this URL.\n\nNote that only one webhook configuration can be active for each private OAuth token or app, calling this method will disable the previous webhook configuration.\n\nSetting up the [Catalog stock updated](#operation/catalogStockUpdated) webhook requires passing products (currently only IDs are taken into account).\n\nStock update webhook (`catalog_stock_updated`) will only include information for the products specified in the `products` param.\n\nConfiguring all other events require the same set of fields with no parameters.\n",
+    "operationId": "createWebhook",
+    "security": [
+      {
+        "OAuth": [
+          "webhooks"
+        ]
+      }
+    ],
+    "tags": [
+      "Webhook v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/CreateWebhook"
+    },
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/WebhookCreated"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    },
+    "x-codeSamples": [
+      {
+        "lang": "Curl",
+        "source": "curl --location --request POST 'https://api.printful.com/v2/webhooks' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n                \"default_url\": \"http://www.example.com/printful/webhook\",\n                \"expires_at\": \"1700000000\",\n                \"events\": [\n                    {\n                        \"type\": \"shipment_sent\"\n                        \"url\": \"http://www.example.com/printful/webhook/shipment_sent\"\n                    },\n                    {\n                        \"type\": \"catalog_stock_updated\"\n                        \"params\": [\n                            {\n                                \"name\": \"products\",\n                                \"value\": [\n                                    {\n                                        \"id\": 5\n                                    },\n                                    {\n                                        \"id\": 12\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }'"
+      }
+    ]
+  },
+  "delete": {
+    "summary": "Disable webhook support",
+    "description": "Removes the webhook URL and all event types from the store.",
+    "operationId": "disableWebhook",
+    "security": [
+      {
+        "OAuth": [
+          "webhooks"
+        ]
+      }
+    ],
+    "tags": [
+      "Webhook v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "204": {
+        "$ref": "#/components/responses/NoContent"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    },
+    "x-codeSamples": [
+      {
+        "lang": "Curl",
+        "source": "curl --location --request DELETE 'https://api.printful.com/v2/webhooks' \\\n--header 'Content-Type: application/json'"
+      }
+    ]
+  }
+}

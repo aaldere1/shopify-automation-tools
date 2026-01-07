@@ -1,0 +1,43 @@
+{
+  "allOf": [
+    {
+      "type": "object",
+      "title": "Product Template Item",
+      "description": "Information about the Product Template.",
+      "required": [
+        "source",
+        "product_template_id",
+        "catalog_variant_id"
+      ],
+      "properties": {
+        "source": {
+          "description": "Product Template source.",
+          "type": "string",
+          "enum": [
+            "product_template"
+          ]
+        },
+        "product_template_id": {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "ID of Product Template. Allows external ID.",
+          "example": "@12345"
+        },
+        "catalog_variant_id": {
+          "description": "ID of Catalog variant. Must correspond to Product Template.",
+          "type": "integer",
+          "example": 123
+        }
+      }
+    },
+    {
+      "$ref": "#/components/schemas/ItemWithoutPlacements"
+    }
+  ]
+}

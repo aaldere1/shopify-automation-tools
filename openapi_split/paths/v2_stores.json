@@ -1,0 +1,34 @@
+{
+  "get": {
+    "summary": "Retrieves a list of stores",
+    "description": "Retrieves a list of all stores available to the token. If the token is a store level token it will return only the one store, if it is an account level token it will return all stores available to the account.",
+    "operationId": "getStores",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Stores v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreIdNotRequired"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/RetrieveStoresList"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized-2"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound-2"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

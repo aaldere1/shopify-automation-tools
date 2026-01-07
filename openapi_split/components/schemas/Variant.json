@@ -1,0 +1,179 @@
+{
+  "type": "object",
+  "title": "Variant",
+  "required": [
+    "id",
+    "catalog_product_id",
+    "name",
+    "size",
+    "color",
+    "color_code",
+    "color_code2",
+    "image",
+    "_links"
+  ],
+  "properties": {
+    "id": {
+      "description": "Variant ID, use this to specify the product when creating orders",
+      "type": "integer",
+      "example": 100
+    },
+    "catalog_product_id": {
+      "description": "ID of the product that this variant belongs to",
+      "type": "integer",
+      "example": 12
+    },
+    "name": {
+      "description": "Display name",
+      "type": "string",
+      "example": "Gildan 64000 Unisex Softstyle T-Shirt with Tear Away (Black / 2XL)"
+    },
+    "size": {
+      "description": "Item size",
+      "type": "string",
+      "example": "2XL"
+    },
+    "color": {
+      "description": "Item color",
+      "type": "string",
+      "nullable": true,
+      "example": "Black"
+    },
+    "color_code": {
+      "description": "Hexadecimal RGB color code. May not exactly reflect the real-world color",
+      "type": "string",
+      "nullable": true,
+      "example": "#14191e"
+    },
+    "color_code2": {
+      "description": "Secondary hexadecimal RGB color code. May not exactly reflect the real-world color",
+      "type": "string",
+      "nullable": true
+    },
+    "placement_dimensions": {
+      "description": "A list of placement configuration objects, each specifying the layout details for a particular placement.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "placement": {
+            "type": "string",
+            "description": "The name or type of the placement (e.g., \"default\").",
+            "example": "front"
+          },
+          "height": {
+            "type": "number",
+            "description": "The height dimension for the placement (in inches).",
+            "example": 33.11
+          },
+          "width": {
+            "type": "number",
+            "description": "The width dimension for the placement (in inches).",
+            "example": 23.39
+          },
+          "orientation": {
+            "type": "string",
+            "description": "The orientation of the placement, such as \"vertical\", \"horizontal\" or \"any\".",
+            "example": "any"
+          }
+        }
+      }
+    },
+    "image": {
+      "description": "URL of a preview image for this variant",
+      "type": "string",
+      "example": "https://files.cdn.printful.com/products/12/629_1517916489.jpg"
+    },
+    "_links": {
+      "type": "object",
+      "description": "HATEOAS links",
+      "required": [
+        "self",
+        "product_details",
+        "product_variants",
+        "variant_prices",
+        "variant_images",
+        "variant_availability"
+      ],
+      "properties": {
+        "self": {
+          "type": "object",
+          "description": "Link to same resource",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-variants/100"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "product_details": {
+          "type": "object",
+          "description": "Link to details about the product",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-products/71"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "product_variants": {
+          "type": "object",
+          "description": "Link to a list of all catalog variants that are siblings of this catalog variant, relating to the same catalog product",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-products/71/catalog-variants"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "variant_prices": {
+          "type": "object",
+          "description": "Link to pricing information about this catalog variant",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-variants/100/prices"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "variant_images": {
+          "type": "object",
+          "description": "Link to images related to this variant and details about those images",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-variants/100/images"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "variant_availability": {
+          "type": "object",
+          "description": "Link to information about the availability of this variant",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-variants/100/availability"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

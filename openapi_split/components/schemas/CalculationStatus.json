@@ -1,0 +1,10 @@
+{
+  "description": "If the costs are being calculated or recalculated, this will have the status `calculating`. Once finished the status will be `done`.",
+  "type": "string",
+  "enum": [
+    "done",
+    "calculating",
+    "failed"
+  ],
+  "example": "done"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "DefaultEventConfiguration",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Event type. The dropdown shows values required for webhook event configuration. During the setup of a new webhook\nevent please check this dropdown if the event does not require additional parameters to be set.\n",
+      "example": "shipment_sent"
+    },
+    "url": {
+      "type": "string",
+      "nullable": true,
+      "description": "Webhook URL (HTTPS-only) that will receive the event notifications.",
+      "example": "\u200bhttps://www.example.com/printful/webhook"
+    }
+  }
+}

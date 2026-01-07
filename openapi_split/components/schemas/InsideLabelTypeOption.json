@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "title": "InsideLabelTypeOption",
+  "description": "Specify the type of inside label",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "inside_label_type",
+      "enum": [
+        "inside_label_type"
+      ]
+    },
+    "value": {
+      "description": "Specifies type of inside label design that should be used",
+      "type": "string",
+      "enum": [
+        "native",
+        "custom"
+      ]
+    }
+  }
+}

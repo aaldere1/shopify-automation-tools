@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "title": "HateoasLink",
+  "readOnly": true,
+  "required": [
+    "href"
+  ],
+  "properties": {
+    "href": {
+      "description": "The HREF of the linked resource.",
+      "type": "string"
+    }
+  }
+}

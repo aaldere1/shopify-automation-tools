@@ -1,0 +1,28 @@
+{
+  "in": "query",
+  "name": "techniques",
+  "schema": {
+    "type": "array",
+    "items": {
+      "$ref": "#/components/schemas/TechniqueEnum"
+    }
+  },
+  "explode": false,
+  "examples": {
+    "oneTechnique": {
+      "summary": "Products with variants that can be printed using the technique digital.",
+      "value": [
+        "digital"
+      ]
+    },
+    "multipleTechniques": {
+      "summary": "Products with variants that can be printed using the techniques digital or embroidery.",
+      "value": [
+        "digital",
+        "embroidery"
+      ]
+    }
+  },
+  "required": false,
+  "description": "One or more techniques to return only products with variants that can be printed using one of the techniques."
+}

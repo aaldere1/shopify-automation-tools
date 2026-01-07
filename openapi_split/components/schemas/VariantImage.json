@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "title": "VariantImage",
+  "required": [
+    "placement",
+    "image_url",
+    "background_color",
+    "background_image"
+  ],
+  "properties": {
+    "placement": {
+      "description": "Placement associated with the image",
+      "type": "string",
+      "example": "front"
+    },
+    "image_url": {
+      "description": "image URL",
+      "type": "string",
+      "nullable": true,
+      "example": "https://printful-mockups-dev.s3.amazonaws.com/239-nl4600/medium/flat/front/05_nl4600_flat_front_base_whitebg.png?v=1666248709"
+    },
+    "background_color": {
+      "description": "Background color of an image. Null if background transparent",
+      "type": "string",
+      "example": "#0f0f0f"
+    },
+    "background_image": {
+      "description": "Background image of an image specified in the `image_url`. Null if no background image",
+      "type": "string",
+      "nullable": true,
+      "example": "https://printful-mockups-dev.s3.amazonaws.com/239-nl4600/medium/flat/front/05_nl4600_flat_front_base_whitebg.png?v=1666248709"
+    }
+  }
+}

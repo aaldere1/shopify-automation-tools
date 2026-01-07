@@ -1,0 +1,37 @@
+{
+  "type": "array",
+  "title": "CostsByProductValue",
+  "description": "Costs by product report",
+  "items": {
+    "type": "object",
+    "required": [
+      "product_id",
+      "product_name",
+      "fulfillment",
+      "sales",
+      "quantity"
+    ],
+    "properties": {
+      "product_id": {
+        "type": "integer",
+        "description": "Product ID. See [Catalog API](#tag/Catalog-API)."
+      },
+      "product_name": {
+        "type": "string",
+        "description": "Product name."
+      },
+      "fulfillment": {
+        "type": "string",
+        "description": "All fulfillment costs that are charged by Printful, excluding shipping."
+      },
+      "sales": {
+        "type": "string",
+        "description": "Order retail price data. Available only if retail price fields are properly set up on the integration's side."
+      },
+      "quantity": {
+        "type": "integer",
+        "description": "Total quantity of items ordered from this product in the selected period."
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ProblemDetails"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 599
+        }
+      }
+    }
+  ]
+}

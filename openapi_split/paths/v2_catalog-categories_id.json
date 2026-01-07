@@ -1,0 +1,31 @@
+{
+  "get": {
+    "summary": "Retrieve information about specific category",
+    "description": "Returns information about a specific catalog category. The categories specify the type of the product that is associated with it. For example, the category \"Men\u2019s T-shirts\" indicates that the product is a subgroup of T-shirts specifically targeted at Men.\nCategories can be used to filter the product list by specific tags [See categories_ids](#operation/getProducts)\n",
+    "operationId": "getCategoryById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/CategoryId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetCategoryById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

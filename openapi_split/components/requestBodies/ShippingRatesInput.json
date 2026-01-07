@@ -1,0 +1,49 @@
+{
+  "description": "POST request body",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "recipient",
+          "order_items"
+        ],
+        "type": "object",
+        "properties": {
+          "recipient": {
+            "description": "The recipient data.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ShippingRatesAddress"
+              }
+            ]
+          },
+          "order_items": {
+            "type": "array",
+            "description": "Array of order items",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/CatalogShippingRateItem"
+                },
+                {
+                  "$ref": "#/components/schemas/WarehouseShippingRateItem"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "catalog": "#/components/schemas/CatalogShippingRateItem",
+                  "warehouse": "#/components/schemas/WarehouseShippingRateItem"
+                }
+              }
+            }
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency code in which the rate is returned. If not provided will use the default currency for the store."
+          }
+        }
+      }
+    }
+  }
+}

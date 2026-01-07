@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "filter[name*]",
+  "schema": {
+    "type": "string"
+  },
+  "required": false,
+  "description": "Wildcard match of the name value. Note that the value will be matched if the name property contains the value anywhere in the string."
+}

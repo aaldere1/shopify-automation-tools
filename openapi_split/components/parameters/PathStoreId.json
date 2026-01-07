@@ -1,0 +1,9 @@
+{
+  "in": "path",
+  "name": "store_id",
+  "description": "Use this to specify which store you want to use.\nThe store IDs can be retrieved with the [Get basic information about stores](#tag/Stores-v2/operation/getStores) endpoint.\n",
+  "schema": {
+    "type": "integer"
+  },
+  "required": true
+}

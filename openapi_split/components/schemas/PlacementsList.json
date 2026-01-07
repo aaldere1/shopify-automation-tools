@@ -1,0 +1,7 @@
+{
+  "description": "Each entry in this list represents a placement on the physical product and the design that will be printed in that location.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Placement"
+  }
+}

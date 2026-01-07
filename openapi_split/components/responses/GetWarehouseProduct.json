@@ -1,0 +1,237 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "status",
+              "currency",
+              "image_url",
+              "retail_price",
+              "warehouse_variants",
+              "_links"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "Unique identifier of the warehouse product",
+                "example": 356
+              },
+              "name": {
+                "type": "string",
+                "description": "Name of the warehouse product",
+                "example": "Black Heather"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "awaiting_approval",
+                  "approved",
+                  "declined",
+                  "suspended"
+                ],
+                "description": "Current status of the warehouse product"
+              },
+              "currency": {
+                "type": "string",
+                "description": "Currency code for the product's pricing (e.g., \"USD\")",
+                "example": "USD"
+              },
+              "image_url": {
+                "type": "string",
+                "description": "URL of the product's image",
+                "example": "https://example.com/upload/product-templates/d1/d1341a6efb49f59cc58172ce1c15eb20_l"
+              },
+              "retail_price": {
+                "type": "string",
+                "description": "Retail price of the product (base variant)",
+                "example": 21.54
+              },
+              "warehouse_variants": {
+                "type": "array",
+                "description": "Array of variant details for the product",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "sku",
+                    "image_url",
+                    "retail_price",
+                    "quantity",
+                    "stock_location",
+                    "dimensions",
+                    "_links"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Unique identifier of the warehouse variant",
+                      "example": 32453
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the variant",
+                      "example": "Black Heather"
+                    },
+                    "sku": {
+                      "type": "string",
+                      "description": "Stock Keeping Unit (SKU) of the warehouse variant",
+                      "example": "some-sku-12"
+                    },
+                    "image_url": {
+                      "type": "string",
+                      "description": "URL of the variant's image",
+                      "example": "url.to/your/image/location.png"
+                    },
+                    "retail_price": {
+                      "type": "string",
+                      "description": "Retail price of the variant",
+                      "example": 32.56
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "description": "Available quantity of the variant",
+                      "example": 23
+                    },
+                    "stock_location": {
+                      "type": "array",
+                      "description": "Stock location of the variant",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "facility",
+                          "stocked",
+                          "available"
+                        ],
+                        "properties": {
+                          "facility": {
+                            "description": "Name of the warehouse facility",
+                            "type": "string",
+                            "example": "Charlotte Steele Point, United States"
+                          },
+                          "stocked": {
+                            "description": "Total quantity of product variant in our stock",
+                            "type": "integer",
+                            "example": 10
+                          },
+                          "available": {
+                            "description": "Available quantity of product variant in our stock",
+                            "type": "integer",
+                            "example": 10
+                          }
+                        }
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "description": "Dimensions of the variant",
+                      "required": [
+                        "width",
+                        "height",
+                        "weight",
+                        "measurement_system",
+                        "length"
+                      ],
+                      "properties": {
+                        "measurement_system": {
+                          "type": "string",
+                          "description": "The system of measurement used for the dimensions.",
+                          "enum": [
+                            "imperial",
+                            "metric"
+                          ]
+                        },
+                        "width": {
+                          "type": "number",
+                          "description": "Width of the variant.",
+                          "example": 3.21
+                        },
+                        "height": {
+                          "type": "number",
+                          "description": "Height of the variant.",
+                          "example": 4.56
+                        },
+                        "length": {
+                          "type": "number",
+                          "description": "Length of the variant. (NEW)",
+                          "example": 6.53
+                        },
+                        "weight": {
+                          "type": "number",
+                          "description": "Weight of the variant.",
+                          "example": 3
+                        }
+                      }
+                    },
+                    "_links": {
+                      "type": "object",
+                      "properties": {
+                        "self": {
+                          "type": "object",
+                          "description": "Link to same resource",
+                          "title": "HateoasLink",
+                          "example": {
+                            "href": "https://api.printful.com/v2/warehouse-variants/5678"
+                          },
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/HateoasLink"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "type": "object",
+                "description": "Links to related resources",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "description": "Link to same resource",
+                    "title": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/warehouse-products/1234"
+                    },
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/HateoasLink"
+                      }
+                    ]
+                  },
+                  "warehouse_variants": {
+                    "type": "object",
+                    "description": "Link to warehouse variants of the warehouse product",
+                    "title": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/warehouse-products/1234/warehouse-variants"
+                    },
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/HateoasLink"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "title": "Shipment",
+  "description": "Basic info about the shipment.",
+  "required": [
+    "departure_country",
+    "shipment_items",
+    "customs_fees_possible"
+  ],
+  "properties": {
+    "departure_country": {
+      "description": "Two-letter code (ISO 3166-1 alpha-2) associated with the departure country.",
+      "type": "string",
+      "example": "US",
+      "nullable": true
+    },
+    "shipment_items": {
+      "description": "List of items included in the shipment.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ShipmentItem-2"
+      }
+    },
+    "customs_fees_possible": {
+      "description": "Whether customs fees may be required for this shipment.",
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "in": "path",
+  "name": "store_id",
+  "schema": {
+    "$ref": "#/components/schemas/InternalId"
+  },
+  "required": true,
+  "description": "Store ID"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "List of placement options",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/components/schemas/UnlimitedColorOption"
+      },
+      {
+        "$ref": "#/components/schemas/InsideLabelTypeOption"
+      }
+    ]
+  }
+}

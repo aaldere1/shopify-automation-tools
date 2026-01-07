@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "title": "VariantPriceData",
+  "description": "Variant with the pricing information",
+  "required": [
+    "id",
+    "techniques"
+  ],
+  "properties": {
+    "id": {
+      "description": "Variant id",
+      "type": "integer",
+      "example": 1
+    },
+    "techniques": {
+      "description": "Array containing pricing information about available techniques per variant",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VariantTechniquePrice"
+      }
+    }
+  }
+}

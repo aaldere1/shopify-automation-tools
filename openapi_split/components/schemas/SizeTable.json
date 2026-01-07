@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "title": "SizeTable",
+  "description": "Size table for the Product",
+  "required": [
+    "type",
+    "unit",
+    "description",
+    "image_url",
+    "image_description",
+    "measurements"
+  ],
+  "properties": {
+    "type": {
+      "description": "Size table type",
+      "type": "string",
+      "enum": [
+        "measure_yourself",
+        "product_measure",
+        "international"
+      ]
+    },
+    "unit": {
+      "description": "The unit the size table values are in",
+      "type": "string",
+      "enum": [
+        "inches",
+        "cm"
+      ]
+    },
+    "description": {
+      "description": "The size table description (HTML)",
+      "type": "string"
+    },
+    "image_url": {
+      "description": "The URL of an image showing the measurements",
+      "type": "string"
+    },
+    "image_description": {
+      "description": "The description of the measurement image (HTML)",
+      "type": "string"
+    },
+    "measurements": {
+      "description": "The size table measurements",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Measurement"
+      }
+    }
+  }
+}

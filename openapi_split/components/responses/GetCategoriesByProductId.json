@@ -1,0 +1,108 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links",
+          "paging"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          },
+          "_links": {
+            "description": "HATEOAS links",
+            "type": "object",
+            "required": [
+              "self",
+              "all_categories"
+            ],
+            "properties": {
+              "self": {
+                "description": "Link to same resource",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/catalog-categories?limit=20&offset=40"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "next": {
+                "description": "Link to the next page (absent if the current page is the last one or if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/catalog-categories?limit=20&offset=60"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "previous": {
+                "description": "Link to the previous page (absent if the current page is the first one or if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/catalog-categories?limit=20&offset=20"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "first": {
+                "description": "Link to the first page (absent if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/catalog-categories?limit=20"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "last": {
+                "description": "Link to the last page (absent if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/catalog-categories?limit=20&offset=100"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "all_categories": {
+                "type": "object",
+                "description": "Link to all catalog categories",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-categories"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

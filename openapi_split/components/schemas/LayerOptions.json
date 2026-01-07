@@ -1,0 +1,17 @@
+{
+  "description": "List of layer options",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/components/schemas/3dPuffOption"
+      },
+      {
+        "$ref": "#/components/schemas/ThreadColorsOption"
+      },
+      {
+        "$ref": "#/components/schemas/KnitwearYarnColor"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "in": "header",
+  "name": "X-PF-Store-Id",
+  "description": "Use this to specify which store you want to use.\n\nThe store IDs can be retrieved with the [Get basic information about stores](#tag/Stores-v2/operation/getStores) endpoint.\n",
+  "schema": {
+    "type": "string"
+  },
+  "required": false
+}

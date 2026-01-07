@@ -1,0 +1,81 @@
+{
+  "post": {
+    "summary": "Create Mockup Generator tasks",
+    "description": "Create Mockup Generator tasks",
+    "operationId": "createMockupGeneratorTasks",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Mockup Generator v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/CreateMockupGeneratorTasks"
+    },
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/CreateMockupGeneratorTasks"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "get": {
+    "summary": "Retrieve Mockup Generator tasks",
+    "description": "Returns result of Mockup Generator tasks",
+    "operationId": "getMockupGeneratorTasks",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Mockup Generator v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/MockupGeneratorIds"
+      },
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetMockupGeneratorTasks"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

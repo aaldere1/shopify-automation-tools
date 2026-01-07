@@ -1,0 +1,30 @@
+{
+  "description": "Not found",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "Not found"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "example": "NotFound"
+              },
+              "message": {
+                "type": "string",
+                "example": "Not found"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

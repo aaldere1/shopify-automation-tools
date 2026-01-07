@@ -1,0 +1,43 @@
+{
+  "get": {
+    "summary": "Retrieve pricing information for the catalog variant",
+    "description": "Return pricing information from a single variant and the parent product",
+    "operationId": "getVariantPricesById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/VariantId"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegionPrice"
+      },
+      {
+        "$ref": "#/components/parameters/Currency"
+      },
+      {
+        "$ref": "#/components/parameters/ProductionCurrency"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetVariantPricesById"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

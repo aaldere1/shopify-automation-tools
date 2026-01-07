@@ -1,0 +1,21 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Response200"
+          },
+          {
+            "properties": {
+              "result": {
+                "$ref": "#/components/schemas/WebhookInfoResponse"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

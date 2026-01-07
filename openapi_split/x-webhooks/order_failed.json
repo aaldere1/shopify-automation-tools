@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order failed",
+    "operationId": "orderFailed",
+    "description": "Is called when a confirmed order changes its status to `failed`.\n\n It can happen, for example, if printfiles can not be downloaded, are not valid image files or when there is a payment failure.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderFailed"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

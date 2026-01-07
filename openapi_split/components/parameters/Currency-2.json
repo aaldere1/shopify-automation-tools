@@ -1,0 +1,10 @@
+{
+  "in": "query",
+  "name": "currency",
+  "description": "The currency (3-letter code) to return the statistics in.\nThe store currency will be used by default.\n",
+  "schema": {
+    "type": "string",
+    "example": "USD"
+  },
+  "required": false
+}

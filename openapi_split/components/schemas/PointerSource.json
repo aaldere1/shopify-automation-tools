@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "pointer": {
+      "type": "string",
+      "description": "Pointer to an invalid value in request body",
+      "example": "/order_items/0/placements"
+    }
+  }
+}

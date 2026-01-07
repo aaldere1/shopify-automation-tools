@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "title": "Costs",
+  "description": "The Order costs (Printful prices)",
+  "readOnly": true,
+  "required": [
+    "calculation_status",
+    "currency",
+    "subtotal",
+    "discount",
+    "shipping",
+    "digitization",
+    "additional_fee",
+    "fulfillment_fee",
+    "retail_delivery_fee",
+    "vat",
+    "tax",
+    "total"
+  ],
+  "properties": {
+    "calculation_status": {
+      "$ref": "#/components/schemas/CalculationStatus"
+    },
+    "currency": {
+      "description": "The code of the currency in which the costs are returned.",
+      "type": "string",
+      "nullable": true,
+      "example": "USD"
+    },
+    "subtotal": {
+      "description": "Total cost of all items.",
+      "type": "string",
+      "nullable": true,
+      "example": "14.95"
+    },
+    "discount": {
+      "description": "Discount sum.",
+      "type": "string",
+      "nullable": true,
+      "example": "1.79"
+    },
+    "shipping": {
+      "description": "Shipping costs.",
+      "type": "string",
+      "nullable": true,
+      "example": "4.79"
+    },
+    "digitization": {
+      "description": "Digitization costs.",
+      "type": "string",
+      "nullable": true,
+      "example": "3.95"
+    },
+    "additional_fee": {
+      "description": "Additional fee for custom product.",
+      "type": "string",
+      "nullable": true,
+      "example": "0.00"
+    },
+    "fulfillment_fee": {
+      "description": "Custom product fulfillment fee.",
+      "type": "string",
+      "nullable": true,
+      "example": "0.00"
+    },
+    "retail_delivery_fee": {
+      "description": "Retail delivery fee.",
+      "type": "string",
+      "nullable": true,
+      "example": "0.00"
+    },
+    "vat": {
+      "description": "Sum of vat (not included in the item price).",
+      "type": "string",
+      "nullable": true,
+      "example": "4.60"
+    },
+    "tax": {
+      "description": "Sum of taxes (not included in the item price).",
+      "type": "string",
+      "nullable": true,
+      "example": "0.00"
+    },
+    "total": {
+      "description": "Grand Total (subtotal-discount+tax+vat+shipping).",
+      "type": "string",
+      "nullable": true,
+      "example": "26.50"
+    }
+  }
+}

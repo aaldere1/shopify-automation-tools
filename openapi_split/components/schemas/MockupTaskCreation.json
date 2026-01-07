@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "required": [
+    "products"
+  ],
+  "properties": {
+    "format": {
+      "type": "string",
+      "description": "Generated file format. PNG will have a transparent background, JPG will have a smaller file size.",
+      "enum": [
+        "jpg",
+        "png"
+      ]
+    },
+    "mockup_width_px": {
+      "type": "integer",
+      "description": "Width of the mockup image in pixels. If not specified, the default value will be used. The default value is 1000px.\nIf the value is specified as 2000 that means that resulting mockups will be 2000x2000px.\n",
+      "example": 1000
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "MockupProduct",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CatalogMockupProduct"
+          },
+          {
+            "$ref": "#/components/schemas/TemplateMockupProduct"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "source",
+          "mapping": {
+            "catalog": "#/components/schemas/CatalogMockupProduct",
+            "product_template": "#/components/schemas/TemplateMockupProduct"
+          }
+        }
+      }
+    }
+  }
+}

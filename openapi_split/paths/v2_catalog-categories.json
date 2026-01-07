@@ -1,0 +1,26 @@
+{
+  "get": {
+    "tags": [
+      "Catalog v2"
+    ],
+    "summary": "Retrieve a list of catalog categories",
+    "description": "Returns list of all categories that are present in the catalog. The categories specify the type of the product that is associated with it. For example, the category \"Men\u2019s T-shirts\" indicates that the product is a subgroup of T-shirts specifically targeted at Men.\nCategories can be used to filter the product list by specific tags [See categories_ids](#operation/getProducts)\n",
+    "operationId": "getCategories",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetCategories"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

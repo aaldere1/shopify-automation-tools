@@ -1,0 +1,57 @@
+{
+  "type": "array",
+  "title": "CostsByAmountValue",
+  "description": "Costs by amount report",
+  "items": {
+    "type": "object",
+    "required": [
+      "date",
+      "product_amount",
+      "digitization",
+      "branding",
+      "vat",
+      "sales_tax",
+      "shipping",
+      "discount",
+      "total"
+    ],
+    "properties": {
+      "date": {
+        "type": "string",
+        "description": "The date of the value: day in `Y-m-d` format, month in `Y-m` format or \"Total\" for the first element of the list which shows the total values for the whole requested period"
+      },
+      "product_amount": {
+        "type": "string",
+        "description": "Product & fulfillment costs"
+      },
+      "digitization": {
+        "type": "string",
+        "description": "Embroidery digitization costs"
+      },
+      "branding": {
+        "type": "string",
+        "description": "Pack-in costs"
+      },
+      "vat": {
+        "type": "string",
+        "description": "Tax amounts. If not applicable, it will be 0."
+      },
+      "sales_tax": {
+        "type": "string",
+        "description": "Tax amounts. If not applicable, it will be 0."
+      },
+      "shipping": {
+        "type": "string",
+        "description": "Shipping costs that were charged by Printful"
+      },
+      "discount": {
+        "type": "string",
+        "description": "Any fulfillment discounts (such as the monthly discount) set up on Printful's side"
+      },
+      "total": {
+        "type": "string",
+        "description": "Summary of all costs"
+      }
+    }
+  }
+}

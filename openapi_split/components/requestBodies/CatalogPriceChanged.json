@@ -1,0 +1,44 @@
+{
+  "description": "Catalog price changed.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `catalog_price_changed`",
+                "enum": [
+                  "catalog_price_changed"
+                ]
+              },
+              "data": {
+                "description": "Information about products which catalog product prices changed",
+                "title": "ProductPriceChangedInfo",
+                "required": [
+                  "catalog_product_ids"
+                ],
+                "properties": {
+                  "catalog_product_ids": {
+                    "type": "array",
+                    "description": "List of catalog product IDs which prices has changed",
+                    "example": [
+                      71
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

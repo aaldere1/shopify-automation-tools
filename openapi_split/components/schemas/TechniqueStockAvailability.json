@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "title": "TechniqueStockAvailability",
+  "required": [
+    "technique",
+    "selling_regions"
+  ],
+  "properties": {
+    "technique": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TechniqueEnum"
+        },
+        {
+          "description": "Name of the technique for which the stock availability apply"
+        }
+      ]
+    },
+    "selling_regions": {
+      "description": "List of selling regions with stock availability",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SellingRegionStockAvailability"
+      }
+    }
+  }
+}

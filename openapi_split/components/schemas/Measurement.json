@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "title": "Measurement",
+  "description": "The information about a single size table measurement",
+  "required": [
+    "type_label",
+    "unit",
+    "values"
+  ],
+  "properties": {
+    "type_label": {
+      "description": "Measurement type",
+      "type": "string",
+      "example": "Length"
+    },
+    "unit": {
+      "description": "The measurement unit if it's not defined on the size table level or is different",
+      "type": "string",
+      "example": "none"
+    },
+    "values": {
+      "description": "The measurement values for each size",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MeasurementValue"
+      }
+    }
+  }
+}

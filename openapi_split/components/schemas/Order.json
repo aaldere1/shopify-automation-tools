@@ -1,0 +1,172 @@
+{
+  "type": "object",
+  "title": "Order",
+  "description": "Order",
+  "readOnly": true,
+  "required": [
+    "id",
+    "external_id",
+    "store_id",
+    "shipping",
+    "status",
+    "created_at",
+    "updated_at",
+    "recipient",
+    "costs",
+    "retail_costs",
+    "order_items",
+    "_links"
+  ],
+  "properties": {
+    "id": {
+      "description": "Order ID",
+      "type": "integer",
+      "example": 123
+    },
+    "external_id": {
+      "description": "Order ID from the external system",
+      "type": "string",
+      "example": "4235234213",
+      "nullable": true
+    },
+    "store_id": {
+      "description": "Store ID",
+      "type": "integer",
+      "example": 10
+    },
+    "shipping": {
+      "description": "Shipping method. Defaults to 'STANDARD'",
+      "type": "string",
+      "example": "STANDARD"
+    },
+    "status": {
+      "description": "Order status:<br />\n**draft** - order is not submitted for fulfillment<br />\n**failed** - order was submitted for fulfillment but was not accepted because of an error (problem with address, printfiles, charging, etc.)<br />\n**inreview** - order is being reviewed<br />\n**pending** - order has been submitted for fulfillment<br />\n**canceled** - order is canceled<br />\n**onhold** - order has encountered a problem during the fulfillment that needs to be resolved together with the Printful customer service<br />\n**inprocess** - order is being fulfilled and is no longer cancellable<br />\n**partial** - order is partially fulfilled (some items are shipped already, the rest will follow)<br />\n**fulfilled** - all items are shipped\n",
+      "type": "string",
+      "example": "draft"
+    },
+    "created_at": {
+      "description": "Time when the order was created",
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z"
+    },
+    "updated_at": {
+      "description": "Time when the order was updated",
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z"
+    },
+    "recipient": {
+      "description": "The recipient data.",
+      "title": "Address",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AddressReadonly"
+        }
+      ]
+    },
+    "costs": {
+      "$ref": "#/components/schemas/Costs"
+    },
+    "retail_costs": {
+      "$ref": "#/components/schemas/RetailCosts"
+    },
+    "order_items": {
+      "type": "array",
+      "description": "Simplified order item list. For a full list of all items use the [Get Order Items](#operation/getItemsByOrderId) endpoint.",
+      "items": {
+        "discriminator": {
+          "propertyName": "source",
+          "mapping": {
+            "catalog": "#/components/schemas/CatalogItemSummary",
+            "warehouse": "#/components/schemas/WarehouseItemSummary"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CatalogItemSummary"
+          },
+          {
+            "$ref": "#/components/schemas/WarehouseItemSummary"
+          }
+        ]
+      }
+    },
+    "customization": {
+      "$ref": "#/components/schemas/CustomizationReadonly"
+    },
+    "_links": {
+      "type": "object",
+      "description": "HATEOAS links",
+      "required": [
+        "self",
+        "order_confirmation",
+        "order_invoices",
+        "order_items",
+        "shipments"
+      ],
+      "properties": {
+        "self": {
+          "description": "Link to the order details",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/orders/123"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "order_confirmation": {
+          "description": "Link to the order confirmation",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/orders/123/confirmation"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "order_invoices": {
+          "description": "Link to the order invoice",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/orders/123/invoices"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "order_items": {
+          "description": "Link to all order items associated with the order",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/orders/123/order-items"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        },
+        "shipments": {
+          "description": "Link to the shipments associated with the order",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/orders/123/shipments"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

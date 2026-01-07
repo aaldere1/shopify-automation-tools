@@ -1,0 +1,15 @@
+{
+  "description": "Server Error",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/ServerErrorDetails"
+      },
+      "examples": {
+        "InternalServerError": {
+          "$ref": "#/components/examples/InternalServerError"
+        }
+      }
+    }
+  }
+}

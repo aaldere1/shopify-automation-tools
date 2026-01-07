@@ -1,0 +1,7 @@
+{
+  "description": "Each entry in this list represents a placement on the physical product.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Placement-2"
+  }
+}

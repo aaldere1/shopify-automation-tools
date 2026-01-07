@@ -1,0 +1,52 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProductSizeGuide"
+          },
+          "_links": {
+            "description": "HATEOAS links",
+            "type": "object",
+            "required": [
+              "self",
+              "product_details"
+            ],
+            "properties": {
+              "self": {
+                "type": "object",
+                "description": "Link to same resource",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71/sizes"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "product_details": {
+                "type": "object",
+                "description": "Link to the catalog product",
+                "example": {
+                  "href": "https://api.printful.com/v2/catalog-products/71"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

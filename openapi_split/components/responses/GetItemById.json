@@ -1,0 +1,104 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "catalog": "#/components/schemas/CatalogItemReadonly",
+                "warehouse": "#/components/schemas/WarehouseItemReadonly",
+                "product_template": "#/components/schemas/ProductTemplateItem"
+              }
+            },
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CatalogItemReadonly"
+              },
+              {
+                "$ref": "#/components/schemas/WarehouseItemReadonly"
+              },
+              {
+                "$ref": "#/components/schemas/ProductTemplateItem"
+              }
+            ]
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "required": [
+              "self",
+              "order",
+              "all_items",
+              "shipments"
+            ],
+            "properties": {
+              "self": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to a specific order item",
+                    "format": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/orders/123/order-items/123"
+                    }
+                  }
+                ]
+              },
+              "order": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to a specific order",
+                    "format": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/orders/123"
+                    }
+                  }
+                ]
+              },
+              "all_items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to all items associated with the order",
+                    "format": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/orders/123/order-items"
+                    }
+                  }
+                ]
+              },
+              "shipments": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to all shipments associated with the order",
+                    "format": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/orders/123/order-shipments"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

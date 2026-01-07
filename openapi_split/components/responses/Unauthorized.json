@@ -1,0 +1,35 @@
+{
+  "description": "Unauthorized",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Response status code `401`",
+            "example": 401
+          },
+          "result": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "Malformed Authorization header."
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "example": "BadRequest"
+              },
+              "message": {
+                "type": "string",
+                "example": "Malformed Authorization header."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

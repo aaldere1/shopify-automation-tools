@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "title": "VariantStockAvailability",
+  "description": "Stock availability data for a specific catalog variant",
+  "required": [
+    "catalog_variant_id",
+    "techniques",
+    "_links"
+  ],
+  "properties": {
+    "catalog_variant_id": {
+      "description": "Catalog variant ID for which the the stock availability data apply",
+      "type": "integer",
+      "example": 4011
+    },
+    "techniques": {
+      "description": "Stock availability data for specific techniques of a catalog variant",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TechniqueStockAvailability"
+      }
+    },
+    "_links": {
+      "type": "object",
+      "description": "HATEOAS links",
+      "properties": {
+        "variant": {
+          "description": "Link to the catalog variant details",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/catalog-variants/4011"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "description": "Forbidden",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Response status code `403`",
+            "example": 403
+          },
+          "result": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "This endpoint requires Oauth authentication!."
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "integer",
+                "example": 403
+              },
+              "message": {
+                "type": "string",
+                "example": "This endpoint requires Oauth authentication!."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

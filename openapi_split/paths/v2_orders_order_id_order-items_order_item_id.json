@@ -1,0 +1,127 @@
+{
+  "get": {
+    "summary": "Retrieve a single order item",
+    "description": "This endpoint will retrieve a single order item specified in the request.",
+    "operationId": "getItemById",
+    "security": [
+      {
+        "OAuth": [
+          "orders/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ItemId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetItemById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "patch": {
+    "summary": "Update an order item",
+    "description": "Make a partial update of an order item. NOTE that the source of the order item can't be changed via a PATCH request, to create an order item from another source you must delete the current one and add a new one.",
+    "operationId": "updateItem",
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      },
+      {
+        "$ref": "#/components/parameters/ItemId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ItemPatchInput"
+    },
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrderItemsById"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "403": {
+        "$ref": "#/components/responses/Forbidden"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "delete": {
+    "summary": "Delete Order Item",
+    "description": "Remove a single item from the order.",
+    "operationId": "deleteItemById",
+    "security": [
+      {
+        "OAuth": [
+          "orders"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ItemId"
+      },
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "204": {
+        "$ref": "#/components/responses/NoContent"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "403": {
+        "$ref": "#/components/responses/Forbidden"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

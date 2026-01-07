@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "description": "File type layer",
+      "type": "string",
+      "example": "file"
+    },
+    "layer_options": {
+      "description": "Possible layer options",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CatalogOption"
+      },
+      "example": [
+        {
+          "name": "3d_puff",
+          "techniques": [
+            "embroidery"
+          ],
+          "type": "boolean",
+          "values": [
+            true,
+            false
+          ]
+        }
+      ]
+    }
+  }
+}

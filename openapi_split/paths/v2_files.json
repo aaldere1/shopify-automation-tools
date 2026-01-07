@@ -1,0 +1,53 @@
+{
+  "post": {
+    "summary": "Add a new file",
+    "description": "Adds a new File to the library by providing URL of the file.\n\nIf a file with identical URL already exists, then the original file is returned. If a file does not exist, a new file is created.\n\n[See examples](#tag/Examples/File-Library-API-examples/Add-a-new-file)\n",
+    "operationId": "addFile",
+    "tags": [
+      "Files v2"
+    ],
+    "security": [
+      {
+        "OAuth": [
+          "file-library"
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/AddFile"
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/File"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

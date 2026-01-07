@@ -1,0 +1,28 @@
+{
+  "in": "query",
+  "name": "selling_region_name",
+  "schema": {
+    "type": "string",
+    "default": "worldwide",
+    "enum": [
+      "worldwide",
+      "north_america",
+      "canada",
+      "europe",
+      "spain",
+      "latvia",
+      "uk",
+      "france",
+      "germany",
+      "australia",
+      "japan",
+      "new_zealand",
+      "italy",
+      "brazil",
+      "southeast_asia",
+      "republic_of_korea",
+      "all"
+    ]
+  },
+  "description": "Only returns the products that can be sold in the specified region. If is set to 'all' returns each region availability for specified product."
+}

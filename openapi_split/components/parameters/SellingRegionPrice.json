@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "selling_region_name",
+  "schema": {
+    "type": "string",
+    "example": "worldwide"
+  },
+  "description": "Specifies the region production currency that the product prices will be calculated in"
+}

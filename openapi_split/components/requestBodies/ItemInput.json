@@ -1,0 +1,25 @@
+{
+  "description": "POST request body",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "discriminator": {
+          "propertyName": "source",
+          "mapping": {
+            "catalog": "#/components/schemas/CatalogItem",
+            "product_template": "#/components/schemas/ProductTemplateItem"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CatalogItem"
+          },
+          {
+            "$ref": "#/components/schemas/ProductTemplateItem"
+          }
+        ]
+      }
+    }
+  }
+}

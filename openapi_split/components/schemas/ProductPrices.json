@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "title": "ProductPrice",
+  "description": "Product prices information",
+  "required": [
+    "currency",
+    "product",
+    "variants"
+  ],
+  "properties": {
+    "currency": {
+      "description": "Abbreviation from the store currency or currency specified",
+      "type": "string",
+      "example": "EUR"
+    },
+    "product": {
+      "description": "Product related with the pricing information",
+      "type": "object",
+      "required": [
+        "id",
+        "placements"
+      ],
+      "properties": {
+        "id": {
+          "description": "Product Identifier",
+          "type": "integer",
+          "example": 1
+        },
+        "placements": {
+          "description": "Array containing the pricing information about the placement prices. The product price includes one print, pricing here only applies to each additional placement after the first. Note that while a placement might be included there is sometimes additional service fees that are applied to certain placement, for example large embroidery has an additional fee.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AdditionalPlacements"
+          }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VariantsPriceData"
+      }
+    }
+  }
+}

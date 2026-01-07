@@ -1,0 +1,30 @@
+{
+  "allOf": [
+    {
+      "type": "object",
+      "title": "Warehouse Item",
+      "description": "Information about the Warehouse Item",
+      "required": [
+        "source",
+        "warehouse_product_variant_id"
+      ],
+      "properties": {
+        "source": {
+          "description": "Warehouse source",
+          "type": "string",
+          "enum": [
+            "warehouse"
+          ]
+        },
+        "warehouse_product_variant_id": {
+          "description": "ID of warehouse variant",
+          "type": "integer",
+          "example": 1234
+        }
+      }
+    },
+    {
+      "$ref": "#/components/schemas/ItemWithoutPlacementsReadonly"
+    }
+  ]
+}

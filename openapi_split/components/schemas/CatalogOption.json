@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "title": "CatalogOption",
+  "description": "Catalog option definition",
+  "required": [
+    "name",
+    "techniques",
+    "type",
+    "values"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "3d_puff"
+    },
+    "techniques": {
+      "description": "Available techniques for option",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "embroidery"
+      }
+    },
+    "type": {
+      "description": "Type of accepted value",
+      "type": "string",
+      "example": "boolean"
+    },
+    "values": {
+      "description": "List of available option values.",
+      "type": "array",
+      "example": [
+        true,
+        false
+      ]
+    }
+  }
+}

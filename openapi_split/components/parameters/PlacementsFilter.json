@@ -1,0 +1,28 @@
+{
+  "in": "query",
+  "name": "placements",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "explode": false,
+  "examples": {
+    "onePlacement": {
+      "summary": "Return products with variants that have front placement.",
+      "value": [
+        "front"
+      ]
+    },
+    "multiplePlacements": {
+      "summary": "Return products with variants that have front or back placement.",
+      "value": [
+        "front",
+        "back"
+      ]
+    }
+  },
+  "required": false,
+  "description": "One or more identifiers of a placement to return only products with variants that have that placement. The complete list of placements can be found [here](https://developers.printful.com/docs/#tag/Common/Placements)."
+}

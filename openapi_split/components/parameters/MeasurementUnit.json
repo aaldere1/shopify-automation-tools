@@ -1,0 +1,10 @@
+{
+  "in": "query",
+  "name": "unit",
+  "schema": {
+    "type": "string",
+    "example": "inches,cm"
+  },
+  "required": false,
+  "description": "A comma-separated list of measurement unit in which size tables are to be returned (`inches` or `cm`).\nThe default value is determined based on the locale country. The inches are used for United States, Liberia\nand Myanmar, for other countries the unit defaults to centimeters.\n"
+}

@@ -1,0 +1,67 @@
+{
+  "title": "WebhookShipmentData",
+  "required": [
+    "id",
+    "status",
+    "store_id",
+    "tracking_number",
+    "tracking_url",
+    "created_at",
+    "ship_date",
+    "shipped_at",
+    "delivered_at",
+    "reshipment"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Shipment's ID"
+    },
+    "status": {
+      "type": "string",
+      "description": "Shipment's status"
+    },
+    "store_id": {
+      "type": "integer",
+      "description": "ID of the store associated with the shipment"
+    },
+    "tracking_number": {
+      "type": "string",
+      "description": "The tracking code associated with the shipment"
+    },
+    "tracking_url": {
+      "type": "string",
+      "description": "Shipment tracking URL",
+      "example": "\u200bhttps://www.fedex.com/fedextrack/?tracknumbers=0000000000"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z",
+      "description": "Shipment creation date-time"
+    },
+    "ship_date": {
+      "type": "string",
+      "description": "Ship date (`Y-m-d`)",
+      "example": "2023-03-21"
+    },
+    "shipped_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-05T06:07:08Z",
+      "description": "Date-time of when the shipment was sent"
+    },
+    "delivered_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-04-07T14:30:15Z",
+      "description": "Date-time of when the shipment was delivered",
+      "nullable": true
+    },
+    "reshipment": {
+      "type": "boolean",
+      "description": "Whether this is a reshipment",
+      "example": false
+    }
+  }
+}

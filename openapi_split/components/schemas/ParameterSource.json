@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "parameter": {
+      "type": "string",
+      "description": "Name of the URL query parameter that is incorrect",
+      "example": "limit"
+    }
+  }
+}

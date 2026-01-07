@@ -1,0 +1,10 @@
+{
+  "title": "ProductData",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Product ID.",
+      "example": 1
+    }
+  }
+}

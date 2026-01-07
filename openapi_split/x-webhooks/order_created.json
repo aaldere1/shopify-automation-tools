@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order created",
+    "operationId": "orderCreated",
+    "description": "Is called when the order is first created.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderCreated"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

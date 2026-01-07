@@ -1,0 +1,100 @@
+{
+  "get": {
+    "summary": "Retrieve a list of order items",
+    "description": "This endpoint retrieves the list of items that belong to the order.",
+    "operationId": "getItemsByOrderId",
+    "security": [
+      {
+        "OAuth": [
+          "orders/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/Type"
+      },
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrderItemsById"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "403": {
+        "$ref": "#/components/responses/Forbidden"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "post": {
+    "summary": "Create a new order item",
+    "description": "This endpoint allows the creation of a new item that will be added to an existing order.",
+    "operationId": "createItemByOrderId",
+    "security": [
+      {
+        "OAuth": [
+          "orders"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ItemInput"
+    },
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrderItemsById"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "403": {
+        "$ref": "#/components/responses/Forbidden"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

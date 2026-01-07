@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order canceled",
+    "operationId": "orderCanceled",
+    "description": "Is called when a confirmed order changes its status to `canceled`.\n\n It can happen when a submitted order is canceled from the dashboard or through the API or when the order is canceled by the Printful staff.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderCanceled"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

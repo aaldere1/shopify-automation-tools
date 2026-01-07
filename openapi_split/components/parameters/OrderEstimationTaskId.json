@@ -1,0 +1,10 @@
+{
+  "in": "query",
+  "name": "id",
+  "schema": {
+    "type": "string"
+  },
+  "required": true,
+  "description": "Order estimation task ID.",
+  "example": null
+}

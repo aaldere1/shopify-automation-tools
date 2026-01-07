@@ -1,0 +1,73 @@
+{
+  "get": {
+    "summary": "Retrieve a list of orders",
+    "description": "Retrieve a list of orders from a specific store. The order list will be paginated with twenty items per page by default.",
+    "operationId": "getOrders",
+    "security": [
+      {
+        "OAuth": [
+          "orders/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/Limit"
+      },
+      {
+        "$ref": "#/components/parameters/Offset"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrders"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  },
+  "post": {
+    "summary": "Create a new order",
+    "description": "This endpoint allows the creation of a new order in which the default status will be `draft`.",
+    "operationId": "createOrder",
+    "security": [
+      {
+        "OAuth": [
+          "orders"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderInput"
+    },
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetOrderById"
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TaskSummary"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "example": "completed"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

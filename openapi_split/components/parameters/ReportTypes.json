@@ -1,0 +1,20 @@
+{
+  "in": "query",
+  "name": "report_types",
+  "description": "A comma-separated list of report types to be retrieved.",
+  "schema": {
+    "type": "string",
+    "enum": [
+      "sales_and_costs",
+      "profit",
+      "average_fulfillment_type",
+      "costs_by_amount",
+      "costs_by_product",
+      "costs_by_variant",
+      "printful_costs",
+      "sales_and_costs_summary",
+      "total_paid_orders"
+    ]
+  },
+  "required": true
+}

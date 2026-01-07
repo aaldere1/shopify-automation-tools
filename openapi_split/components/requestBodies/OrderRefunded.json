@@ -1,0 +1,48 @@
+{
+  "description": "Order refunded.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `order_refunded`",
+                "example": "order_refunded"
+              },
+              "data": {
+                "description": "Refunded amount and order data",
+                "title": "RefundInfo",
+                "required": [
+                  "currency",
+                  "amount",
+                  "order"
+                ],
+                "properties": {
+                  "currency": {
+                    "type": "string",
+                    "description": "Refund currency."
+                  },
+                  "amount": {
+                    "type": "string",
+                    "description": "Refunded amount."
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

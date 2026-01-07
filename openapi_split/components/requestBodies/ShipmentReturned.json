@@ -1,0 +1,49 @@
+{
+  "description": "Shipment returned.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `shipment_returned`",
+                "enum": [
+                  "shipment_returned"
+                ]
+              },
+              "data": {
+                "description": "Shipment and order data",
+                "title": "ReturnInfo",
+                "required": [
+                  "reason",
+                  "shipment",
+                  "order"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the shipment was returned."
+                  },
+                  "shipment": {
+                    "$ref": "#/components/schemas/WebhookShipmentData"
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

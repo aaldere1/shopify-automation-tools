@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "title": "CustomizationReadonly",
+  "description": "The Order's customization values",
+  "required": [
+    "gift",
+    "packing_slip"
+  ],
+  "properties": {
+    "gift": {
+      "$ref": "#/components/schemas/Gift"
+    },
+    "packing_slip": {
+      "$ref": "#/components/schemas/PackingSlipReadonly"
+    }
+  }
+}

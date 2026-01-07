@@ -1,0 +1,53 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VariantImages"
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "properties": {
+              "self": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to the same resource",
+                    "example": {
+                      "href": "https://api.printful.com/v2/catalog-variants/4017/images"
+                    }
+                  }
+                ]
+              },
+              "variant_details": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to variant details",
+                    "example": {
+                      "href": "https://api.printful.com/v2/catalog-variants/4011"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

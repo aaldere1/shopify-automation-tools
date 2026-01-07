@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "title": "MockupGeneratorTask",
+  "description": "Result of mockup generator task",
+  "required": [
+    "id",
+    "status",
+    "catalog_variant_mockups",
+    "items",
+    "failure_reasons",
+    "_links"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique task identifier used to check status of the task and retrieve the results once the task is ready.",
+      "example": 597350033
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "pending",
+        "failed"
+      ],
+      "description": "Task status:\n * `completed` \u2013 Mockup Generator task was successfully processed\n * `pending` \u2013 Mockup Generator task is still being processed\n * `failed` \u2013 Mockup Generator task failed\n"
+    },
+    "catalog_variant_mockups": {
+      "type": "array",
+      "description": "A list of mockups grouped by variant. Note that the same list of mockups can appear under multiple variants, this happens in cases where the variants have the same mockups, for example if the only difference is the size of the variant.",
+      "items": {
+        "type": "object",
+        "required": [
+          "catalog_variant_id",
+          "mockups"
+        ],
+        "properties": {
+          "catalog_variant_id": {
+            "type": "integer",
+            "description": "ID of a catalog variant for which the mockup was generated.",
+            "example": 4011
+          },
+          "mockups": {
+            "type": "array",
+            "description": "List of generated mockups",
+            "items": {
+              "$ref": "#/components/schemas/Mockup"
+            }
+          }
+        }
+      }
+    },
+    "failure_reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Error"
+      }
+    },
+    "_links": {
+      "type": "object",
+      "description": "HATEOAS links",
+      "readOnly": true,
+      "required": [
+        "self"
+      ],
+      "properties": {
+        "self": {
+          "description": "Link to the Generator Task details",
+          "title": "HateoasLink",
+          "example": {
+            "href": "https://api.printful.com/v2/mockup-tasks?id=597350033"
+          },
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

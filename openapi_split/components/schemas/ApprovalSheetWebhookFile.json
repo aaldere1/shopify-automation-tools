@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "title": "ApprovalSheetWebhookFile",
+  "properties": {
+    "confirm_hash": {
+      "type": "string",
+      "example": "a14e51714be01f98487fcf5131727d31"
+    },
+    "submitted_design": {
+      "type": "string",
+      "example": "https://s3.staging.printful.com/upload/approval-design/ae/ae7b3d3e965c238b3e5c1a4e15696f07_l"
+    },
+    "recommended_design": {
+      "type": "string",
+      "example": "https://s3.staging.printful.com/upload/approval-design/aa/aaf9e1c6b32cb7a2c04d2746108d4124_l"
+    },
+    "approval_sheet": {
+      "type": "string",
+      "example": "https://www.printful.test/dashboard/order/download-approval-sheet-pdf?confirmationHash=13aa35854bfc67a85b7ce231aef2ae8"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "in": "query",
+  "name": "placements",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "explode": false,
+  "examples": {
+    "onePlacement": {
+      "summary": "Return mockup styles that match a specific placement.",
+      "value": [
+        "front"
+      ]
+    },
+    "multiplePlacements": {
+      "summary": "Return mockup styles that match a list of placements.",
+      "value": [
+        "front",
+        "back"
+      ]
+    }
+  },
+  "required": false,
+  "description": "One or more placement idenitifiers used to filter in mockup styles that match a given placement. The complete list of placements can be found [here](https://developers.printful.com/docs/#tag/Common/Placements)."
+}

@@ -1,0 +1,81 @@
+{
+  "description": "PATCH request body",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "description": "Order ID from the external system",
+            "type": "string",
+            "example": "4235234213"
+          },
+          "shipping": {
+            "description": "Shipping method. Defaults to 'STANDARD'",
+            "type": "string",
+            "example": "STANDARD"
+          },
+          "recipient": {
+            "description": "The recipient data.",
+            "title": "Address",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "order_items": {
+            "type": "array",
+            "description": "Array of order items",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/CatalogItem"
+                },
+                {
+                  "$ref": "#/components/schemas/ProductTemplateItem"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "catalog": "#/components/schemas/CatalogItem",
+                  "product_template": "#/components/schemas/ProductTemplateItem"
+                }
+              }
+            }
+          },
+          "customization": {
+            "$ref": "#/components/schemas/Customization"
+          },
+          "retail_costs": {
+            "description": "Retail costs",
+            "type": "object",
+            "properties": {
+              "currency": {
+                "description": "The code of the currency in which the retail costs are returned.",
+                "type": "string",
+                "example": "EUR"
+              },
+              "discount": {
+                "description": "Discount sum.",
+                "type": "string",
+                "example": "123.40"
+              },
+              "shipping": {
+                "description": "Shipping costs.",
+                "type": "string",
+                "example": "123.40"
+              },
+              "tax": {
+                "description": "Sum of taxes (not included in the item price).",
+                "type": "string",
+                "example": "123.40"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/CatalogItemReadonly"
+                },
+                {
+                  "$ref": "#/components/schemas/WarehouseItemReadonly"
+                },
+                {
+                  "$ref": "#/components/schemas/ProductTemplateItem"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "catalog": "#/components/schemas/CatalogItemReadonly",
+                  "warehouse": "#/components/schemas/WarehouseItemReadonly",
+                  "product_template": "#/components/schemas/ProductTemplateItem"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "description": "HATEOAS links",
+            "required": [
+              "self",
+              "order"
+            ],
+            "properties": {
+              "self": {
+                "description": "Link to same resource",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/order-items?limit=10&offset=20"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "next": {
+                "description": "Link to the next page (absent if the current page is the last one or if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/order-items?limit=10&offset=30"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "previous": {
+                "description": "Link to the previous page (absent if the current page is the first one or if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/order-items?limit=10&limit=10"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "first": {
+                "description": "Link to the first page (absent if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/order-items?limit=10"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "last": {
+                "description": "Link to the last page (absent if there is only one page)",
+                "title": "HateoasLink",
+                "example": {
+                  "href": "https://api.printful.com/v2/orders/123/order-items?limit=10&offset=90"
+                },
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ]
+              },
+              "order": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  },
+                  {
+                    "description": "Link to the order",
+                    "format": "HateoasLink",
+                    "example": {
+                      "href": "https://api.printful.com/v2/orders/123"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

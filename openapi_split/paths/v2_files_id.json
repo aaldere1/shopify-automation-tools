@@ -1,0 +1,50 @@
+{
+  "get": {
+    "summary": "Retrieve a single file from the file library",
+    "description": "Get basic information about the file stored in the file library",
+    "operationId": "getFileById",
+    "tags": [
+      "Files v2"
+    ],
+    "security": [
+      {
+        "OAuth": [
+          "file-library/read"
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/FileId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/File"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "#/components/responses/BadRequest"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

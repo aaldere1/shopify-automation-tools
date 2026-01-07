@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "type",
+  "schema": {
+    "type": "string"
+  },
+  "required": false,
+  "description": "Type of items returned (order_item, branding_item). By default all items are returned."
+}

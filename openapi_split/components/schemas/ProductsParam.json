@@ -1,0 +1,28 @@
+{
+  "title": "ProductsParam",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Param name.",
+      "enum": [
+        "products"
+      ],
+      "example": "products"
+    },
+    "value": {
+      "description": "Param value - list of product data.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ProductData"
+      },
+      "example": [
+        {
+          "id": 1
+        },
+        {
+          "id": 71
+        }
+      ]
+    }
+  }
+}

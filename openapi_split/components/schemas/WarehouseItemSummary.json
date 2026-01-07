@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "title": "WarehouseItemSummary",
+  "description": "Simplified information about the Warehouse Item",
+  "properties": {
+    "id": {
+      "description": "Item ID",
+      "type": "integer",
+      "example": 1234,
+      "readOnly": true
+    },
+    "type": {
+      "description": "The item type",
+      "type": "string",
+      "example": "order_item",
+      "enum": [
+        "order_item",
+        "branding_item"
+      ]
+    },
+    "source": {
+      "description": "Item source",
+      "type": "string",
+      "example": "warehouse",
+      "enum": [
+        "warehouse"
+      ]
+    },
+    "warehouse_product_variant_id": {
+      "description": "ID of warehouse product associated with the Item",
+      "type": "integer",
+      "example": 1123581321
+    },
+    "external_id": {
+      "description": "Item user specified external ID",
+      "type": "string",
+      "nullable": true,
+      "example": "123_abc"
+    },
+    "quantity": {
+      "description": "Item quantity",
+      "type": "integer",
+      "example": 1
+    },
+    "name": {
+      "description": "Item custom name",
+      "type": "string",
+      "example": "Custom name"
+    },
+    "price": {
+      "description": "The price Printful charges for the Item",
+      "type": "string",
+      "example": "8.00"
+    },
+    "retail_price": {
+      "description": "Item retail price",
+      "type": "string",
+      "example": "10.00"
+    },
+    "currency": {
+      "description": "The price currency",
+      "type": "string",
+      "example": "EUR"
+    },
+    "retail_currency": {
+      "description": "The retail price currency",
+      "type": "string",
+      "example": "USD"
+    },
+    "_links": {
+      "type": "object",
+      "readOnly": true,
+      "description": "HATEOAS links",
+      "properties": {
+        "self": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            },
+            {
+              "description": "Link to a specific order item",
+              "format": "HateoasLink",
+              "example": {
+                "href": "/v2/orders/123/items/123"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "title": "Paging",
+  "description": "Paging information",
+  "required": [
+    "total",
+    "offset",
+    "limit"
+  ],
+  "properties": {
+    "total": {
+      "type": "integer",
+      "example": 100,
+      "description": "Total number of items available"
+    },
+    "offset": {
+      "type": "integer",
+      "example": 10,
+      "description": "Current result set page offset"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Max number of items per page",
+      "example": 100
+    }
+  }
+}

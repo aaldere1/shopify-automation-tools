@@ -1,0 +1,23 @@
+{
+  "post": {
+    "summary": "Shipment out of stock",
+    "operationId": "shipmentOutOfStock",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "description": "Is called when a shipment goes out of stock (`is_out_of_stock = true`) or comes back in stock (`is_out_of_stock = false`).\n",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentOutOfStock"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "description": "Catalog stock updated.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `catalog_stock_updated`",
+                "enum": [
+                  "catalog_stock_updated"
+                ],
+                "example": "catalog_stock_updated"
+              },
+              "data": {
+                "title": "ChangedAvailabilities",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "catalog_product_id",
+                    "catalog_variant_id",
+                    "techniques",
+                    "availability"
+                  ],
+                  "properties": {
+                    "catalog_product_id": {
+                      "type": "integer",
+                      "description": "Product ID",
+                      "example": 71
+                    },
+                    "catalog_variant_id": {
+                      "type": "integer",
+                      "description": "Variant ID",
+                      "example": 4011
+                    },
+                    "techniques": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Technique list."
+                    },
+                    "availability": {
+                      "type": "string",
+                      "description": "Availability status.",
+                      "enum": [
+                        "in stock",
+                        "on demand",
+                        "out of stock",
+                        "not fulfilled",
+                        "discontinued",
+                        "unknown"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "description": "Mockup task finished processing.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type \u2013 `mockup_task_finished`",
+                "enum": [
+                  "mockup_task_finished"
+                ]
+              },
+              "data": {
+                "$ref": "#/components/schemas/MockupGeneratorTask"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

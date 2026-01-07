@@ -1,0 +1,30 @@
+{
+  "description": "Bad Request",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "description": "Actual error message",
+            "example": "Missing required parameters"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "example": "BadRequest"
+              },
+              "message": {
+                "type": "string",
+                "example": "Missing required parameters"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

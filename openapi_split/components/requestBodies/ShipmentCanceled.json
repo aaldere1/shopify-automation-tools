@@ -1,0 +1,47 @@
+{
+  "description": "Shipment canceled.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `shipment_canceled`",
+                "example": "shipment_canceled"
+              },
+              "data": {
+                "description": "Cancel reason and shipment and order data",
+                "title": "CancelInfo",
+                "required": [
+                  "reason",
+                  "shipment",
+                  "order"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the shipment has been canceled."
+                  },
+                  "shipment": {
+                    "$ref": "#/components/schemas/WebhookShipmentData"
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

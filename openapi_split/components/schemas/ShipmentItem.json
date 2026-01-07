@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "title": "ShipmentItem",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 10
+    },
+    "order_item_id": {
+      "type": "integer",
+      "example": 20
+    },
+    "order_item_external_id": {
+      "type": "string",
+      "nullable": true,
+      "example": "item-external-id"
+    },
+    "order_item_name": {
+      "type": "string",
+      "nullable": true,
+      "example": "Item name"
+    },
+    "quantity": {
+      "type": "integer",
+      "example": 1
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "order_item": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "example": "\u200bhttps://api.printful.com/v2/orders/2/order-items/20"
+            }
+          }
+        }
+      }
+    }
+  }
+}

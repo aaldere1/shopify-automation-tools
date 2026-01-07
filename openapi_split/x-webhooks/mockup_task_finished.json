@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Mockup task finished",
+    "operationId": "mockupTaskFinished",
+    "description": "Is called when a Mockup task is finished.\n\n This doesn't necessarily mean that the task has successfully finished\n\n it could also mean that the task has failed to generate.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/MockupTaskFinished"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

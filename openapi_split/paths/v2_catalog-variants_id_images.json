@@ -1,0 +1,40 @@
+{
+  "get": {
+    "summary": "Retrieve blank images for a catalog variant",
+    "description": "Returns images for a specified Variant.",
+    "operationId": "getVariantImagesById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/VariantId"
+      },
+      {
+        "$ref": "#/components/parameters/MockupStyleIds"
+      },
+      {
+        "$ref": "#/components/parameters/Placement"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetVariantImagesById"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

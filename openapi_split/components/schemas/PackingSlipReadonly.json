@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "title": "PackingSlipReadonly",
+  "description": "The values for customized packing slip",
+  "required": [
+    "email",
+    "phone",
+    "message",
+    "logo_url",
+    "store_name",
+    "custom_order_id"
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "Customer service email",
+      "example": "test@example.com"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Customer service phone",
+      "example": "+48000000000"
+    },
+    "message": {
+      "type": "string",
+      "description": "Custom packing slip message",
+      "example": "This is a message"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "URL address to a sticker we will put on a package. The provided image is converted to grayscale/1-bit monochrome image.",
+      "example": "https://example.com/image.jpg"
+    },
+    "store_name": {
+      "type": "string",
+      "description": "Store name override for the return address",
+      "example": "A store"
+    },
+    "custom_order_id": {
+      "type": "string",
+      "description": "Your own Order ID that will be printed instead of Printful's Order ID",
+      "example": "11235813"
+    }
+  }
+}

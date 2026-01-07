@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "title": "StoreStatistics",
+  "description": "Statistics for a single store",
+  "required": [
+    "store_id",
+    "currency"
+  ],
+  "properties": {
+    "store_id": {
+      "type": "integer",
+      "description": "The ID of the store for which the statistics are returned"
+    },
+    "currency": {
+      "type": "string",
+      "description": "The code of the currency in which the statistics are returned",
+      "example": "USD"
+    },
+    "sales_and_costs": {
+      "$ref": "#/components/schemas/SalesAndCosts"
+    },
+    "sales_and_costs_summary": {
+      "$ref": "#/components/schemas/SalesAndCostsSummary"
+    },
+    "printful_costs": {
+      "$ref": "#/components/schemas/PrintfulCosts"
+    },
+    "profit": {
+      "$ref": "#/components/schemas/Profit"
+    },
+    "total_paid_orders": {
+      "$ref": "#/components/schemas/TotalPaidOrders"
+    },
+    "costs_by_amount": {
+      "$ref": "#/components/schemas/CostsByAmount"
+    },
+    "costs_by_product": {
+      "$ref": "#/components/schemas/CostsByProduct"
+    },
+    "costs_by_variant": {
+      "$ref": "#/components/schemas/CostsByVariant"
+    },
+    "average_fulfillment_time": {
+      "$ref": "#/components/schemas/AverageFulfillmentTime"
+    }
+  }
+}

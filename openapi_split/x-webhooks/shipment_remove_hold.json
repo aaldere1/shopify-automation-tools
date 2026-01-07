@@ -1,0 +1,19 @@
+{
+  "post": {
+    "summary": "Shipment remove hold",
+    "operationId": "shipmentRemoveHold",
+    "security": [],
+    "description": "Is called when shipment is removed from hold.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentRemoveHold"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

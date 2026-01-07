@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "title": "PrintfulCosts",
+  "description": "Printful costs report",
+  "required": [
+    "value",
+    "relative_difference"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "Amount paid to Printful for fulfillment and shipping."
+    },
+    "relative_difference": {
+      "type": "string",
+      "nullable": true,
+      "description": "Relative difference from the value from the previous period. -1 means 100% decrease, 1 means 100% increase. 0 is returned if there is no change or the previous value was 0."
+    }
+  }
+}

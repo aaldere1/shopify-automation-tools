@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "title": "OrderEstimationTaskSummary",
+  "description": "Order estimation task summary",
+  "readOnly": true,
+  "required": [
+    "id",
+    "status",
+    "costs",
+    "retail_costs",
+    "failure_reasons"
+  ],
+  "properties": {
+    "id": {
+      "description": "Task ID",
+      "type": "string",
+      "example": "fc959efb-b3a0-4c12-9cc6-f54d3158291d"
+    },
+    "status": {
+      "description": "Task status",
+      "type": "string",
+      "enum": [
+        "pending",
+        "failed",
+        "completed"
+      ]
+    },
+    "costs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Costs"
+        },
+        {
+          "type": "object",
+          "nullable": true
+        }
+      ]
+    },
+    "retail_costs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RetailCosts"
+        },
+        {
+          "type": "object",
+          "nullable": true
+        }
+      ]
+    },
+    "failure_reasons": {
+      "type": "array",
+      "description": "Reasons why calculation failed.",
+      "items": {
+        "type": "string",
+        "example": "Recipient: Country cannot be blank."
+      },
+      "example": []
+    }
+  }
+}

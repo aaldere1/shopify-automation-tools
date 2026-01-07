@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "required": [
+    "source",
+    "product_template_id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseMockupProduct"
+    },
+    {
+      "properties": {
+        "source": {
+          "description": "Mockup product source",
+          "type": "string",
+          "example": "template"
+        },
+        "product_template_id": {
+          "description": "Product Template identifier",
+          "type": "integer",
+          "example": 712152512
+        },
+        "catalog_variant_ids": {
+          "type": "array",
+          "description": "List of catalog variant identifiers for which mockups will be generated. Variants must be defined in the product template specified with `product_template_id`. Multiple variants of the same color do not count towards the daily number of files limit. Meaning that for a Red T-Shirt of (S,M) sizes we still generate only one mockup.",
+          "items": {
+            "type": "integer",
+            "example": 12457
+          }
+        },
+        "mockup_style_ids": {
+          "type": "array",
+          "description": "Used to specify style of mockups that should be generated. For example:\n  * On the hanger\n  * On the Male/Female model\n  * Flat on the table\n  * etc.\nAvailable mockup styles for catalog product can be found under _[Retrieve catalog product mockup styles](#operation/retrieveMockupStylesByProductId)_.\n",
+          "items": {
+            "type": "integer",
+            "example": 123
+          }
+        }
+      }
+    }
+  ]
+}

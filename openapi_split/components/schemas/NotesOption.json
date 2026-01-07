@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "NotesOption",
+  "description": "Include additional notes for fulfillment for embroidery prints",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "notes",
+      "enum": [
+        "notes"
+      ]
+    },
+    "value": {
+      "description": "Additional notes for fulfillment for embroidery prints.",
+      "type": "string",
+      "example": "Please make sure that top side of the print is within print area"
+    }
+  }
+}

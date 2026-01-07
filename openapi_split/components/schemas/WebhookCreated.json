@@ -1,0 +1,22 @@
+{
+  "title": "WebhookInfo",
+  "allOf": [
+    {
+      "required": [
+        "secret_key"
+      ]
+    },
+    {
+      "$ref": "#/components/schemas/WebhookInfoResponse"
+    },
+    {
+      "properties": {
+        "secret_key": {
+          "type": "string",
+          "description": "A hexadecimal representation of the secret key used to generate and verify the event signature. Visible only once upon configuration set-up.",
+          "example": "a01376f30766acf7f706cc84beb57b79f9779e4a3e79d5519b3a9069c2156807098aw1d2abb43d356e03a46e71eeb9ab4519b3774d993abde8a3fabcebeb30fe"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1773 @@
+
+> shopify-data-extractor@1.0.0 backfill:existing
+> tsx scripts/backfill-existing-orders.ts
+
+🚀 Starting optimized backfill of existing Notion orders
+📦 Batch size: 100 orders
+⚡ Concurrent requests: 5
+🚦 Notion rate limit: 3 req/sec
+🚦 Shopify rate limit: 2 req/sec
+
+
+📦 Processing batch: 1 to 100
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '395c7640-bacc-4439-a344-9f6cca3628fb'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:31:21 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a5d9af022427-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-hNG3vWgv48v+PsnxHeBg9MQy2/Y"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '395c7640-bacc-4439-a344-9f6cca3628fb',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=oXy2x5CPayb3gBKdbX3R8LUkz22IRzAOh5AfW0QIVp4-1763407881-1.0.1.1-YWwfqHnsNaBh9ygoqdJFVssNMMchic00Ja56HYsMafrJu1khFJeW9GNoseNnNTZGsJnPT8bcHkJIKmXg2QdzozKKkuZaZjZN2DeY6lSMVTY; path=/; expires=Mon, 17-Nov-25 20:01:21 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=OzSnu46FvILuBOFLa5M1QB7lyTpbI6qKLSIrURSaaKQ-1763407881454-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"395c7640-bacc-4439-a344-9f6cca3628fb"}',
+  additional_data: undefined,
+  request_id: '395c7640-bacc-4439-a344-9f6cca3628fb'
+}
+✅ Updated order ##CC5893  ✅ Updated order ##CC5891  ✅ Updated order ##CC5885  ✅ Updated order ##CC5890  ✅ Updated order ##CC5888  ✅ Updated order ##CC5894  ✅ Updated order ##CC5887  ✅ Updated order ##CC5886  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '3c333ab9-df14-465e-b795-49edb0120f49'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:31:23 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a5e6cf022072-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-eLrf7Nt63otbG8lG+NxKs0qRGfg"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '3c333ab9-df14-465e-b795-49edb0120f49',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=U.nKGL8EUO0wfTs4fkt803ScHtiAidrTHxGUFlqCIOA-1763407883-1.0.1.1-1fCy43BZoulcFs8SCuQTlN1qdPWnmEOnYr0CG09Omnu3V0btHHkx.01XWAFZ.mX8wJbIxYVlH7oIzkrzJi6.L3VPVougSxzksNV9ZbtfTFM; path=/; expires=Mon, 17-Nov-25 20:01:23 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=66dMHa8yC0d6Gl8Cnlqut2S7V7nDDgwJBWsZ5GyjXwY-1763407883594-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"3c333ab9-df14-465e-b795-49edb0120f49"}',
+  additional_data: undefined,
+  request_id: '3c333ab9-df14-465e-b795-49edb0120f49'
+}
+✅ Updated order ##CC5889  ✅ Updated order ##CC5880  ✅ Updated order ##CC5881  ✅ Updated order ##CC5879  ✅ Updated order ##CC5882  ✅ Updated order ##CC5875  ✅ Updated order ##CC5878  ✅ Updated order ##CC5876  ✅ Updated order ##CC5877  ✅ Updated order ##CC5871  ✅ Updated order ##CC5895  ✅ Updated order ##CC5884  ✅ Updated order ##CC5873  ✅ Updated order ##CC5874  ✅ Updated order ##CC5872  ✅ Updated order ##CC5865  ✅ Updated order ##CC5870  ✅ Updated order ##CC5867  ✅ Updated order ##CC5869  ✅ Updated order ##CC5868  ✅ Updated order ##CC5866  ✅ Updated order ##CC5860  ✅ Updated order ##CC5861  ✅ Updated order ##CC5863  ✅ Updated order ##CC5864  ✅ Updated order ##CC5856  ✅ Updated order ##CC5859  ✅ Updated order ##CC5855  ✅ Updated order ##CC5854  ✅ Updated order ##CC5857  ✅ Updated order ##CC5851  ✅ Updated order ##CC5858  ✅ Updated order ##CC5853  ✅ Updated order ##CC5849  ✅ Updated order ##CC5850  ✅ Updated order ##CC5862  ✅ Updated order ##CC5845  ✅ Updated order ##CC5852  ✅ Updated order ##CC5847  ✅ Updated order ##CC5842  ✅ Updated order ##CC5841  ✅ Updated order ##CC5848  ✅ Updated order ##CC5840  ✅ Updated order ##CC5835  ✅ Updated order ##CC5844  ✅ Updated order ##CC5837  ✅ Updated order ##CC5843  ✅ Updated order ##CC5839  ✅ Updated order ##CC5832  ✅ Updated order ##CC5846  ✅ Updated order ##CC5836  ✅ Updated order ##CC5838  ✅ Updated order ##CC5834  ✅ Updated order ##CC5833  ✅ Updated order ##CC5827  ✅ Updated order ##CC5828  ✅ Updated order ##CC5831  ✅ Updated order ##CC5826  ✅ Updated order ##CC5825  ✅ Updated order ##CC5824  ✅ Updated order ##CC5829  ✅ Updated order ##CC5823  ✅ Updated order ##CC5830  ✅ Updated order ##CC5822  ✅ Updated order ##CC5821  ✅ Updated order ##CC5815  ✅ Updated order ##CC5816  ✅ Updated order ##CC5818  ✅ Updated order ##CC5811  ✅ Updated order ##CC5814  ✅ Updated order ##CC5810  ✅ Updated order ##CC5817  ✅ Updated order ##CC5813  ✅ Updated order ##CC5806  ✅ Updated order ##CC5820  ✅ Updated order ##CC5809  ✅ Updated order ##CC5807  ✅ Updated order ##CC5808  ✅ Updated order ##CC5812  ✅ Updated order ##CC5802  ✅ Updated order ##CC5805  ✅ Updated order ##CC5801  ✅ Updated order ##CC5800  ✅ Updated order ##CC5797  ✅ Updated order ##CC5804  ✅ Updated order ##CC5796  ✅ Updated order ##CC5819  ✅ Updated order ##CC5799  ✅ Updated order ##CC5798  ✅ Updated order ##CC5803  
+✅ Batch complete. Processed: 100 | Updated: 98 | Skipped: 0
+
+📦 Processing batch: 101 to 200
+
+✅ Batch complete. Processed: 200 | Updated: 98 | Skipped: 100
+
+📦 Processing batch: 201 to 300
+
+✅ Batch complete. Processed: 300 | Updated: 98 | Skipped: 200
+
+📦 Processing batch: 301 to 400
+✅ Updated order ##CC5577  ✅ Updated order ##CC5546  ✅ Updated order ##CC5530  ✅ Updated order ##CC5537  
+✅ Batch complete. Processed: 400 | Updated: 102 | Skipped: 296
+
+📦 Processing batch: 401 to 500
+✅ Updated order ##CC5485  ✅ Updated order ##CC5415  ✅ Updated order ##CC5435  
+✅ Batch complete. Processed: 500 | Updated: 105 | Skipped: 393
+
+📦 Processing batch: 501 to 600
+✅ Updated order ##CC5379  ✅ Updated order ##CC5344  ✅ Updated order ##CC5352  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'bab94296-111d-4f85-9d51-70f69b0b86ea'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:01 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a6d3e8613019-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-vDpKoTzbZH5j70waztv2fkAjSPQ"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'bab94296-111d-4f85-9d51-70f69b0b86ea',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=ptzxNcpQPHLcmMFSV7viYCFHb8yf..nuhYWbO07M91E-1763407921-1.0.1.1-s5t.hvXl0CgokCr1E.SuF9CdetGlgLcE6vujwSYTCn0GUUXfjesaevCDA2hpt5FgXiyv5ndyEibZE8RETMOsOYaW.PuPNuXxQtvqADRRS3s; path=/; expires=Mon, 17-Nov-25 20:02:01 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=U74OZh_uiTqzVTv5vCf_mOHxWvcF1Qr6eaST_QENBeY-1763407921977-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"bab94296-111d-4f85-9d51-70f69b0b86ea"}',
+  additional_data: undefined,
+  request_id: 'bab94296-111d-4f85-9d51-70f69b0b86ea'
+}
+✅ Updated order ##CC5345  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '53fc2afc-5361-4bf7-a76d-431ac4d9b5d7'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:02 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a6d8bf683019-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-GHrP9aehKmswJqPKCWXPnVDdGtg"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '53fc2afc-5361-4bf7-a76d-431ac4d9b5d7',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=w.jktERdEpEKA3TmobtSlcZUiSLBmeBJCVh1X5RPUSM-1763407922-1.0.1.1-fDA5Ax0P7l6N0faX.ET5p0NsiyGKE2G5Jc4gOnNtam8AcOPtZiS05VEb_1wsZOUli9rEa_nw5C2hJTuxHkEhndCaBpDUTzSexX53xq9ckuo; path=/; expires=Mon, 17-Nov-25 20:02:02 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=T1jBum1K6tQwIhfQBFiVuDiKLaF0hRPRqFzd.g3PZZw-1763407922251-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"53fc2afc-5361-4bf7-a76d-431ac4d9b5d7"}',
+  additional_data: undefined,
+  request_id: '53fc2afc-5361-4bf7-a76d-431ac4d9b5d7'
+}
+✅ Updated order ##CC5305  ✅ Updated order ##CC5322  ✅ Updated order ##CC5312  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '80721c18-fd7e-4a6d-a72a-57b9a867a790'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:03 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a6d398391e0d-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-HSxmmvHlW4IWUSbMYJIjBfm05WY"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '80721c18-fd7e-4a6d-a72a-57b9a867a790',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=VQTdj20vtVH7C2r1jBx8hVbqfTBz40NgRFwa4uC6vKY-1763407923-1.0.1.1-sw8D2SAuvR2gGrMsqaJaP99OleeTjzptEQL.MCyiUYcbEkDUSr8X9fMELgeH5tqbrkTNnJX0AJRNMNRtZSpWyFsL2ZHlpIPtwBh7.ORFuLI; path=/; expires=Mon, 17-Nov-25 20:02:03 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=joFbF.YehQb9zQzpKctMPQM8QRzB8hkGl4BfoU5eZp8-1763407923367-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"80721c18-fd7e-4a6d-a72a-57b9a867a790"}',
+  additional_data: undefined,
+  request_id: '80721c18-fd7e-4a6d-a72a-57b9a867a790'
+}
+
+✅ Batch complete. Processed: 600 | Updated: 112 | Skipped: 483
+
+📦 Processing batch: 601 to 700
+✅ Updated order ##CC5289  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '0f07b7a9-7903-4387-9831-78bebe4aafb2'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:06 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a6f1de096f9e-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-yysxpzVbPlT3PkFQM1arwbwlYs0"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '0f07b7a9-7903-4387-9831-78bebe4aafb2',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=.VSQn1upvV7Mw2IvL6JpsFz63bW_fFXeYdnb4kBYHKo-1763407926-1.0.1.1-gD9_tYa8E6EDudggOMXY2JpHc612sYiu7bVE6MtgzuTXEwT8hzVVSl1TactY1qlgySFrmyG778y1ju9QJuQsPd9Sfo4ZLk60aCrwAFEt9Xk; path=/; expires=Mon, 17-Nov-25 20:02:06 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=UAOUcuOtlES1Tx7rC7erSm.Hw3G6Eoz3gc1NObGC7UQ-1763407926254-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"0f07b7a9-7903-4387-9831-78bebe4aafb2"}',
+  additional_data: undefined,
+  request_id: '0f07b7a9-7903-4387-9831-78bebe4aafb2'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '9f82d28e-109d-481a-a450-b66e819b07c8'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:06 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a6f1dc521e0d-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-HFUE7RlsdnF8unkDRA/0S6PpGwA"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '9f82d28e-109d-481a-a450-b66e819b07c8',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=aF3PjWBdM_2hhANmob3qFY_kTyVaoaWevXRmP.PYFlA-1763407926-1.0.1.1-PFP.1usIxYqZ3bNzr2VhIS62PBZsxhFR_rc.u11MiDXDRxGAF4H.5o4NQFErPr8sTlrCoQYm7wCsIjs8p3LIePQlR_j1nOH0t1wdpAxwrOA; path=/; expires=Mon, 17-Nov-25 20:02:06 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=O0gOdrYYme4n1DY9d7iC7ZdayP2B4dzdChlW2Bk0mKU-1763407926272-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"9f82d28e-109d-481a-a450-b66e819b07c8"}',
+  additional_data: undefined,
+  request_id: '9f82d28e-109d-481a-a450-b66e819b07c8'
+}
+✅ Updated order ##CC5277  ✅ Updated order ##CC5265  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'dbef4216-22e3-44f1-af18-13c12da49a84'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:06 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a6f3dc8f81ac-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-gbARUaceWjj7FFmKmhMznqitf5M"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'dbef4216-22e3-44f1-af18-13c12da49a84',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=0XHdxB78qSbKVlaRAJQXQijJbMr6vBAjstgCveZiRHs-1763407926-1.0.1.1-IT4EP8sZVhRVuuAsAINyl7uFDiybWKNuKCJiK71aI1Xz3FLhIb701CvWbTdrN6vlFPDYgoDUCntSeq_kmX_B5rVQ1OVVCppVtLbQm08n8GY; path=/; expires=Mon, 17-Nov-25 20:02:06 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=DAQRm1inuGx1pKQYA4VxrMkTGGI8VWxv47au0fYjDoU-1763407926620-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"dbef4216-22e3-44f1-af18-13c12da49a84"}',
+  additional_data: undefined,
+  request_id: 'dbef4216-22e3-44f1-af18-13c12da49a84'
+}
+✅ Updated order ##CC5258  ✅ Updated order ##CC5256  ✅ Updated order ##CC5248  ✅ Updated order ##CC5243  ✅ Updated order ##CC5245  ✅ Updated order ##CC5247  ✅ Updated order ##CC5239  ✅ Updated order ##CC5241  ✅ Updated order ##CC5208  ✅ Updated order ##CC5236  ✅ Updated order ##CC5237  ✅ Updated order ##CC5235  
+✅ Batch complete. Processed: 700 | Updated: 127 | Skipped: 565
+
+📦 Processing batch: 701 to 800
+✅ Updated order ##CC5188  ✅ Updated order ##CC5182  ✅ Updated order ##CC5186  ✅ Updated order ##CC5183  ✅ Updated order ##CC5184  ✅ Updated order ##CC5185  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '59894bc7-1af8-4542-ac5c-720bd26f9924'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:18 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7407bcac9a8-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-TQFp71m3M4mJ8vmAM+xDPNwOxNA"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '59894bc7-1af8-4542-ac5c-720bd26f9924',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=.bi2qz11g4HIjQthyaUB9iyZcuJo.6gm6PKyJfk9WDQ-1763407938-1.0.1.1-1CEmWNHNi_9TeJdcctUx_qxtBWVwSB95BrNv.vU7zX.gA624K1tdEJKhxFlXnYUb7xApFXQvH7rLkGrj59zIEbAnRNyFtZm5DU3pRBJIk6E; path=/; expires=Mon, 17-Nov-25 20:02:18 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=qE3RqoogFaIukrxL1i2P76DDFa1d58VgBn7qMALx9Bk-1763407938827-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"59894bc7-1af8-4542-ac5c-720bd26f9924"}',
+  additional_data: undefined,
+  request_id: '59894bc7-1af8-4542-ac5c-720bd26f9924'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '6da00729-3b84-4889-9935-547dccda9ce2'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:18 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7407b15205d-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-MEG7TSvcwQL1G9afRF4xP60HpJA"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '6da00729-3b84-4889-9935-547dccda9ce2',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=O8X2HwpgNXVBK17eOxmjAcaGwaq_CsogsB7gEWBOdp8-1763407938-1.0.1.1-H57ZPsAZXlLaoOBQlzejWvVeGO0BT2.qlsOTm5ketO8XMP9NEUUVdVP_nyFZvp8geHgJsq4h6t3vFcy3LyG5wX1SGdgvg7M0aUSD5toDiLQ; path=/; expires=Mon, 17-Nov-25 20:02:18 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=ZJDzPjw1ASFSLlbjP5x7co1BdthbAdHBTd.aFKlKyBg-1763407938829-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"6da00729-3b84-4889-9935-547dccda9ce2"}',
+  additional_data: undefined,
+  request_id: '6da00729-3b84-4889-9935-547dccda9ce2'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '0496294a-b282-4d5d-8fbd-b196e3f2bdfa'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:18 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a74088accd88-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-pCcG9KxNYAL14ZYVD54eKGVIN9M"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '0496294a-b282-4d5d-8fbd-b196e3f2bdfa',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=i1.sJdG6NuyFw8JZOstPq3raQ.TgVG6Ow21k1j331Wc-1763407938-1.0.1.1-g7hVzvQrx0FtjMKCwD.ShJWuxorxTbjIqD0vqqlF3mmaM7_MEy9QkJddz6DE0U4JbWxqD8HRQniARktOELDzjdwf1a5bs5bTIgALZT0lwnM; path=/; expires=Mon, 17-Nov-25 20:02:18 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=Tgi40z1fODnx4xrKPkIlOxiTRJzJPMOp4EAGEllMSd4-1763407938856-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"0496294a-b282-4d5d-8fbd-b196e3f2bdfa"}',
+  additional_data: undefined,
+  request_id: '0496294a-b282-4d5d-8fbd-b196e3f2bdfa'
+}
+✅ Updated order ##CC5179  ✅ Updated order ##CC5175  ✅ Updated order ##CC5173  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '93afab77-65e3-452c-a4e9-13a0148ef7b2'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:19 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7429e09cd88-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-1qnW3hjUOfQP8Y89AYUa6HlTOkg"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '93afab77-65e3-452c-a4e9-13a0148ef7b2',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=1LCPlRPHNHVQ5el4.msgUky47ZBBZkyd5aOl2jUPUtQ-1763407939-1.0.1.1-FKmr8.Yb1hje7N0.TuwLNKsXpriux3MglMl1bhfFeSc4PQAsZ5zPql3il4aViJ89XOL_UtJJNVMPdiEN9zBwqfQdEB2O8rqPHsEYcgIpHxM; path=/; expires=Mon, 17-Nov-25 20:02:19 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=q245bgQf66EXMvibeTlRWuqbTxqh4Z5vQ2flhTwaaII-1763407939830-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"93afab77-65e3-452c-a4e9-13a0148ef7b2"}',
+  additional_data: undefined,
+  request_id: '93afab77-65e3-452c-a4e9-13a0148ef7b2'
+}
+✅ Updated order ##CC5176  ✅ Updated order ##CC5171  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'bc3892e0-8fb1-44d7-9990-d33e441db137'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:20 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7482d46cd88-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-qONI9mlbAHtYPofYtNMG77+2QVs"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'bc3892e0-8fb1-44d7-9990-d33e441db137',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=XEqfjo9jKrkUaY0RwMiUlS1shW_9Vxo4RDB0OipA1g4-1763407940-1.0.1.1-d6KW0kodEGwEYrAwhYqIalYrhkXG.MFx5qStkxIsj2Gkp.Byiz3MGAsNnfpGkiz8gdrYlmr9kT0bGDiW73Kuyd27LiUNG_0kDCmnJ4if02A; path=/; expires=Mon, 17-Nov-25 20:02:20 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=a5fzlCOeCiAA1Y088xCf6m0NnyXOkg58CfKmoYjSwu0-1763407940075-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"bc3892e0-8fb1-44d7-9990-d33e441db137"}',
+  additional_data: undefined,
+  request_id: 'bc3892e0-8fb1-44d7-9990-d33e441db137'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'ed4d71da-b46d-4833-8703-80f9bf1f6383'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:20 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a74a4b62cd88-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-B4Aj+uvSZv3Xcp6lcAFfr0kIBiI"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'ed4d71da-b46d-4833-8703-80f9bf1f6383',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=fdNWBcARicxUrSjjsVIsKxCdhaLK5BjnxCWlcMG1DKY-1763407940-1.0.1.1-kVLwV11zAQ70b.MQVr.4vWzdM2ZOXD1GydXypYkqz_HPdwPhA7fLrHEIe7M3DlX8GU5_Kk5jwN6G_2F9TjeZVu.X2U1QTe1sRtYHPG03Z3I; path=/; expires=Mon, 17-Nov-25 20:02:20 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=im.ZMZTFjZfnDIqIRVMEkeHylZdx1t9YkgboODqFlNY-1763407940417-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"ed4d71da-b46d-4833-8703-80f9bf1f6383"}',
+  additional_data: undefined,
+  request_id: 'ed4d71da-b46d-4833-8703-80f9bf1f6383'
+}
+✅ Updated order ##CC5169  ✅ Updated order ##CC5181  ✅ Updated order ##CC5168  ✅ Updated order ##CC5165  ✅ Updated order ##CC5152  ✅ Updated order ##CC5151  ✅ Updated order ##CC5157  ✅ Updated order ##CC5145  ✅ Updated order ##CC5154  ✅ Updated order ##CC5159  ✅ Updated order ##CC5148  ✅ Updated order ##CC5149  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '8222361d-9d53-4ede-964b-fee75f90f452'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:22 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a756dc76c94a-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-OfZzkY0UOSAfOTvid/TP52U8UDQ"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '8222361d-9d53-4ede-964b-fee75f90f452',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=47n0qzTBAxiKB59HJd_XpjimhWJgwlLeqLNVe4.woFU-1763407942-1.0.1.1-7GUyNocchqBf.YD5sBpTQT84fcPjgy0ncO9PlZcHlR.GDghvUBbpF6tAKiH0Y2s3Jd5gSYwlSRx.lRuPNkoaG4_PEzH4zICWtJWw2CjcN0c; path=/; expires=Mon, 17-Nov-25 20:02:22 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=BD6R8OUONg.kd2TNaVy0PyA5FXTKdzZ1bqw5UWd8Cv8-1763407942422-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"8222361d-9d53-4ede-964b-fee75f90f452"}',
+  additional_data: undefined,
+  request_id: '8222361d-9d53-4ede-964b-fee75f90f452'
+}
+✅ Updated order ##CC5147  ✅ Updated order ##CC5150  ✅ Updated order ##CC5141  ✅ Updated order ##CC5140  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '7b4f3afb-07f2-48c1-bef5-14ea1ab12e89'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:23 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a75afa86cd88-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-oZGL9MemdDZKPIaPL+rnyGJhDaY"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '7b4f3afb-07f2-48c1-bef5-14ea1ab12e89',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=0YnpRe7FHBvPt6hDDnpluBLE6Xr50Mhe61ytw5YL.P0-1763407943-1.0.1.1-PV2P_IW0srR0CJ_BhYoJgRDtXlgqg6Cg283quKYv4rfT_4JfohiJK8_6B78cB_Z.51r_5B1I3WEU0k.uO6DWvMN9m96bvOYW8qTDilaR9r0; path=/; expires=Mon, 17-Nov-25 20:02:23 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=HHROii3palqbByCJOU5OwbAGq9JrIjM6L6TvD9aAQIQ-1763407943065-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"7b4f3afb-07f2-48c1-bef5-14ea1ab12e89"}',
+  additional_data: undefined,
+  request_id: '7b4f3afb-07f2-48c1-bef5-14ea1ab12e89'
+}
+✅ Updated order ##CC5142  ✅ Updated order ##CC5133  ✅ Updated order ##CC5138  ✅ Updated order ##CC5136  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'b8ecbee9-1457-4938-834e-7424a3398641'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:24 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a75f2a64c9a8-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-t/EEYRRWgs5aVBzA/uoChRlKkHQ"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'b8ecbee9-1457-4938-834e-7424a3398641',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=JidgclDl5RUTopPboYvjmYgumU3lJTCGGJtP1qndiNk-1763407944-1.0.1.1-t3q4QQfzgZXbKRoru3Y7j0kG8GOu1W1_QiLQx2ifYlaBB2xJum8zdgPgrheF3FU4R9FZGcxlkufnI2Cfb2PtyrSAKDnulwKQed6VdIWWzpw; path=/; expires=Mon, 17-Nov-25 20:02:24 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=K_sNuTO3rP7TcmkC8x.Xd4as1nL2t.YvkgtPL2jHOUw-1763407944390-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"b8ecbee9-1457-4938-834e-7424a3398641"}',
+  additional_data: undefined,
+  request_id: 'b8ecbee9-1457-4938-834e-7424a3398641'
+}
+✅ Updated order ##CC5143  ✅ Updated order ##CC5131  ✅ Updated order ##CC5128  ✅ Updated order ##CC5130  ✅ Updated order ##CC5126  ✅ Updated order ##CC5125  ✅ Updated order ##CC5137  ✅ Updated order ##CC5124  ✅ Updated order ##CC5119  ✅ Updated order ##CC5122  ✅ Updated order ##CC5123  ✅ Updated order ##CC5118  ✅ Updated order ##CC5115  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'de8ea8a7-9119-4f9a-b4dc-2ce9a3ef3497'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:27 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a774afb23019-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-Oe4KBd4wjbOEC9fKfInAIbYX2ko"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'de8ea8a7-9119-4f9a-b4dc-2ce9a3ef3497',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=3HwsXJr26NPCqz622Ik_.uUDV3ppd2no2RNbyMz91fE-1763407947-1.0.1.1-1ud3jlI15nq5AZ4Uzd2xQABPx9lFVnvo4jtbStJTWkzjVP_Ui8UkaypanmPlK_siI6IG7jKwWmv15Fo0g2Yc.vuoMlgseRQ4L4xH7PE7PVU; path=/; expires=Mon, 17-Nov-25 20:02:27 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=ESKzQxfqNnZm2.aElhWM.b8SoQ5x_OWvDZRwIpNq4Fk-1763407947286-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"de8ea8a7-9119-4f9a-b4dc-2ce9a3ef3497"}',
+  additional_data: undefined,
+  request_id: 'de8ea8a7-9119-4f9a-b4dc-2ce9a3ef3497'
+}
+✅ Updated order ##CC5116  ✅ Updated order ##CC5129  ✅ Updated order ##CC5117  ✅ Updated order ##CC5108  ✅ Updated order ##CC5106  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '0ff0de39-2cec-4c69-941c-000fe61410c6'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:28 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a77af9ddc94a-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-Gp/9k+gokNg3mKs9HGEgOrd9/cQ"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '0ff0de39-2cec-4c69-941c-000fe61410c6',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=u1_CIGFybL72bFbSTQPfwFOd5OUQSPqzyxstLHgwj70-1763407948-1.0.1.1-QazQofiObb6uHd9a49gzn8kW3.XUNwO_vxs2m7uDG53Y818t8Ne1aa5JEyH8Jfn3p3K9YH7GdZ_Gk7VAqo0oai5lmMH8V2qttktsRfpNQNc; path=/; expires=Mon, 17-Nov-25 20:02:28 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=UZoiuYsjSloRZmFRQB4e2uX3QAh3ktUuzaZejV9_4n8-1763407948202-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"0ff0de39-2cec-4c69-941c-000fe61410c6"}',
+  additional_data: undefined,
+  request_id: '0ff0de39-2cec-4c69-941c-000fe61410c6'
+}
+✅ Updated order ##CC5101  ✅ Updated order ##CC5109  ✅ Updated order ##CC5102  ✅ Updated order ##CC5096  ✅ Updated order ##CC5099  ✅ Updated order ##CC5097  ✅ Updated order ##CC5098  ✅ Updated order ##CC5114  
+✅ Batch complete. Processed: 800 | Updated: 184 | Skipped: 597
+
+📦 Processing batch: 801 to 900
+✅ Updated order ##CC5095  ✅ Updated order ##CC5089  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '15daba15-3bc3-4e56-a9e5-44f79ab9a208'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:36 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7b0ca0fd644-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-mx9NlnaAe+w9DhbckZSgaKtWWSg"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '15daba15-3bc3-4e56-a9e5-44f79ab9a208',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=R5khkw40bKXyJxRsQxeucUphCPNpXYiSd0NX3zzRHl0-1763407956-1.0.1.1-tpxvBzOON2RqVKr0Xw40RObBRc8ESFnjO8oLzjVzR.r.jBgjomeUA5F41QS_3Q4eqFsblDEFslkO7L6bgYz10yNsXvAkbNWQC4RlHbjrRg4; path=/; expires=Mon, 17-Nov-25 20:02:36 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=KDw_NVpr1aVb6FWtsgU0ExV9_w_Pdmxpikyd3s1jbew-1763407956835-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"15daba15-3bc3-4e56-a9e5-44f79ab9a208"}',
+  additional_data: undefined,
+  request_id: '15daba15-3bc3-4e56-a9e5-44f79ab9a208'
+}
+✅ Updated order ##CC5087  ✅ Updated order ##CC5088  ✅ Updated order ##CC5091  ✅ Updated order ##CC5083  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '7197e8e8-ce28-4c02-a75a-7a354ad7dff3'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:37 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7b49bef3019-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-z1+3xF4P/IW3wk2EUPFwLmGKikg"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '7197e8e8-ce28-4c02-a75a-7a354ad7dff3',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=tZf1.fhA4FvhCnpqwa4teVk_pFwRCMA7XKKDPokww5o-1763407957-1.0.1.1-rZk98VHLgSw0kRUJblA9CWZNPJy6HUljDMJderHiDkU0qWamv6ibtv8P2aZs1N42qg1W8LyFi_0nwC5oqzEz7Y2wYTk2fmMLAoA0WgducJg; path=/; expires=Mon, 17-Nov-25 20:02:37 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=y1NU.Ky_i0PAlg5yZbXCXiTD30KgQd7idZSfsLf3URw-1763407957404-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"7197e8e8-ce28-4c02-a75a-7a354ad7dff3"}',
+  additional_data: undefined,
+  request_id: '7197e8e8-ce28-4c02-a75a-7a354ad7dff3'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '39b46305-40b4-485c-8614-11a3f3d7858d'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:37 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7b29ed6d644-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-GZeRsiJFcQpix19LaTwjUMpeHIA"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '39b46305-40b4-485c-8614-11a3f3d7858d',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=VQKXxTdYc204iw1NpgTm0cHZaq2o26I5IHFLZ54PTNU-1763407957-1.0.1.1-jFuw68eQf_bJ9rwqIAwsT7eZjbSms4_pECAVJtEnnF4XxK6vfvpCmTbGkTA83EuOc9291GKlIj_SSe0x5JUlIWgE99f6Ji.t_Iamlwpyt6E; path=/; expires=Mon, 17-Nov-25 20:02:37 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=OFKSY4butBcWx7KdPObFKDARl_LIqntDquFQ6EqJgns-1763407957779-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"39b46305-40b4-485c-8614-11a3f3d7858d"}',
+  additional_data: undefined,
+  request_id: '39b46305-40b4-485c-8614-11a3f3d7858d'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '05d65ab5-4841-417c-9177-63048b3fc185'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:37 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7b6caf03019-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-ulo89IHMd97c+fT0b+2vUzGmC/M"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '05d65ab5-4841-417c-9177-63048b3fc185',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=zWW4sdXvgjQdxsLKb5JP1M_pNTLgQyw37h9PdtUtqzY-1763407957-1.0.1.1-8AZaT9X4WuAG8jpOK_IzJR8x1olP6H5MAU7zjwJAs_dZUNyglWKffyMWVqfPjjwJZKRoijr6UP37gHxiSys5YS_4_94D4lcFcTc7Wkaxzgo; path=/; expires=Mon, 17-Nov-25 20:02:37 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=yQ.6xgzV3iJRrSCxEdP50Y4rCjJKroyDWXRTI1X7dt8-1763407957805-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"05d65ab5-4841-417c-9177-63048b3fc185"}',
+  additional_data: undefined,
+  request_id: '05d65ab5-4841-417c-9177-63048b3fc185'
+}
+✅ Updated order ##CC5080  ✅ Updated order ##CC5082  ✅ Updated order ##CC5084  ✅ Updated order ##CC5078  ✅ Updated order ##CC5077  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '0e1c5b5d-26b9-4625-b165-aac8a4beab49'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:38 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7baeef4205d-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-ClEY4aNOEEcErATEBmK8aQwtxpM"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '0e1c5b5d-26b9-4625-b165-aac8a4beab49',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=WhDB4esPJTa9C_ZM6yyMTVfXPJ2Nkhftvf.F_1Mnf00-1763407958-1.0.1.1-OrcJlL5BKgKQeZb00AAS30WWBvQkLG8n54AtQjHmWf.oiyapUH_Q3MiBWthEd3hvhiJmfOJwBrUaRRs22OmlN155vbpqNH15aEhRKun48Lc; path=/; expires=Mon, 17-Nov-25 20:02:38 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=NWS97fOZdqsbAy83ErGSK7z9evkCD5cXpHpQrZMjHn4-1763407958438-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"0e1c5b5d-26b9-4625-b165-aac8a4beab49"}',
+  additional_data: undefined,
+  request_id: '0e1c5b5d-26b9-4625-b165-aac8a4beab49'
+}
+✅ Updated order ##CC5071  ✅ Updated order ##CC5069  ✅ Updated order ##CC5075  ✅ Updated order ##CC5073  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'c8ca1b35-4b8c-413c-a2ea-ab75326c3d6e'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:39 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7c139640583-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-ns0JZLT1sEYjzMQ26WfSEjoyQXA"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'c8ca1b35-4b8c-413c-a2ea-ab75326c3d6e',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=pPr4UXc.UK.KGTlu70pzr1u3IuM7mQ1x2.2W3KzpWaY-1763407959-1.0.1.1-mseY9q8q_1NAczeRvUrMa.IfSrmFKloiQONoc_oHSMzbIlgqDX8IDWg9LDgZOnorAXF8VlZhk43imQlfYngjsoL9UlADFc9qrplKcz6ceCc; path=/; expires=Mon, 17-Nov-25 20:02:39 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=pK29UMjji_75PFII.hVcAVyMEm3qVHQYyhY18MmVw1A-1763407959453-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"c8ca1b35-4b8c-413c-a2ea-ab75326c3d6e"}',
+  additional_data: undefined,
+  request_id: 'c8ca1b35-4b8c-413c-a2ea-ab75326c3d6e'
+}
+✅ Updated order ##CC5058  ✅ Updated order ##CC5067  ✅ Updated order ##CC5055  ✅ Updated order ##CC5059  ✅ Updated order ##CC5049  ✅ Updated order ##CC5053  ✅ Updated order ##CC5050  ✅ Updated order ##CC5051  ✅ Updated order ##CC5045  ✅ Updated order ##CC5043  ✅ Updated order ##CC5044  ✅ Updated order ##CC5052  ✅ Updated order ##CC5048  ✅ Updated order ##CC5047  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'e4c8c7fd-3c42-45bf-aa40-84a90becd1a3'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:42 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7d40f91d644-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-OSKsrrT05/eI8VLYY+Whp/61/3c"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'e4c8c7fd-3c42-45bf-aa40-84a90becd1a3',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=4gcY6XyVdCaejNNMosWCg.Uq5eIxHg0t0TaIEkIZ1.Q-1763407962-1.0.1.1-7JaPOEQvnJTiWBv0qxLuyv5tr6zb5ykKw9vvEx25G64DFODSfDy2ClnozGdWTdifH4WWHMzwsRsEG3lR7UOw9BnHvODsQOG0chLQmmX.aSQ; path=/; expires=Mon, 17-Nov-25 20:02:42 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=aJLHrjHJqxIViJrqGSEVLnzm6kgibjeTB0ZQjOInmHc-1763407962496-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"e4c8c7fd-3c42-45bf-aa40-84a90becd1a3"}',
+  additional_data: undefined,
+  request_id: 'e4c8c7fd-3c42-45bf-aa40-84a90becd1a3'
+}
+✅ Updated order ##CC5037  ✅ Updated order ##CC5036  ✅ Updated order ##CC5030  ✅ Updated order ##CC5079  ✅ Updated order ##CC5039  ✅ Updated order ##CC5033  ✅ Updated order ##CC5032  ✅ Updated order ##CC5034  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '73eac522-eb83-409e-93ff-3c4880d64101'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:43 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7d40b3d3019-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-xmJDVj75+phlgXAuitbcCbe5Fac"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '73eac522-eb83-409e-93ff-3c4880d64101',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=oaJTr4HGEg30r6HHOsaNdVT9Fic08rkWYa_.VU6B1Nk-1763407963-1.0.1.1-nI8axphv6DxzLQg6uJI1VB.juIeoBVS0l.6HxFn38t4EKviSCnmjOhIFlSKE4HQC49O1ADefWZqe8M.YGbe.jrzvdHq2UO4OpuHgNt3DWKE; path=/; expires=Mon, 17-Nov-25 20:02:43 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=02lrdZzG6xXa1k2tcqwNaNo9oBki27P1V3KNDK1XxTw-1763407963992-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"73eac522-eb83-409e-93ff-3c4880d64101"}',
+  additional_data: undefined,
+  request_id: '73eac522-eb83-409e-93ff-3c4880d64101'
+}
+✅ Updated order ##CC5026  ✅ Updated order ##CC5028  ✅ Updated order ##CC5022  ✅ Updated order ##CC5024  ✅ Updated order ##CC5025  ✅ Updated order ##CC5023  ✅ Updated order ##CC5021  ✅ Updated order ##CC5018  ✅ Updated order ##CC5017  ✅ Updated order ##CC5014  ✅ Updated order ##CC5015  ✅ Updated order ##CC5016  ✅ Updated order ##CC5019  ✅ Updated order ##CC5010  ✅ Updated order ##CC5013  ✅ Updated order ##CC5012  ✅ Updated order ##CC5009  ✅ Updated order ##CC5006  ✅ Updated order ##CC5007  ✅ Updated order ##CC5004  ✅ Updated order ##CC4996  ✅ Updated order ##CC4997  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '044bf759-1e18-4ecc-9abb-5bd6adfe3181'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:48 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a7ef2c630583-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-V5qTjLRo0jQds1D+oG++UZxaNrQ"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '044bf759-1e18-4ecc-9abb-5bd6adfe3181',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=cHC7fOyzDflepXK9TKfADOF1topwRAW0AfpNIwOktGw-1763407968-1.0.1.1-uL2ae9GweVlcTp6.ob.hdrVvsEByPNiCGTWPdmilwmEP2RRtebxcUdZzuNt4w74isQdxYw.7Dsj7Fgc_9RKrA6zIAAW3u826xCAzA_gYBto; path=/; expires=Mon, 17-Nov-25 20:02:48 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=ID.zhUVSCGFmaSRLUvP7dh96djVK.M0R5tej3xzGEAQ-1763407968814-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"044bf759-1e18-4ecc-9abb-5bd6adfe3181"}',
+  additional_data: undefined,
+  request_id: '044bf759-1e18-4ecc-9abb-5bd6adfe3181'
+}
+✅ Updated order ##CC5003  ✅ Updated order ##CC5008  
+✅ Batch complete. Processed: 900 | Updated: 245 | Skipped: 627
+
+📦 Processing batch: 901 to 1000
+✅ Updated order ##CC4995  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '9a9a2185-eb48-4e04-a6d5-9a6ac419ef23'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:57 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a83368a9f286-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-QUNKxMaHf+tJOy0vlYvJwqGSxiA"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '9a9a2185-eb48-4e04-a6d5-9a6ac419ef23',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=mYHOzvfoZygqAEXzofdsYLYUsVIWGyu3Hseps4s3faE-1763407977-1.0.1.1-5P_JFZarb2BGhZFi.tIaZJsT6lN_9g4J_JsDuSGZ6G2YjDtQoG0ZWcXuQyRP1k.dPg9.VTOcNyHO9R56bPEC7l8GpNOyhbs1vccW0_nm8XA; path=/; expires=Mon, 17-Nov-25 20:02:57 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=dPSQvgD89mKxitXzo4XTMx8vridyN6jSPFxYxzd26YY-1763407977733-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"9a9a2185-eb48-4e04-a6d5-9a6ac419ef23"}',
+  additional_data: undefined,
+  request_id: '9a9a2185-eb48-4e04-a6d5-9a6ac419ef23'
+}
+✅ Updated order ##CC4984  ✅ Updated order ##CC4985  ✅ Updated order ##CC4987  ✅ Updated order ##CC4982  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'e88690ed-ecf7-4e35-9cbb-74605c21ae2f'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:32:58 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8353f00f286-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-T55NHMPATdrUKtfhZ28PFpryN/M"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'e88690ed-ecf7-4e35-9cbb-74605c21ae2f',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=7l5fe0AguZSZvo6a4G7NHF7gb1z1KYb01WdFVDm2il0-1763407978-1.0.1.1-uaAPunIDqXlfH.5kc9JJgkahGwwk2akgqSlQ12SkDxVq1Zm5ecpSpO2HnU0vkv6tfKFl47OCZAvZ2mMdGXZXwHecVyMahzVRKSF2hMkFVaU; path=/; expires=Mon, 17-Nov-25 20:02:58 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=V5lu9X1fzXxaog7BRya423GTe._pVigabUkWuzxdgWE-1763407978906-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"e88690ed-ecf7-4e35-9cbb-74605c21ae2f"}',
+  additional_data: undefined,
+  request_id: 'e88690ed-ecf7-4e35-9cbb-74605c21ae2f'
+}
+✅ Updated order ##CC4981  ✅ Updated order ##CC4980  ✅ Updated order ##CC4975  ✅ Updated order ##CC4978  ✅ Updated order ##CC4977  ✅ Updated order ##CC4976  ✅ Updated order ##CC4983  ✅ Updated order ##CC4973  ✅ Updated order ##CC4974  ✅ Updated order ##CC4969  ✅ Updated order ##CC4972  ✅ Updated order ##CC4970  ✅ Updated order ##CC4968  ✅ Updated order ##CC4967  ✅ Updated order ##CC4961  ✅ Updated order ##CC4954  ✅ Updated order ##CC4965  ✅ Updated order ##CC4966  ✅ Updated order ##CC4958  ✅ Updated order ##CC4962  ✅ Updated order ##CC4964  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '53050150-6086-4e84-a76e-2cc35d57638a'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:02 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a851eac3f286-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-i/7RdGxs4fjs+uurK5yNkNY8evM"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '53050150-6086-4e84-a76e-2cc35d57638a',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=_Od9ZPVh48pVcebm6EJ.BkNu5IzvOal6DMYlmdZGjB4-1763407982-1.0.1.1-AcOpvI_ThBtxGZ.voRiIIXSHfFTH1jKOvD4n.dwqmUeEbxHIhJXTwnLZBHXE8TpnLn6n3hfLY9UwuqZuJypwK6CH8ExiwdIQbW9UPoOoTZo; path=/; expires=Mon, 17-Nov-25 20:03:02 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=CvphY8_kD521TPSaA_FDMcIYuBsB1Slz0tSyXYcy_lY-1763407982641-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"53050150-6086-4e84-a76e-2cc35d57638a"}',
+  additional_data: undefined,
+  request_id: '53050150-6086-4e84-a76e-2cc35d57638a'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'e5d64e29-6a96-4843-88f2-c83065d3cfc2'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:02 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8540fc5d63c-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-TuIa+RlUWTeJ8n/TkHlhf+m8xwc"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'e5d64e29-6a96-4843-88f2-c83065d3cfc2',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=1d.fxfsU5qDWtEO1Mnpxzb0wQUq09nMWkM.mrcGAinI-1763407982-1.0.1.1-DHwtV5TjxWXn3QNRCzkQZu8yT93eHwwnv7JBNjQF5gz_Rc5FfGzsGPKBgyV51fbTtU85gY9Bcq0sYh5cHAoWKJgrQgInGWZsEOsq3SeMUpw; path=/; expires=Mon, 17-Nov-25 20:03:02 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=6HtUPtjXqDWMeUZaDhAUHeYnZkl_ek41d2IVOpBxAEM-1763407982953-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"e5d64e29-6a96-4843-88f2-c83065d3cfc2"}',
+  additional_data: undefined,
+  request_id: 'e5d64e29-6a96-4843-88f2-c83065d3cfc2'
+}
+✅ Updated order ##CC4953  ✅ Updated order ##CC4946  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '190a4ef9-21f6-41a8-bda9-384c23afc876'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:03 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8562a05f286-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-dcaWrLOvGH81gHlVYv6IqpZjmBM"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '190a4ef9-21f6-41a8-bda9-384c23afc876',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=I781CKMGhcDlSy_VMb32ikzb7VaXfVOgj.9TpMfX2us-1763407983-1.0.1.1-5cVFwhf60JjDvNOuAdrgNPqjm.96UMHobEzHFby377eyfK6XyDTHiqIGxOt0ZZNsGst9xklYxRiQYhdxB4dHLKeApiSFuc78L140vADVGKc; path=/; expires=Mon, 17-Nov-25 20:03:03 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=xpHV_WpXoqMfDn8JIOgiy2C__LJJju.DXGcLEsi4o3Y-1763407983288-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"190a4ef9-21f6-41a8-bda9-384c23afc876"}',
+  additional_data: undefined,
+  request_id: '190a4ef9-21f6-41a8-bda9-384c23afc876'
+}
+✅ Updated order ##CC4951  ✅ Updated order ##CC4945  ✅ Updated order ##CC4948  ✅ Updated order ##CC4943  ✅ Updated order ##CC4942  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '1514f1b5-f33c-4073-95c9-32389ba1610d'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:03 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8540c918293-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-4BaTTzfcXrd9gfEkw1UVjV/Rzp0"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '1514f1b5-f33c-4073-95c9-32389ba1610d',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=ujoBo8jm0ve.Ymti5xguKtGyUTyDHV5KfMxrrLdsHPM-1763407983-1.0.1.1-NHtrqW9bPilQyYMXXVArMRzYgoKsVj82DoxK_ZXJeSAeF_zqt8nm4kOHO2VjCrMVE3T8JN7Xmaby4B8BK2hTzNsc8GsmE.fVAgsSeUxuuZk; path=/; expires=Mon, 17-Nov-25 20:03:03 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=22JQ1pmRuDnX8ILEHVwn5_wFULRLHLywEDvajj_oIB8-1763407983970-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"1514f1b5-f33c-4073-95c9-32389ba1610d"}',
+  additional_data: undefined,
+  request_id: '1514f1b5-f33c-4073-95c9-32389ba1610d'
+}
+✅ Updated order ##CC4944  ✅ Updated order ##CC4937  ✅ Updated order ##CC4936  ✅ Updated order ##CC4940  ✅ Updated order ##CC4939  ✅ Updated order ##CC4934  ✅ Updated order ##CC4941  ✅ Updated order ##CC4938  ✅ Updated order ##CC4935  ✅ Updated order ##CC4931  ✅ Updated order ##CC4932  ✅ Updated order ##CC4926  ✅ Updated order ##CC4933  ✅ Updated order ##CC4928  ✅ Updated order ##CC4927  ✅ Updated order ##CC4930  ✅ Updated order ##CC4929  ✅ Updated order ##CC4923  ✅ Updated order ##CC4921  ✅ Updated order ##CC4919  ✅ Updated order ##CC4925  ✅ Updated order ##CC4924  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '421bf6de-d084-410b-b727-2b184473286a'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:07 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a86f3d73d63c-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-0mHrj4ZN5Oj+yboLMsPmketrNvc"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '421bf6de-d084-410b-b727-2b184473286a',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=d0U4q1ahEx97C_DWQYKo001Q4spOqbjPAO8.VghpNeE-1763407987-1.0.1.1-KUCLpajxozrGb8QclJA.q.130XCxpWixuuBtB74H8m2cELkpsYVdbqEzYQzStEmzfzNW1AHSh5KGVjXEKwpgIcvTEJE3vn294wRZEJiMQp0; path=/; expires=Mon, 17-Nov-25 20:03:07 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=.ZjUD.P5F4g0.JSGzN0IHkNO1VLCwtt9gs24d0LeUg0-1763407987278-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"421bf6de-d084-410b-b727-2b184473286a"}',
+  additional_data: undefined,
+  request_id: '421bf6de-d084-410b-b727-2b184473286a'
+}
+✅ Updated order ##CC4917  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '4acd514e-07b2-4467-b992-9ec0cd0a0233'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:07 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a86d2fc782a5-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-zcZWeatgDGVsVicCSnBYh273ioE"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '4acd514e-07b2-4467-b992-9ec0cd0a0233',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=NFp3RcWIf2YOmMb1gGXovifEgB_55T.RJ4u.RAk_cqU-1763407987-1.0.1.1-aVaq2xi55sWtqwSmFFEeAzXwVq7R.BdC9PNNANOVCLP4FAP2ZD7RbBfK9nUgcmqKrPVk2tRwnTjjso__.VnJEZBFFRlnyHdpJiZzWe7EQQg; path=/; expires=Mon, 17-Nov-25 20:03:07 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=B1GVTa3yxyQOXVVWqBPrqudYB46OlolVLPRLHBCXIg0-1763407987550-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"4acd514e-07b2-4467-b992-9ec0cd0a0233"}',
+  additional_data: undefined,
+  request_id: '4acd514e-07b2-4467-b992-9ec0cd0a0233'
+}
+✅ Updated order ##CC4915  ✅ Updated order ##CC4916  ✅ Updated order ##CC4913  ✅ Updated order ##CC4911  ✅ Updated order ##CC4903  ✅ Updated order ##CC4902  ✅ Updated order ##CC4905  ✅ Updated order ##CC4906  ✅ Updated order ##CC4907  ✅ Updated order ##CC4899  ✅ Updated order ##CC4910  ✅ Updated order ##CC4912  ✅ Updated order ##CC4898  ✅ Updated order ##CC4897  ✅ Updated order ##CC4901  ✅ Updated order ##CC4896  ✅ Updated order ##CC4908  ✅ Updated order ##CC4900  
+✅ Batch complete. Processed: 1000 | Updated: 319 | Skipped: 645
+
+📦 Processing batch: 1001 to 1100
+✅ Updated order ##CC4895  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'b0276863-761d-45b8-b514-2a5a62a1d04a'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:17 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8aeaefce5f1-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-jxOCOZZqLuhBHxT7rs9qDlN16Vw"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'b0276863-761d-45b8-b514-2a5a62a1d04a',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=5_xlkg34tFppEnr1N5iw8ERuhmg4af9luXwiuW5Klag-1763407997-1.0.1.1-bI9sFQ53VJStzFniauvhqucMmwi52zpFaiUNAhGsEMqx3VYcoLkcDk7JWPcRwbYamRYq3JJS.X1pnGe74MVdIfa5WncMqKbhCXPUqW.HTE0; path=/; expires=Mon, 17-Nov-25 20:03:17 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=plXEdrZc1Hko0xx0GwVpOpNxfmTnE2oK_bTIMwYnUdc-1763407997545-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"b0276863-761d-45b8-b514-2a5a62a1d04a"}',
+  additional_data: undefined,
+  request_id: 'b0276863-761d-45b8-b514-2a5a62a1d04a'
+}
+✅ Updated order ##CC4883  ✅ Updated order ##CC4885  ✅ Updated order ##CC4891  ✅ Updated order ##CC4889  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '7bc9327c-7642-4d11-bbba-e992f87beef3'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:18 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8b2fa018293-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-/w6g+XU35uQ09rrjTZl3bQEaRT8"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '7bc9327c-7642-4d11-bbba-e992f87beef3',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=kXbqvjwUuBvQiRhQXSftgQUghwqwuyINgV2e56UvYIw-1763407998-1.0.1.1-IJ3aJVfJ3W2j_FC6sKZRsvYUKTQe_R7EAft6jj0cDFTBbZv4tFaZ1tq__5BPjcWEZwluRcb7Qt7KjtHvCS9UwacS3Q1JE4nbCcTFHY3nqa8; path=/; expires=Mon, 17-Nov-25 20:03:18 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=eXpfNpRSX60fS7RfntsXwg1HwE10jPWF.KmWYGdt6XU-1763407998449-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"7bc9327c-7642-4d11-bbba-e992f87beef3"}',
+  additional_data: undefined,
+  request_id: '7bc9327c-7642-4d11-bbba-e992f87beef3'
+}
+✅ Updated order ##CC4878  ✅ Updated order ##CC4882  ✅ Updated order ##CC4875  ✅ Updated order ##CC4877  ✅ Updated order ##CC4872  ✅ Updated order ##CC4876  ✅ Updated order ##CC4871  ✅ Updated order ##CC4873  ✅ Updated order ##CC4880  ✅ Updated order ##CC4869  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'cbc7634b-89be-4418-a365-ee1837d5afbc'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:20 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8c1a81ae5f1-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-Iz2oz+DEHzoY6eKxdrCl//eM080"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'cbc7634b-89be-4418-a365-ee1837d5afbc',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=VqkSa18yktBaNOL3M5wTRKj5aJsTmhRn2DT410Nl78g-1763408000-1.0.1.1-bPE0WLxsXRrwhgONi8ri3GVuFgSRQekHwpG6A8VxZKg_bNm9av4uf9mMEf9KFSarCvPzU3S.8Erur2mREq0xFYtExNW8CAW7e79OwQKQ2GU; path=/; expires=Mon, 17-Nov-25 20:03:20 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=IWnicsE0lFVX291HpMjmgzBkQxjQu0tGLim7MHu3arE-1763408000542-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"cbc7634b-89be-4418-a365-ee1837d5afbc"}',
+  additional_data: undefined,
+  request_id: 'cbc7634b-89be-4418-a365-ee1837d5afbc'
+}
+@notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '2bcb3343-1c70-4cf9-a637-62c5176426b7'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:20 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8c3b8afdd0c-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-XRTPiJ77Edtuq2VA4Z0uw2+55pM"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '2bcb3343-1c70-4cf9-a637-62c5176426b7',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=y6Q5RM5BNk2T04sYmjvqdE2SKew57Ag_6uEBcQbmEA4-1763408000-1.0.1.1-4NUn8evzUmNmWqw2VT2CK6BK5Mm7iiRKeXvetp1B6JqqT83z6XsuwOKTIp7jqKz0cupCdU2wOOrmcPF6CneqHM.YPDyANdyfiMHRahA00Us; path=/; expires=Mon, 17-Nov-25 20:03:20 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=53xNTcXAK8LyKS5RKaKe9qJrJeuH.P9I1pDvL0vGXEs-1763408000875-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"2bcb3343-1c70-4cf9-a637-62c5176426b7"}',
+  additional_data: undefined,
+  request_id: '2bcb3343-1c70-4cf9-a637-62c5176426b7'
+}
+✅ Updated order ##CC4868  ✅ Updated order ##CC4870  ✅ Updated order ##CC4866  ✅ Updated order ##CC4864  ✅ Updated order ##CC4862  ✅ Updated order ##CC4865  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '34345f4b-ad51-4d33-85bf-0d05b22bbfe3'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:21 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8c9fcdf3389-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-h/IuHPOzwcSP2nlJt5OUqcwRkR4"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '34345f4b-ad51-4d33-85bf-0d05b22bbfe3',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=JPiae8cWEOEFAeb3VKqASeG11VhSCtQ6qzTj5_i.p_A-1763408001-1.0.1.1-STb3ZRUzxKkgetHQCqkxzZczCFIXpx.PKf.04bhNT7EZTQTob3KwvvT8ZDfhKaWLPMerl3ig4VrJtDKZJ0UUAJBT7hNrlQr5a.x4dJqlO5k; path=/; expires=Mon, 17-Nov-25 20:03:21 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=GCqRtW1OHEJcdLC7KPt7gMjg3szVBjIdPEksHcN_Q_A-1763408001847-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"34345f4b-ad51-4d33-85bf-0d05b22bbfe3"}',
+  additional_data: undefined,
+  request_id: '34345f4b-ad51-4d33-85bf-0d05b22bbfe3'
+}
+✅ Updated order ##CC4861  ✅ Updated order ##CC4860  ✅ Updated order ##CC4858  ✅ Updated order ##CC4879  ✅ Updated order ##CC4852  ✅ Updated order ##CC4859  ✅ Updated order ##CC4850  ✅ Updated order ##CC4853  ✅ Updated order ##CC4855  ✅ Updated order ##CC4848  ✅ Updated order ##CC4845  ✅ Updated order ##CC4849  ✅ Updated order ##CC4847  ✅ Updated order ##CC4851  ✅ Updated order ##CC4842  ✅ Updated order ##CC4844  ✅ Updated order ##CC4843  ✅ Updated order ##CC4839  ✅ Updated order ##CC4836  ✅ Updated order ##CC4846  ✅ Updated order ##CC4835  ✅ Updated order ##CC4832  ✅ Updated order ##CC4837  ✅ Updated order ##CC4838  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: 'cc86071e-54d9-41b1-bd84-cc4a8aad8bb1'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:27 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8ed9e53dd0c-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-yVJotdjv+8KRAreV9L70FdySYac"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': 'cc86071e-54d9-41b1-bd84-cc4a8aad8bb1',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=caryKwmmMMHzins41IUwot1tTcs2Vj12hj4eW_lNB2A-1763408007-1.0.1.1-N2c88PgRo39PJbQVfKpp4tdJizrau0fFe_d12Udumil4UgAoRniWfKXtRKtMFGi1zcfKY107wZotnW4fW.kdOcHYKBLm5fPDI8ykbRajD2g; path=/; expires=Mon, 17-Nov-25 20:03:27 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=QNkHoErjPF2do7E3ro9oDOm_TkPh0ECqwzyEU9emiaY-1763408007610-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"cc86071e-54d9-41b1-bd84-cc4a8aad8bb1"}',
+  additional_data: undefined,
+  request_id: 'cc86071e-54d9-41b1-bd84-cc4a8aad8bb1'
+}
+✅ Updated order ##CC4833  @notionhq/client warn: request fail {
+  code: 'conflict_error',
+  message: 'Conflict occurred while saving. Please try again.',
+  requestId: '36ffa676-d84d-4c83-9f2d-ccf7366d9cf3'
+}
+
+❌ Error processing order: APIResponseError: Conflict occurred while saving. Please try again.
+    at buildRequestError (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/errors.ts:252:12)
+    at Client.request (/Users/aaldere1/shopify-data-extractor/node_modules/@notionhq/client/src/Client.ts:274:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fn (/Users/aaldere1/shopify-data-extractor/scripts/backfill-existing-orders.ts:205:5) {
+  code: 'conflict_error',
+  status: 409,
+  headers: Headers {
+    date: 'Mon, 17 Nov 2025 19:33:28 GMT',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '169',
+    connection: 'keep-alive',
+    server: 'cloudflare',
+    'cf-ray': '9a01a8f1ba17dd0c-IAD',
+    'cf-cache-status': 'DYNAMIC',
+    etag: 'W/"a9-g2KtBbBcrpalwSxVhIBr28VyYXs"',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    vary: 'Accept-Encoding',
+    'content-security-policy': "default-src 'none'",
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'x-content-type-options': 'nosniff',
+    'x-dns-prefetch-control': 'off',
+    'x-download-options': 'noopen',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-notion-request-id': '36ffa676-d84d-4c83-9f2d-ccf7366d9cf3',
+    'x-permitted-cross-domain-policies': 'none',
+    'x-xss-protection': '0',
+    'set-cookie': '__cf_bm=dOTcxqDSmcAcuLMF.SjoqTB1bbibUfCPOCHFyGzs3vo-1763408008-1.0.1.1-C8Yj3A3cQpCJy5qLqNBEMiA64BvAcyR9f5Yd5lgZZDEbXvMw7F2Gr.nzLfwQlMp_yQENkmXjs1PfViP2QxcMmUTL.3Z5GXp55WAYB0WsQw8; path=/; expires=Mon, 17-Nov-25 20:03:28 GMT; domain=.notion.com; HttpOnly; Secure; SameSite=None, _cfuvid=pi7ZF4oUvpOZ8DjHYDRGoDiTh5LiisLJHnkPwqYmrz8-1763408008217-0.0.1.1-604800000; path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  body: '{"object":"error","status":409,"code":"conflict_error","message":"Conflict occurred while saving. Please try again.","request_id":"36ffa676-d84d-4c83-9f2d-ccf7366d9cf3"}',
+  additional_data: undefined,
+  request_id: '36ffa676-d84d-4c83-9f2d-ccf7366d9cf3'
+}
+✅ Updated order ##CC4826  ✅ Updated order ##CC4840  ✅ Updated order ##CC4823  ✅ Updated order ##CC4828  ✅ Updated order ##CC4824  ✅ Updated order ##CC4820  ✅ Updated order ##CC4827  ✅ Updated order ##CC4830  ✅ Updated order ##CC4819  ✅ Updated order ##CC4817  ✅ Updated order ##CC4822  ✅ Updated order ##CC4815  ✅ Updated order ##CC4818  ✅ Updated order ##CC4816  ✅ Updated order ##CC4807  ✅ Updated order ##CC4814  ✅ Updated order ##CC4811  ✅ Updated order ##CC4841  ✅ Updated order ##CC4808  ✅ Updated order ##CC4810  ✅ Updated order ##CC4806  ✅ Updated order ##CC4802  ✅ Updated order ##CC4803  ✅ Updated order ##CC4805  ✅ Updated order ##CC4801  ✅ Updated order ##CC4799  ✅ Updated order ##CC4809  ✅ Updated order ##CC4804  ✅ Updated order ##CC4796  ✅ Updated order ##CC4800  ✅ Updated order ##CC4798  ✅ Updated order ##CC4812  

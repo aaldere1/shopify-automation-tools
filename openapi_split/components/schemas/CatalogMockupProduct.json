@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "required": [
+    "catalog_product_id",
+    "placements"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseMockupProduct"
+    },
+    {
+      "properties": {
+        "catalog_product_id": {
+          "description": "Catalog product identifier",
+          "type": "integer",
+          "example": 71
+        },
+        "catalog_variant_ids": {
+          "type": "array",
+          "description": "List of catalog variant identifiers for which mockups will be generated.\nVariants must belong to the catalog product specified with `catalog_product_id`.\nMultiple variants of the same color do not count towards the daily number of files limit.\nMeaning that for a Red T-Shirt of (S,M) sizes we still generate only one mockup.\n\n**Default:** Automatically set to the first active variant ID associated with the given `catalog_product_id`.\n",
+          "items": {
+            "type": "integer",
+            "example": 4011
+          }
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "nullable": true,
+          "description": "Define orientation of the product (used in case of e.g. canvas). This parameter:\n* is ignored for products without orientation\n* helps select default `mockup_style_ids` with the given orientation\n* must be compatible with any explicitly defined `mockup_style_ids`\n* should be set to enforce the same orientation for all layer coordinates, disabling automatic orientation detection based on image size\n"
+        },
+        "placements": {
+          "$ref": "#/components/schemas/PlacementsList"
+        },
+        "product_options": {
+          "$ref": "#/components/schemas/ProductOptions"
+        }
+      }
+    }
+  ]
+}

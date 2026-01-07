@@ -1,0 +1,25 @@
+{
+  "type": "array",
+  "title": "FilterSettings",
+  "readOnly": true,
+  "description": "The list of the filters that were used in the request",
+  "items": {
+    "type": "object",
+    "required": [
+      "name",
+      "value"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the filter",
+        "example": "selling_region_name"
+      },
+      "value": {
+        "type": "string",
+        "description": "Value of the filter",
+        "example": "worldwide"
+      }
+    }
+  }
+}

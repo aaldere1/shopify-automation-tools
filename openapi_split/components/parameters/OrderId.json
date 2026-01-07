@@ -1,0 +1,16 @@
+{
+  "in": "path",
+  "name": "order_id",
+  "schema": {
+    "oneOf": [
+      {
+        "type": "integer"
+      },
+      {
+        "type": "string"
+      }
+    ]
+  },
+  "required": true,
+  "description": "Order ID (integer) or Order External ID (string prepended with \"@\" symbol)"
+}

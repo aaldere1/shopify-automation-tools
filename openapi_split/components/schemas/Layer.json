@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "title": "Layer",
+  "description": "Information about the Layer",
+  "required": [
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "description": "Type of layer (e.g. file, text)",
+      "type": "string",
+      "example": "file"
+    },
+    "url": {
+      "description": "File image URL if layer type is file",
+      "type": "string",
+      "example": "\u200bhttps://www.printful.com/static/images/layout/printful-logo.png"
+    },
+    "layer_options": {
+      "$ref": "#/components/schemas/LayerOptions"
+    },
+    "position": {
+      "$ref": "#/components/schemas/LayerPosition"
+    }
+  }
+}

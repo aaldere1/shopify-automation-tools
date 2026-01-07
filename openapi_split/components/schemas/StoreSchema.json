@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "description": "Information about the Store",
+  "required": [
+    "id",
+    "type",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "description": "Store ID",
+      "type": "integer",
+      "example": 10
+    },
+    "type": {
+      "description": "The type of the store is a reference to the type of integration used, Shopify, Etsy, etc. If no first party integration is used, the type will be `native`.",
+      "type": "string",
+      "example": "native"
+    },
+    "name": {
+      "description": "The name given to the store, chosen by the user.",
+      "type": "string",
+      "example": "My Store"
+    }
+  }
+}

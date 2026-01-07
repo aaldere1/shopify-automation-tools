@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "placement",
+  "schema": {
+    "type": "string",
+    "example": "front"
+  },
+  "description": "Filters result by specified placement"
+}

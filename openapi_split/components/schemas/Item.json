@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "title": "Item",
+  "description": "Information about the Item",
+  "properties": {
+    "id": {
+      "description": "Item ID",
+      "type": "integer",
+      "example": 1234,
+      "readOnly": true
+    },
+    "external_id": {
+      "$ref": "#/components/schemas/ItemExternalId"
+    },
+    "quantity": {
+      "description": "Item quantity",
+      "type": "integer",
+      "example": 1
+    },
+    "retail_price": {
+      "description": "Item retail price",
+      "type": "string",
+      "example": "10.00"
+    },
+    "name": {
+      "description": "Item custom name",
+      "type": "string",
+      "example": "Custom name"
+    },
+    "placements": {
+      "$ref": "#/components/schemas/PlacementsList"
+    },
+    "orientation": {
+      "description": "Orientation of the design. Applies only to the products that allow multiple orientations such as framed posters.",
+      "type": "string",
+      "readOnly": false,
+      "nullable": true,
+      "enum": [
+        "horizontal",
+        "vertical",
+        "any"
+      ],
+      "example": "horizontal"
+    },
+    "product_options": {
+      "$ref": "#/components/schemas/ProductOptions"
+    },
+    "_links": {
+      "type": "object",
+      "readOnly": true,
+      "description": "HATEOAS links",
+      "properties": {
+        "self": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/HateoasLink"
+            },
+            {
+              "description": "Link to a specific order item",
+              "format": "HateoasLink",
+              "example": {
+                "href": "/v2/orders/123/order-items/123"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

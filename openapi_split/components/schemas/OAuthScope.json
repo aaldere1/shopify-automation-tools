@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "title": "OAuthScope",
+  "description": "Information about the OAuth scope",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Display name of the scope",
+      "type": "string",
+      "example": "View all orders",
+      "enum": [
+        "View orders of the authorized store",
+        "View and manage orders of the authorized store",
+        "View store products",
+        "View and manage store products",
+        "View store files",
+        "View and manage store files",
+        "View store webhooks",
+        "View and manage store webhooks"
+      ]
+    },
+    "value": {
+      "description": "The scope value",
+      "type": "string",
+      "example": "orders/read",
+      "enum": [
+        "orders/read",
+        "orders",
+        "sync_products/read",
+        "sync_products",
+        "file_library/read",
+        "file_library",
+        "webhooks/read",
+        "webhooks/read"
+      ]
+    }
+  }
+}

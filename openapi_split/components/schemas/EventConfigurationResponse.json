@@ -1,0 +1,48 @@
+{
+  "title": "EventConfiguration",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Event type.",
+      "example": "catalog_stock_updated"
+    },
+    "url": {
+      "type": "string",
+      "nullable": true,
+      "description": "Webhook URL (HTTPS-only) that will receive the event notifications.",
+      "example": "\u200bhttps://www.example.com/printful/webhook"
+    },
+    "params": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "EventParam",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Param name."
+          },
+          "value": {
+            "description": "Param value."
+          }
+        }
+      },
+      "example": [
+        {
+          "name": "products",
+          "value": [
+            {
+              "id": 1
+            },
+            {
+              "id": 71
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

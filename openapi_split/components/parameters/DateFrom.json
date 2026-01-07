@@ -1,0 +1,11 @@
+{
+  "in": "query",
+  "name": "date_from",
+  "description": "The beginning of the period to get the statistics from (date in `Y-m-d` format).",
+  "schema": {
+    "type": "string",
+    "format": "date",
+    "example": "2022-08-01"
+  },
+  "required": true
+}

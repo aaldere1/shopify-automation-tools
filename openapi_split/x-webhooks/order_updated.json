@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order updated",
+    "operationId": "orderUpdated",
+    "description": "Is called when an existing order gets updated for any reason - including things that are covered with other webhooks like `order_canceled`.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderUpdated"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

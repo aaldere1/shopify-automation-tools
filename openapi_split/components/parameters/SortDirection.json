@@ -1,0 +1,14 @@
+{
+  "in": "query",
+  "name": "sort_direction",
+  "schema": {
+    "type": "string",
+    "default": "descending",
+    "enum": [
+      "ascending",
+      "descending"
+    ]
+  },
+  "required": false,
+  "description": "This parameter only is used if sort_type is also present and it changes the order of the returned products.\nThe exact meaning varies depending on the value of `sort_type`:\n* `sort_type=new`\n  * ascending sorts from newest to oldest.\n  * descending sorts from oldest to newest.\n* `sort_type=rating`\n\t* ascending from lowest to highest rated.\n\t* descending from highest to lowest rated.\n* `sort_type=price`\n\t* ascending from lowest to highest price.\n\t* descending from highest to lowest price.\n* `sort_type=bestseller`\n  * ascending from non bestsellers to bestsellers.\n  * descending from bestsellers to non bestsellers.\n"
+}

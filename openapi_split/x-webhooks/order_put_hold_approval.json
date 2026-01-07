@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order put hold approval",
+    "operationId": "orderPutHoldApproval",
+    "description": "Is called when order is put on hold and there are changes that must be approved by the customer before fulfillment. Will contain a confirm hash that can be used to approve changes with the Approval Sheets Api.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderHoldApproval"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

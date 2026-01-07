@@ -1,0 +1,19 @@
+{
+  "post": {
+    "summary": "Shipment put hold",
+    "operationId": "shipmentPutHold",
+    "security": [],
+    "description": "Is called when a shipment is put on hold",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/ShipmentPutHold"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

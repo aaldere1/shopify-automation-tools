@@ -1,0 +1,11 @@
+{
+  "description": "POST request body",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "#/components/schemas/AddFile"
+      }
+    }
+  }
+}

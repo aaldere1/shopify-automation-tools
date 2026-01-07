@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "title": "Product",
+  "description": "Information about the Catalog Product",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Product"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "$ref": "#/components/schemas/ProductLinks"
+        }
+      }
+    }
+  ]
+}

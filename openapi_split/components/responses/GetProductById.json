@@ -1,0 +1,17 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProductInfo"
+          }
+        }
+      }
+    }
+  }
+}

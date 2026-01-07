@@ -1,0 +1,86 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApprovalSheet"
+            }
+          },
+          "_links": {
+            "type": "object",
+            "title": "Approval sheet links",
+            "description": "HATEOAS links",
+            "required": [
+              "self"
+            ],
+            "properties": {
+              "self": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ],
+                "description": "Link to the same resource",
+                "example": {
+                  "href": "https://api.printful.com/v2/approval-sheets?limit=10&offset=20"
+                }
+              },
+              "next": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ],
+                "description": "Link to the next page (absent if the current page is the last one or if there is only one page).",
+                "example": {
+                  "href": "https://api.printful.com/v2/approval-sheets?limit=10&offset=30"
+                }
+              },
+              "previous": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ],
+                "description": "Link to the previous page (absent if the current page is the first one or if there is only one page).",
+                "example": {
+                  "href": "https://api.printful.com/v2/approval-sheets?limit=10&offset=10"
+                }
+              },
+              "first": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ],
+                "description": "Link to the first page (absent if there is only one page).",
+                "example": {
+                  "href": "https://api.printful.com/v2/approval-sheets?limit=10"
+                }
+              },
+              "last": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/HateoasLink"
+                  }
+                ],
+                "description": "Link to the last page (absent if there is only one page).",
+                "example": {
+                  "href": "https://api.printful.com/v2/approval-sheets?limit=10&offset=90"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

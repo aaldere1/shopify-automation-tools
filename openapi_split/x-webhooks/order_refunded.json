@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order refunded",
+    "operationId": "orderRefunded",
+    "description": "Is called when a confirmed order has been refunded.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderRefunded"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

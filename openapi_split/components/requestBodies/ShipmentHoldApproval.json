@@ -1,0 +1,44 @@
+{
+  "description": "Shipment put on hold because it needs customer approval. You will receive an approval sheet with suggested changes and a confirmation hash so you can approve the changes if you agree with them.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Webhook"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Event type - `shipment_put_hold_approval`",
+                "example": "shipment_put_hold_approval"
+              },
+              "data": {
+                "title": "ShipmentRequiresApproval",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "description": "Reason why the shipment was put on hold and requires approval."
+                  },
+                  "approval_files": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ApprovalSheetWebhookFile"
+                    }
+                  },
+                  "shipment": {
+                    "$ref": "#/components/schemas/WebhookShipmentData"
+                  },
+                  "order": {
+                    "$ref": "#/components/schemas/WebhookOrderData"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

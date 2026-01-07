@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "title": "Product links",
+  "description": "HATEOAS links",
+  "required": [
+    "self"
+  ],
+  "properties": {
+    "self": {
+      "type": "object",
+      "description": "Link to same resource",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "next": {
+      "type": "object",
+      "description": "Link to next resource",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products?offset=20"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "first": {
+      "type": "object",
+      "description": "Link to first resource",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "last": {
+      "type": "object",
+      "description": "Link to the last resource",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products?offset=280"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    }
+  }
+}

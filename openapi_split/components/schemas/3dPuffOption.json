@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "3dPuffOption",
+  "description": "Should thread use 3d puff technique",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "3d_puff",
+      "enum": [
+        "3d_puff"
+      ]
+    },
+    "value": {
+      "description": "Whether the 3d puff technique should be used for the layer.",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

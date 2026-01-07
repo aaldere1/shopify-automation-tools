@@ -1,0 +1,37 @@
+{
+  "title": "EventConfiguration",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/DefaultEventConfigurationRequest"
+    },
+    {
+      "$ref": "#/components/schemas/CatalogStockUpdatedEventConfigurationRequest"
+    }
+  ],
+  "discriminator": {
+    "propertyName": "type",
+    "mapping": {
+      "catalog_stock_updated": "#/components/schemas/CatalogStockUpdatedEventConfigurationRequest",
+      "shipment_sent": "#/components/schemas/DefaultEventConfigurationRequest",
+      "shipment_returned": "#/components/schemas/DefaultEventConfigurationRequest",
+      "shipment_out_of_stock": "#/components/schemas/DefaultEventConfigurationRequest",
+      "shipment_canceled": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_created": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_updated": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_failed": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_canceled": "#/components/schemas/DefaultEventConfigurationRequest",
+      "product_synced": "#/components/schemas/DefaultEventConfigurationRequest",
+      "product_updated": "#/components/schemas/DefaultEventConfigurationRequest",
+      "product_deleted": "#/components/schemas/DefaultEventConfigurationRequest",
+      "catalog_price_changed": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_put_hold": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_put_hold_approval": "#/components/schemas/DefaultEventConfigurationRequest",
+      "order_remove_hold": "#/components/schemas/DefaultEventConfigurationRequest",
+      "mockup_task_finished": "#/components/schemas/DefaultEventConfigurationRequest",
+      "shipment_put_hold": "#/components/schemas/DefaultEventConfigurationRequest",
+      "shipment_put_hold_approval": "#/components/schemas/DefaultEventConfigurationRequest",
+      "shipment_remove_hold": "#/components/schemas/DefaultEventConfigurationRequest"
+    }
+  }
+}

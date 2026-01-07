@@ -1,0 +1,21 @@
+{
+  "type": "oauth2",
+  "description": "### Making authorized API calls\n\nTo make OAuth requests to the Printful API, `access_token` and `token_type` must be included in the request `Authorization` header.\n\n```\n# Authorized CURL request example with OAuth\ncurl -X GET 'https://api.printful.com/v2/orders' \\\n-H 'Authorization: Bearer smk_GN0I1Os3OdfqzjJnTOWn1wlbqqq2Y2Pc10TS'\n```\n",
+  "flows": {
+    "authorizationCode": {
+      "authorizationUrl": "https://www.printful.com/oauth/token",
+      "tokenUrl": "https://www.printful.com/oauth/token",
+      "refreshUrl": "https://www.printful.com/oauth/token",
+      "scopes": {
+        "orders": "Read and Write access to Orders",
+        "orders/read": "Read access to Orders",
+        "stores_list": "Read and Write access to Stores",
+        "stores_list/read": "Read access to Stores",
+        "file_library": "Read and Write access to File library",
+        "file_library/read": "Read access to File library",
+        "webhooks": "Read and Write access to Webhooks",
+        "webhooks/read": "Read access to Webhooks"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "destination_country",
+  "schema": {
+    "type": "string"
+  },
+  "required": false,
+  "description": "The ISO 3166-1 alpha-2 country code for the destination country. Only products shippable to the specified country will be returned.\n"
+}

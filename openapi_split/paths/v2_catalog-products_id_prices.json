@@ -1,0 +1,43 @@
+{
+  "get": {
+    "summary": "Retrieve catalog product prices",
+    "description": "\nCalculates prices for specific catalog product based on selling region and specified currency. Calculations also include Store discounts. Selling region is used to specify product production currency, that is the price that the product is natively manufactured in. Different selling regions might affect the overall price amount. Currency parameter is used only to define the currency that the prices will be displayed in.\n\nFor more information on product pricing please refer to the information provided at https://www.printful.com/pricing\n<div class=\"alert alert-info\" style=\"word-wrap: break-word; padding: 16px; border-radius: 0; cursor: default; color: #31708f; background-color: #d9edf7; border-color: #bce8f1;\">\n    <p>\n        When developing against either API be sure to inform your customers that a placement will be included in the price of the product. If one placement is provided that placement will be included in the price, if multiple are provided the included placement will generally be the placement that comes earliest in the list of placements at `/v2/catalog-products/71` (though the discount will generally be up to the price of the first placement in that list). Certain placements come with additional service fees, such as large embroidery, this additional price will never be included even if the only placement is large embroidery.\n    </p>\n    <p>\n        There is a minor difference in the handling of prices for placements between V1 and V2.\n        In V1 the price of the first placement is always null, this is because there\n        is always a placement included in the price of each product. In V2 the price of placements\n        is always displayed even if it is included in the price of the product because any\n        placement can be included.\n    </p>\n</div>\n\nThe product pricing process begins with determining the base product price, which depends on the technique used, such as DTG, Embroidery, or DTF. The first placement is typically included in the base price unless it involves special placements like large embroidery or inside labels, which are priced separately. If additional placements are added, their prices are included in the summary cost. Furthermore, additional options, such as 3D puff embroidery or unlimited thread colors, also increase the total cost. The final price is calculated by summing up the base price, additional placement costs, and any extra option costs.\n\n<pre class=\"mermaid\">\n    flowchart TD\n    B{Technique Used} -->|DTG| C[Base Price: DTG]\n    B -->|Embroidery| D[Base Price: Embroidery]\n    B -->|DTF| E[Base Price: DTF]\n    C --> A\n    D --> A\n    E --> A\n    A[Base Product Price] --> F[First Placement Included?]\n\n\n    F -->|Yes| G[Base Price Includes First Placement]\n    F -->|No e.g., Large Embroidery, Inside Label| H[Special Placement Priced Separately]\n\n    G --> I[Additional Placements?]\n    I -->|Yes| J[Add Placement Price to Summary Cost]\n    I -->|No| K[Summary Cost = Base Price]\n\n    H --> J\n    J --> L[Additional Options?]\n    L -->|Yes, such as 3d puff or unlimited color| M[Add Option Price to Summary Cost]\n    L -->|No| K\n\n    M --> K\n</pre>\n",
+    "operationId": "getProductPricesById",
+    "security": [
+      {
+        "OAuth": []
+      }
+    ],
+    "tags": [
+      "Catalog v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/ProductId"
+      },
+      {
+        "$ref": "#/components/parameters/SellingRegionPrice"
+      },
+      {
+        "$ref": "#/components/parameters/Currency"
+      },
+      {
+        "$ref": "#/components/parameters/ProductionCurrency"
+      },
+      {
+        "$ref": "#/components/parameters/Locale"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetProductPricesById"
+      },
+      "404": {
+        "$ref": "#/components/responses/NotFound"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

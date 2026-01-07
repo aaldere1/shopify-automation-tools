@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "title": "Product",
+  "required": [
+    "id",
+    "main_category_id",
+    "type",
+    "name",
+    "brand",
+    "model",
+    "image",
+    "variant_count",
+    "is_discontinued",
+    "description",
+    "sizes",
+    "colors",
+    "techniques",
+    "placements",
+    "product_options",
+    "_links"
+  ],
+  "description": "Information about the Product",
+  "properties": {
+    "id": {
+      "description": "Product ID",
+      "type": "integer",
+      "example": 362
+    },
+    "main_category_id": {
+      "description": "Main category of product",
+      "type": "integer",
+      "example": 24
+    },
+    "type": {
+      "description": "Product type",
+      "type": "string",
+      "example": "T-Shirt"
+    },
+    "name": {
+      "description": "Product name",
+      "type": "string",
+      "example": "Unisex Organic T-Shirt | Econscious EC1000"
+    },
+    "brand": {
+      "description": "Brand name",
+      "type": "string",
+      "nullable": true,
+      "example": "Econscious"
+    },
+    "model": {
+      "description": "Model name",
+      "type": "string",
+      "nullable": true,
+      "example": "Unisex Organic T-Shirt"
+    },
+    "image": {
+      "description": "URL of a sample image for this product",
+      "type": "string",
+      "example": "https://files.cdn.printful.com/products/12/product_1550594502.jpg"
+    },
+    "variant_count": {
+      "description": "Number of available variants for this product",
+      "type": "integer",
+      "example": 10
+    },
+    "is_discontinued": {
+      "description": "Product is discontinued and can no longer be ordered",
+      "type": "boolean",
+      "example": false
+    },
+    "description": {
+      "description": "Product description",
+      "type": "string"
+    },
+    "sizes": {
+      "description": "Product sizes",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "M"
+      }
+    },
+    "colors": {
+      "description": "Product colors",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "value"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the color",
+            "example": "Athletic Heather"
+          },
+          "value": {
+            "type": "string",
+            "description": "Value of the color in HEX",
+            "example": "#cbcbcb"
+          }
+        }
+      }
+    },
+    "techniques": {
+      "description": "Product's techniques",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Techniques"
+      }
+    },
+    "placements": {
+      "description": "Product's design placements",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "required": [
+              "print_area_width",
+              "print_area_height",
+              "placement_options",
+              "conflicting_placements"
+            ]
+          },
+          {
+            "$ref": "#/components/schemas/DesignPlacement"
+          },
+          {
+            "properties": {
+              "conflicting_placements": {
+                "description": "List of conflicting placements. Used to determine which placements can be used together.",
+                "type": "array",
+                "example": [
+                  "back",
+                  "label_inside"
+                ],
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "product_options": {
+      "description": "Possible product options",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CatalogOption"
+      },
+      "example": [
+        {
+          "name": "stitch_color",
+          "techniques": [
+            "cut-sew"
+          ],
+          "type": "string",
+          "values": [
+            "White",
+            "Black"
+          ]
+        }
+      ]
+    }
+  }
+}

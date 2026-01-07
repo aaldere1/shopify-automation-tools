@@ -1,0 +1,9 @@
+{
+  "in": "path",
+  "name": "warehouse_product_id",
+  "schema": {
+    "type": "integer"
+  },
+  "required": true,
+  "description": "Warehouse Product ID."
+}

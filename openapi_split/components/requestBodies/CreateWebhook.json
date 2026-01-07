@@ -1,0 +1,20 @@
+{
+  "description": "POST request body",
+  "required": true,
+  "content": {
+    "application/json": {
+      "schema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/WebhookInfoRequest"
+          },
+          {
+            "required": [
+              "events"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

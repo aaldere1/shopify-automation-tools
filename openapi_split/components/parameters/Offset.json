@@ -1,0 +1,17 @@
+{
+  "in": "query",
+  "name": "offset",
+  "schema": {
+    "type": "integer",
+    "minimum": 0,
+    "default": 0
+  },
+  "required": false,
+  "examples": {
+    "startAt100": {
+      "summary": "Return results after the initial 100",
+      "value": 100
+    }
+  },
+  "description": "The number of results to not include in the response starting from the beginning of the list.\n\nThis can be used to return results after the initial 100. For example, sending offset 100\n"
+}

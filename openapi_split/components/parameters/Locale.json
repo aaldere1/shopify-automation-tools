@@ -1,0 +1,9 @@
+{
+  "in": "header",
+  "name": "X-PF-Language",
+  "description": "Use this to specify which locale you would like to use in the responses, for some endpoints this can affect translations.\n",
+  "schema": {
+    "type": "string"
+  },
+  "required": false
+}

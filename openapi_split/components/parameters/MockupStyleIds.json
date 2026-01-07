@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "mockup_style_ids",
+  "schema": {
+    "type": "integer",
+    "example": "1, 2, 3"
+  },
+  "description": "Used to specify style of images For example:\n  * On the hanger\n  * On the Male/Female model\n  * Flat on the table\n  * etc.\nAvailable mockup styles for catalog product can be found under _[Retrieve catalog product mockup styles](#operation/retrieveMockupStylesByProductId)_.\n"
+}

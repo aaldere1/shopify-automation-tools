@@ -1,0 +1,18 @@
+{
+  "post": {
+    "summary": "Order remove hold",
+    "operationId": "orderRemoveHold",
+    "description": "Is called when order is removed from hold.",
+    "tags": [
+      "Webhook v2"
+    ],
+    "requestBody": {
+      "$ref": "#/components/requestBodies/OrderRemoveHold"
+    },
+    "responses": {
+      "2xx": {
+        "description": "Data received"
+      }
+    }
+  }
+}

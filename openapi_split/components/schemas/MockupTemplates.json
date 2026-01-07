@@ -1,0 +1,130 @@
+{
+  "type": "object",
+  "title": "MockupTemplates",
+  "description": "Data containing information about the available mockup templates which can be used for user-side positioning. For example for intention of generating mockups without the use of Printful's mockup generator.",
+  "required": [
+    "catalog_variant_ids",
+    "placement",
+    "technique",
+    "image_url",
+    "background_url",
+    "background_color",
+    "template_width",
+    "template_height",
+    "print_area_width",
+    "print_area_height",
+    "print_area_top",
+    "print_area_left",
+    "template_positioning",
+    "orientation"
+  ],
+  "properties": {
+    "catalog_variant_ids": {
+      "type": "array",
+      "description": "A list of variant IDs for which the positions apply.",
+      "items": {
+        "type": "integer",
+        "example": 4011
+      }
+    },
+    "placement": {
+      "type": "string",
+      "description": "Catalog product placement that is used for the design.",
+      "example": "front"
+    },
+    "technique": {
+      "type": "string",
+      "description": "Catalog product technique that is used for the design.",
+      "example": "dtg"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Semi-transparent main template image URL.",
+      "example": "https://www.printful.com/files/generator/40/11oz_template.png"
+    },
+    "background_url": {
+      "type": "string",
+      "description": "Background image URL (optional). Used for certain mockups e.g. a wall behind hanged poster. If it's defined it is intended to be layered under the image defined in `image_url`.",
+      "nullable": true,
+      "example": null
+    },
+    "background_color": {
+      "type": "integer",
+      "description": "HEX color code that should be used as a background color of `image_url`.",
+      "nullable": true,
+      "example": null
+    },
+    "template_width": {
+      "type": "integer",
+      "description": "Width of the whole template in pixels.",
+      "example": 560
+    },
+    "template_height": {
+      "type": "integer",
+      "description": "Height of the whole template in pixels.",
+      "example": 295
+    },
+    "print_area_width": {
+      "type": "integer",
+      "description": "Print area width (image is positioned in this area).",
+      "example": 520
+    },
+    "print_area_height": {
+      "type": "integer",
+      "description": "Print area height (image is positioned in this area).",
+      "example": 202
+    },
+    "print_area_top": {
+      "type": "integer",
+      "description": "Print area top offset (offset in template).",
+      "example": 18
+    },
+    "print_area_left": {
+      "type": "integer",
+      "description": "Print area left offset (offset in template).",
+      "example": 20
+    },
+    "template_positioning": {
+      "type": "string",
+      "enum": [
+        "overlay",
+        "background"
+      ],
+      "description": "Should the main template image (image_url) be used as an overlay or as a background.",
+      "example": "overlay"
+    },
+    "orientation": {
+      "type": "string",
+      "description": "Wall art product orientation. Possible values: horizontal, vertical, any",
+      "enum": [
+        "horizontal",
+        "vertical",
+        "any"
+      ],
+      "example": "any"
+    },
+    "template_type": {
+      "description": "Type of inside label used, \"native\" refers to labels that have preset information, \"custom\" are fully customizable and require the user to supply country of manufacturing origin, original garment size, and material information. \"advanced\" is for products like for products like AOP Tote. \"color_group\" for the new inside labels where there are multiple designs for the overlay.",
+      "type": "string",
+      "nullable": true,
+      "enum": [
+        "custom",
+        "native",
+        "color_group",
+        "advanced"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "primary",
+        "template",
+        "extra",
+        "unknown",
+        "advanced_template"
+      ],
+      "description": "Mockup template role.",
+      "example": "template"
+    }
+  }
+}

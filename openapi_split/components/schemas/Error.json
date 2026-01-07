@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "title": "Error",
+  "readOnly": true,
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "a URI that uniquely identifies the validation rule that failed. If it\u2019s a URL, it should point to an explanation of the constraint in the documentation.",
+      "example": "https://developers.printful.com/docs/v2/errors#specific-validation-error"
+    },
+    "detail": {
+      "type": "string",
+      "description": "A human-readable explanation of the error",
+      "example": "Parameter `xyz` was incorrect"
+    },
+    "source": {
+      "description": "Source of the value that caused the issue",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/HeaderSource"
+        },
+        {
+          "$ref": "#/components/schemas/ParameterSource"
+        },
+        {
+          "$ref": "#/components/schemas/PointerSource"
+        }
+      ]
+    },
+    "valid_values": {
+      "type": "array",
+      "description": "List of valid values that could be used instead to avoid the error",
+      "items": {
+        "type": "string",
+        "example": "Front"
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "type": "object",
+  "title": "Product links",
+  "description": "HATEOAS links",
+  "required": [
+    "self",
+    "variants",
+    "categories",
+    "product_prices",
+    "product_sizes",
+    "product_images",
+    "availability"
+  ],
+  "properties": {
+    "self": {
+      "description": "Link to same resource",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "variants": {
+      "description": "Link to product variants",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71/catalog-variants"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "categories": {
+      "description": "Link to product categories",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71/categories"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "product_prices": {
+      "description": "Link to product prices",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71/prices"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "product_sizes": {
+      "description": "Link product size guides",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71/sizes"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "product_images": {
+      "description": "Link product images",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71/images"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    },
+    "availability": {
+      "description": "Link to product stock availability endpoint",
+      "type": "object",
+      "title": "HateoasLink",
+      "example": {
+        "href": "https://api.printful.com/v2/catalog-products/71/availability"
+      },
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/HateoasLink"
+        }
+      ]
+    }
+  }
+}

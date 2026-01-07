@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "title": "Technique",
+  "description": "Information about the available Product's technique",
+  "required": [
+    "key",
+    "display_name",
+    "is_default"
+  ],
+  "properties": {
+    "key": {
+      "description": "Technique key",
+      "type": "string",
+      "example": "embroidery"
+    },
+    "display_name": {
+      "description": "Technique display name",
+      "type": "string",
+      "example": "Embroidery"
+    },
+    "is_default": {
+      "description": "This is the default product technique",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

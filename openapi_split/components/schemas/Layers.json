@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "title": "Layer",
+  "description": "Information about the layer prices",
+  "required": [
+    "type",
+    "additional_price",
+    "retail_additional_price",
+    "layer_options"
+  ],
+  "properties": {
+    "type": {
+      "description": "Type of layer",
+      "type": "string",
+      "example": "file"
+    },
+    "additional_price": {
+      "description": "Additional price for layer",
+      "type": "string",
+      "example": "0.00"
+    },
+    "layer_options": {
+      "description": "Layer options prices",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LayerOptionPrices"
+      }
+    }
+  }
+}

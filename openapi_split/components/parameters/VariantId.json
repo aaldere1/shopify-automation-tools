@@ -1,0 +1,9 @@
+{
+  "in": "path",
+  "name": "id",
+  "schema": {
+    "type": "integer"
+  },
+  "required": true,
+  "description": "Variant ID"
+}

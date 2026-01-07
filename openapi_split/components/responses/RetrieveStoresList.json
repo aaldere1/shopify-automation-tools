@@ -1,0 +1,78 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data",
+          "_links",
+          "paging"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StoreSchema"
+            }
+          },
+          "_links": {
+            "type": "object",
+            "required": [
+              "self"
+            ],
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "\u200bhttps://api.printful.com/v2/stores?limit=20&offset=0"
+                  }
+                }
+              },
+              "next": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "\u200bhttps://api.printful.com/v2/stores?limit=20&offset=20"
+                  }
+                }
+              },
+              "previous": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "\u200bhttps://api.printful.com/v2/stores?limit=20&offset=0"
+                  }
+                }
+              },
+              "first": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "\u200bhttps://api.printful.com/v2/stores?limit=20&offset=0"
+                  }
+                }
+              },
+              "last": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "\u200bhttps://api.printful.com/v2/stores?limit=20&offset=20"
+                  }
+                }
+              }
+            }
+          },
+          "paging": {
+            "$ref": "#/components/schemas/Paging"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "LifelikeOption",
+  "description": "Specifies if generated mockup should use lifelike effect",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "name": {
+      "description": "Option identifier",
+      "type": "string",
+      "example": "lifelike",
+      "enum": [
+        "lifelike"
+      ]
+    },
+    "value": {
+      "description": "Whether generated mockup should use lifelike effect.",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

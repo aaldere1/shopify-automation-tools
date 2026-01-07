@@ -1,0 +1,10 @@
+{
+  "in": "query",
+  "name": "production_currency",
+  "description": "The production currency (3-letter code) used to determine currency in which the prices will be calculated. The format is compliant with ISO 4217 standard.\nThe active user production currency will be used by default. The production is firsty attempted to be resolved from the selling region.\nIf the currency cannot be resolved from the DSR then the active user production currency is used. If it still cannot be resolved, the production currency\nis resolved from the GEO IP service meaning that the production currency is determined by the user's IP address.\n",
+  "schema": {
+    "type": "string",
+    "example": "USD"
+  },
+  "required": false
+}

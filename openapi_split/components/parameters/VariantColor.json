@@ -1,0 +1,9 @@
+{
+  "in": "query",
+  "name": "colors",
+  "schema": {
+    "type": "string",
+    "example": "black,red"
+  },
+  "description": "String values separated by comma. You can specify multiple variant colors filters."
+}

@@ -1,0 +1,26 @@
+{
+  "description": "Retail costs",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "description": "The code of the currency in which the retail costs are returned.",
+      "type": "string",
+      "example": "EUR"
+    },
+    "discount": {
+      "description": "Discount sum.",
+      "type": "string",
+      "example": "123.40"
+    },
+    "shipping": {
+      "description": "Shipping costs.",
+      "type": "string",
+      "example": "123.40"
+    },
+    "tax": {
+      "description": "Sum of taxes (not included in the item price).",
+      "type": "string",
+      "example": "123.40"
+    }
+  }
+}

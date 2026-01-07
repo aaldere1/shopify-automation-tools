@@ -1,0 +1,72 @@
+{
+  "description": "OK",
+  "content": {
+    "application/json": {
+      "schema": {
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "media_type",
+              "content",
+              "_links"
+            ],
+            "properties": {
+              "media_type": {
+                "type": "string",
+                "example": "application/pdf",
+                "description": "This property is used to describe the media type of the encoded base64 value. It is necessary to use this property when decoding the content property."
+              },
+              "content": {
+                "type": "string",
+                "example": "0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL01lZG",
+                "description": "The base64 encoded document containing the invoice."
+              },
+              "_links": {
+                "type": "object",
+                "description": "HATEOAS links",
+                "required": [
+                  "self",
+                  "order"
+                ],
+                "properties": {
+                  "self": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/HateoasLink"
+                      },
+                      {
+                        "description": "Link to an order invoice",
+                        "format": "HateoasLink",
+                        "example": {
+                          "href": "https://api.printful.com/v2/orders/123/invoices"
+                        }
+                      }
+                    ]
+                  },
+                  "order": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/HateoasLink"
+                      },
+                      {
+                        "description": "Link to a specific order",
+                        "format": "HateoasLink",
+                        "example": {
+                          "href": "https://api.printful.com/v2/orders/123"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

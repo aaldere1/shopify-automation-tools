@@ -1,0 +1,36 @@
+{
+  "get": {
+    "summary": "Retrieve an invoice",
+    "description": "Returns the invoice for an order as a base64 encoded document. Decoding the base64 content can be different depending on the client, for most browsers this format will alow you to view and display the invoice `data:application/pdf;base64,{the_base_64_content_string}`.",
+    "operationId": "getInvoiceByOrderId",
+    "security": [
+      {
+        "OAuth": [
+          "orders/read"
+        ]
+      }
+    ],
+    "tags": [
+      "Orders v2"
+    ],
+    "parameters": [
+      {
+        "$ref": "#/components/parameters/OrderId"
+      },
+      {
+        "$ref": "#/components/parameters/StoreId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "#/components/responses/GetInvoiceByOrderId"
+      },
+      "401": {
+        "$ref": "#/components/responses/Unauthorized"
+      },
+      "5XX": {
+        "$ref": "#/components/responses/ServerError"
+      }
+    }
+  }
+}

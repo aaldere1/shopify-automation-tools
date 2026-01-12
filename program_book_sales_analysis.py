@@ -23,6 +23,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import sys
 from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime
@@ -105,22 +106,25 @@ class ProgramBookAnalyzer:
                     return film_names.get(i, f"Harry Potter Film {i}")
             return "Harry Potter (Unspecified)"
         
-        # Polar Express
-        if 'polar' in title_lower or 'POLAR' in sku_upper:
+        # Polar Express - use word boundary to avoid matching "bipolar" etc.
+        if re.search(r'\bpolar\s*express\b', title_lower) or sku_upper.startswith('POLAR'):
             return "The Polar Express"
         
-        # Elf
-        if 'elf' in title_lower or 'ELF' in sku_upper:
+        # Elf - use word boundary to avoid matching "self", "shelf", "yourself", etc.
+        if re.search(r'\belf\b', title_lower) or sku_upper.startswith('ELF'):
             return "Elf"
         
-        # Generic extraction - remove common suffixes
+        # Generic extraction - remove common suffixes from the END of the title
         clean_title = title
         for suffix in ['- Program Book', '- Souvenir Program', 'Program Book', 'Souvenir Program', 
                        '- Collector Edition', 'Collector Book']:
-            if suffix.lower() in clean_title.lower():
-                idx = clean_title.lower().find(suffix.lower())
-                clean_title = clean_title[:idx].strip()
-                break
+            # Use rfind to find the LAST occurrence (typically at the end)
+            idx = clean_title.lower().rfind(suffix.lower())
+            if idx != -1:
+                # Only remove if it's near the end (within last 30 chars) to avoid mid-title matches
+                if idx > len(clean_title) - len(suffix) - 5:
+                    clean_title = clean_title[:idx].strip()
+                    break
         
         return clean_title if clean_title else "Unknown Show"
     

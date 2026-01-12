@@ -90,20 +90,31 @@ class ProgramBookAnalyzer:
         
         # Harry Potter detection
         if 'harry potter' in title_lower or sku_upper.startswith('HP'):
-            # Try to extract film number
-            for i in range(1, 9):
-                if f'hp{i}' in sku_upper.lower() or f'film {i}' in title_lower or f'#{i}' in title:
-                    film_names = {
-                        1: "Harry Potter and the Sorcerer's Stone",
-                        2: "Harry Potter and the Chamber of Secrets",
-                        3: "Harry Potter and the Prisoner of Azkaban",
-                        4: "Harry Potter and the Goblet of Fire",
-                        5: "Harry Potter and the Order of the Phoenix",
-                        6: "Harry Potter and the Half-Blood Prince",
-                        7: "Harry Potter and the Deathly Hallows Part 1",
-                        8: "Harry Potter and the Deathly Hallows Part 2",
-                    }
-                    return film_names.get(i, f"Harry Potter Film {i}")
+            # Try to extract film number using word boundaries to avoid "HP10" matching "HP1"
+            film_names = {
+                1: "Harry Potter and the Sorcerer's Stone",
+                2: "Harry Potter and the Chamber of Secrets",
+                3: "Harry Potter and the Prisoner of Azkaban",
+                4: "Harry Potter and the Goblet of Fire",
+                5: "Harry Potter and the Order of the Phoenix",
+                6: "Harry Potter and the Half-Blood Prince",
+                7: "Harry Potter and the Deathly Hallows Part 1",
+                8: "Harry Potter and the Deathly Hallows Part 2",
+            }
+            # Check SKU patterns like HP1, HP2, etc. with word boundary after number
+            sku_match = re.search(r'HP(\d+)', sku_upper)
+            if sku_match:
+                film_num = int(sku_match.group(1))
+                if 1 <= film_num <= 8:
+                    return film_names.get(film_num, f"Harry Potter Film {film_num}")
+            
+            # Check title patterns like "Film 1", "Film #1", "#1" with word boundaries
+            title_match = re.search(r'(?:film\s*#?|#)(\d+)\b', title_lower)
+            if title_match:
+                film_num = int(title_match.group(1))
+                if 1 <= film_num <= 8:
+                    return film_names.get(film_num, f"Harry Potter Film {film_num}")
+            
             return "Harry Potter (Unspecified)"
         
         # Polar Express - use word boundary to avoid matching "bipolar" etc.
@@ -274,9 +285,20 @@ class ProgramBookAnalyzer:
         if not book_sales:
             return {'error': 'No program book sales found'}
         
+        # Group revenue by currency to avoid mixing different currencies
+        revenue_by_currency = defaultdict(float)
+        for s in book_sales:
+            revenue_by_currency[s['currency']] += s['line_total']
+        
+        # Determine primary currency (most common by revenue)
+        primary_currency = max(revenue_by_currency.keys(), key=lambda c: revenue_by_currency[c])
+        has_multiple_currencies = len(revenue_by_currency) > 1
+        
         summary = {
             'total_units': sum(s['quantity'] for s in book_sales),
-            'total_revenue': sum(s['line_total'] for s in book_sales),
+            'revenue_by_currency': dict(revenue_by_currency),
+            'primary_currency': primary_currency,
+            'has_multiple_currencies': has_multiple_currencies,
             'total_orders': len(set(s['order_number'] for s in book_sales)),
             'unique_products': len(set(s['product_title'] for s in book_sales)),
             'avg_unit_price': 0,
@@ -285,66 +307,91 @@ class ProgramBookAnalyzer:
                 'first_sale': min(s['order_date_formatted'] for s in book_sales),
                 'last_sale': max(s['order_date_formatted'] for s in book_sales),
             },
-            'by_show': defaultdict(lambda: {'units': 0, 'revenue': 0, 'orders': set()}),
-            'by_month': defaultdict(lambda: {'units': 0, 'revenue': 0, 'orders': set()}),
-            'by_quarter': defaultdict(lambda: {'units': 0, 'revenue': 0, 'orders': set()}),
-            'by_year': defaultdict(lambda: {'units': 0, 'revenue': 0, 'orders': set()}),
-            'by_country': defaultdict(lambda: {'units': 0, 'revenue': 0}),
-            'by_channel': defaultdict(lambda: {'units': 0, 'revenue': 0}),
+            'by_show': defaultdict(lambda: {'units': 0, 'revenue_by_currency': defaultdict(float), 'orders': set()}),
+            'by_month': defaultdict(lambda: {'units': 0, 'revenue_by_currency': defaultdict(float), 'orders': set()}),
+            'by_quarter': defaultdict(lambda: {'units': 0, 'revenue_by_currency': defaultdict(float), 'orders': set()}),
+            'by_year': defaultdict(lambda: {'units': 0, 'revenue_by_currency': defaultdict(float), 'orders': set()}),
+            'by_country': defaultdict(lambda: {'units': 0, 'revenue_by_currency': defaultdict(float)}),
+            'by_channel': defaultdict(lambda: {'units': 0, 'revenue_by_currency': defaultdict(float)}),
         }
         
         for sale in book_sales:
+            currency = sale['currency']
+            
             # By show
             show = sale['show_name']
             summary['by_show'][show]['units'] += sale['quantity']
-            summary['by_show'][show]['revenue'] += sale['line_total']
+            summary['by_show'][show]['revenue_by_currency'][currency] += sale['line_total']
             summary['by_show'][show]['orders'].add(sale['order_number'])
             
             # By month
             month = sale['month']
             summary['by_month'][month]['units'] += sale['quantity']
-            summary['by_month'][month]['revenue'] += sale['line_total']
+            summary['by_month'][month]['revenue_by_currency'][currency] += sale['line_total']
             summary['by_month'][month]['orders'].add(sale['order_number'])
             
             # By quarter
             quarter = sale['quarter']
             summary['by_quarter'][quarter]['units'] += sale['quantity']
-            summary['by_quarter'][quarter]['revenue'] += sale['line_total']
+            summary['by_quarter'][quarter]['revenue_by_currency'][currency] += sale['line_total']
             summary['by_quarter'][quarter]['orders'].add(sale['order_number'])
             
             # By year
             year = sale['year']
             summary['by_year'][year]['units'] += sale['quantity']
-            summary['by_year'][year]['revenue'] += sale['line_total']
+            summary['by_year'][year]['revenue_by_currency'][currency] += sale['line_total']
             summary['by_year'][year]['orders'].add(sale['order_number'])
             
             # By country
             country = sale['country'] or 'Unknown'
             summary['by_country'][country]['units'] += sale['quantity']
-            summary['by_country'][country]['revenue'] += sale['line_total']
+            summary['by_country'][country]['revenue_by_currency'][currency] += sale['line_total']
             
             # By channel
             channel = sale['sales_channel'] or 'web'
             summary['by_channel'][channel]['units'] += sale['quantity']
-            summary['by_channel'][channel]['revenue'] += sale['line_total']
+            summary['by_channel'][channel]['revenue_by_currency'][currency] += sale['line_total']
         
-        # Calculate averages
-        if summary['total_units'] > 0:
-            summary['avg_unit_price'] = summary['total_revenue'] / summary['total_units']
+        # Calculate averages (using primary currency only for avg price)
+        primary_revenue = revenue_by_currency.get(primary_currency, 0)
+        primary_units = sum(s['quantity'] for s in book_sales if s['currency'] == primary_currency)
+        if primary_units > 0:
+            summary['avg_unit_price'] = primary_revenue / primary_units
         if summary['total_orders'] > 0:
             summary['avg_units_per_order'] = summary['total_units'] / summary['total_orders']
         
-        # Convert sets to counts
+        # Convert sets to counts and defaultdicts to regular dicts
         for show in summary['by_show']:
             summary['by_show'][show]['orders'] = len(summary['by_show'][show]['orders'])
+            summary['by_show'][show]['revenue_by_currency'] = dict(summary['by_show'][show]['revenue_by_currency'])
         for month in summary['by_month']:
             summary['by_month'][month]['orders'] = len(summary['by_month'][month]['orders'])
+            summary['by_month'][month]['revenue_by_currency'] = dict(summary['by_month'][month]['revenue_by_currency'])
         for quarter in summary['by_quarter']:
             summary['by_quarter'][quarter]['orders'] = len(summary['by_quarter'][quarter]['orders'])
+            summary['by_quarter'][quarter]['revenue_by_currency'] = dict(summary['by_quarter'][quarter]['revenue_by_currency'])
         for year in summary['by_year']:
             summary['by_year'][year]['orders'] = len(summary['by_year'][year]['orders'])
+            summary['by_year'][year]['revenue_by_currency'] = dict(summary['by_year'][year]['revenue_by_currency'])
+        for country in summary['by_country']:
+            summary['by_country'][country]['revenue_by_currency'] = dict(summary['by_country'][country]['revenue_by_currency'])
+        for channel in summary['by_channel']:
+            summary['by_channel'][channel]['revenue_by_currency'] = dict(summary['by_channel'][channel]['revenue_by_currency'])
         
         return summary
+    
+    def _format_revenue(self, revenue_by_currency: Dict[str, float]) -> str:
+        """Format revenue dict as string with currency symbols."""
+        currency_symbols = {'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$'}
+        parts = []
+        for currency, amount in sorted(revenue_by_currency.items(), key=lambda x: -x[1]):
+            symbol = currency_symbols.get(currency, f'{currency} ')
+            parts.append(f"{symbol}{amount:,.2f}")
+        return ' + '.join(parts) if parts else '$0.00'
+    
+    def _get_total_revenue(self, revenue_by_currency: Dict[str, float], primary_currency: str) -> float:
+        """Get total revenue in primary currency (for percentage calculations)."""
+        return revenue_by_currency.get(primary_currency, sum(revenue_by_currency.values()))
     
     def print_report(self, summary: Dict[str, Any]):
         """Print formatted report to console."""
@@ -353,31 +400,46 @@ class ProgramBookAnalyzer:
         print("=" * 80)
         print()
         
+        # Warning if multiple currencies
+        if summary.get('has_multiple_currencies'):
+            print("⚠️  NOTE: Sales include multiple currencies. Revenue shown per currency.")
+            print(f"   Primary currency for percentages: {summary['primary_currency']}")
+            print()
+        
+        primary_currency = summary.get('primary_currency', 'USD')
+        total_revenue_by_currency = summary.get('revenue_by_currency', {})
+        primary_total = total_revenue_by_currency.get(primary_currency, 0)
+        
         print("📊 OVERALL METRICS")
         print("-" * 40)
         print(f"  Total Units Sold:       {summary['total_units']:,}")
-        print(f"  Total Revenue:          ${summary['total_revenue']:,.2f}")
+        print(f"  Total Revenue:          {self._format_revenue(total_revenue_by_currency)}")
         print(f"  Total Orders:           {summary['total_orders']:,}")
         print(f"  Unique Products:        {summary['unique_products']}")
-        print(f"  Avg Price per Unit:     ${summary['avg_unit_price']:.2f}")
+        print(f"  Avg Price per Unit:     ${summary['avg_unit_price']:.2f} ({primary_currency})")
         print(f"  Avg Units per Order:    {summary['avg_units_per_order']:.2f}")
         print(f"  Date Range:             {summary['date_range']['first_sale']} to {summary['date_range']['last_sale']}")
         print()
         
         print("🎬 SALES BY SHOW/FILM")
         print("-" * 40)
-        by_show_sorted = sorted(summary['by_show'].items(), key=lambda x: x[1]['revenue'], reverse=True)
+        by_show_sorted = sorted(
+            summary['by_show'].items(), 
+            key=lambda x: self._get_total_revenue(x[1]['revenue_by_currency'], primary_currency), 
+            reverse=True
+        )
         for show, data in by_show_sorted:
-            pct = (data['revenue'] / summary['total_revenue'] * 100) if summary['total_revenue'] > 0 else 0
+            show_primary_rev = data['revenue_by_currency'].get(primary_currency, 0)
+            pct = (show_primary_rev / primary_total * 100) if primary_total > 0 else 0
             print(f"  {show}")
-            print(f"    Units: {data['units']:,}  |  Revenue: ${data['revenue']:,.2f}  |  {pct:.1f}% of total")
+            print(f"    Units: {data['units']:,}  |  Revenue: {self._format_revenue(data['revenue_by_currency'])}  |  {pct:.1f}% of {primary_currency}")
         print()
         
         print("📅 SALES BY YEAR")
         print("-" * 40)
         for year in sorted(summary['by_year'].keys()):
             data = summary['by_year'][year]
-            print(f"  {year}: {data['units']:,} units  |  ${data['revenue']:,.2f}  |  {data['orders']} orders")
+            print(f"  {year}: {data['units']:,} units  |  {self._format_revenue(data['revenue_by_currency'])}  |  {data['orders']} orders")
         print()
         
         print("📈 SALES BY QUARTER (Last 8 Quarters)")
@@ -385,15 +447,20 @@ class ProgramBookAnalyzer:
         quarters_sorted = sorted(summary['by_quarter'].keys(), reverse=True)[:8]
         for quarter in reversed(quarters_sorted):
             data = summary['by_quarter'][quarter]
-            print(f"  {quarter}: {data['units']:,} units  |  ${data['revenue']:,.2f}  |  {data['orders']} orders")
+            print(f"  {quarter}: {data['units']:,} units  |  {self._format_revenue(data['revenue_by_currency'])}  |  {data['orders']} orders")
         print()
         
         print("🌍 TOP COUNTRIES")
         print("-" * 40)
-        by_country_sorted = sorted(summary['by_country'].items(), key=lambda x: x[1]['revenue'], reverse=True)[:10]
+        by_country_sorted = sorted(
+            summary['by_country'].items(), 
+            key=lambda x: self._get_total_revenue(x[1]['revenue_by_currency'], primary_currency), 
+            reverse=True
+        )[:10]
         for country, data in by_country_sorted:
-            pct = (data['revenue'] / summary['total_revenue'] * 100) if summary['total_revenue'] > 0 else 0
-            print(f"  {country}: {data['units']:,} units  |  ${data['revenue']:,.2f}  |  {pct:.1f}%")
+            country_primary_rev = data['revenue_by_currency'].get(primary_currency, 0)
+            pct = (country_primary_rev / primary_total * 100) if primary_total > 0 else 0
+            print(f"  {country}: {data['units']:,} units  |  {self._format_revenue(data['revenue_by_currency'])}  |  {pct:.1f}%")
         print()
         
         print("=" * 80)
@@ -453,48 +520,68 @@ class ProgramBookAnalyzer:
         """Export summary by show to CSV."""
         print(f"💾 Exporting summary to: {filename}")
         
+        primary_currency = summary.get('primary_currency', 'USD')
+        total_revenue_by_currency = summary.get('revenue_by_currency', {})
+        primary_total = total_revenue_by_currency.get(primary_currency, 0)
+        
         with open(filename, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             
+            # Currency note if multiple currencies
+            if summary.get('has_multiple_currencies'):
+                writer.writerow(['NOTE: Sales include multiple currencies. Revenue columns show all currencies.'])
+                writer.writerow([f'Primary currency for percentages: {primary_currency}'])
+                writer.writerow([])
+            
             # Summary by Show
             writer.writerow(['SALES BY SHOW/FILM'])
-            writer.writerow(['Show', 'Units Sold', 'Revenue', '% of Total', 'Orders'])
+            writer.writerow(['Show', 'Units Sold', 'Revenue (by currency)', f'% of Total ({primary_currency})', 'Orders'])
             
-            by_show_sorted = sorted(summary['by_show'].items(), key=lambda x: x[1]['revenue'], reverse=True)
+            by_show_sorted = sorted(
+                summary['by_show'].items(), 
+                key=lambda x: self._get_total_revenue(x[1]['revenue_by_currency'], primary_currency), 
+                reverse=True
+            )
             for show, data in by_show_sorted:
-                pct = (data['revenue'] / summary['total_revenue'] * 100) if summary['total_revenue'] > 0 else 0
-                writer.writerow([show, data['units'], f"${data['revenue']:.2f}", f"{pct:.1f}%", data['orders']])
+                show_primary_rev = data['revenue_by_currency'].get(primary_currency, 0)
+                pct = (show_primary_rev / primary_total * 100) if primary_total > 0 else 0
+                writer.writerow([show, data['units'], self._format_revenue(data['revenue_by_currency']), f"{pct:.1f}%", data['orders']])
             
             writer.writerow([])
-            writer.writerow(['TOTALS', summary['total_units'], f"${summary['total_revenue']:.2f}", '100%', summary['total_orders']])
+            writer.writerow(['TOTALS', summary['total_units'], self._format_revenue(total_revenue_by_currency), '100%', summary['total_orders']])
             
             # Monthly trends
             writer.writerow([])
             writer.writerow(['MONTHLY SALES TREND'])
-            writer.writerow(['Month', 'Units Sold', 'Revenue', 'Orders'])
+            writer.writerow(['Month', 'Units Sold', 'Revenue (by currency)', 'Orders'])
             
             for month in sorted(summary['by_month'].keys()):
                 data = summary['by_month'][month]
-                writer.writerow([month, data['units'], f"${data['revenue']:.2f}", data['orders']])
+                writer.writerow([month, data['units'], self._format_revenue(data['revenue_by_currency']), data['orders']])
             
             # Quarterly trends
             writer.writerow([])
             writer.writerow(['QUARTERLY SALES TREND'])
-            writer.writerow(['Quarter', 'Units Sold', 'Revenue', 'Orders'])
+            writer.writerow(['Quarter', 'Units Sold', 'Revenue (by currency)', 'Orders'])
             
             for quarter in sorted(summary['by_quarter'].keys()):
                 data = summary['by_quarter'][quarter]
-                writer.writerow([quarter, data['units'], f"${data['revenue']:.2f}", data['orders']])
+                writer.writerow([quarter, data['units'], self._format_revenue(data['revenue_by_currency']), data['orders']])
             
             # Geographic breakdown
             writer.writerow([])
             writer.writerow(['SALES BY COUNTRY'])
-            writer.writerow(['Country', 'Units Sold', 'Revenue', '% of Total'])
+            writer.writerow(['Country', 'Units Sold', 'Revenue (by currency)', f'% of Total ({primary_currency})'])
             
-            by_country_sorted = sorted(summary['by_country'].items(), key=lambda x: x[1]['revenue'], reverse=True)
+            by_country_sorted = sorted(
+                summary['by_country'].items(), 
+                key=lambda x: self._get_total_revenue(x[1]['revenue_by_currency'], primary_currency), 
+                reverse=True
+            )
             for country, data in by_country_sorted:
-                pct = (data['revenue'] / summary['total_revenue'] * 100) if summary['total_revenue'] > 0 else 0
-                writer.writerow([country, data['units'], f"${data['revenue']:.2f}", f"{pct:.1f}%"])
+                country_primary_rev = data['revenue_by_currency'].get(primary_currency, 0)
+                pct = (country_primary_rev / primary_total * 100) if primary_total > 0 else 0
+                writer.writerow([country, data['units'], self._format_revenue(data['revenue_by_currency']), f"{pct:.1f}%"])
         
         print(f"✅ Summary exported\n")
 

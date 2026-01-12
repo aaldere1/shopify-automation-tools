@@ -200,7 +200,12 @@ class ProgramBookAnalyzer:
                     break
                     
             except requests.exceptions.RequestException as e:
-                print(f"❌ Error fetching orders: {str(e)}")
+                print(f"❌ Network error fetching orders: {str(e)}")
+                fetch_error = True
+                break
+            except (json.JSONDecodeError, ValueError) as e:
+                # Handle non-JSON responses (e.g., HTML maintenance pages, CDN errors)
+                print(f"❌ Invalid API response (possibly maintenance page): {str(e)}")
                 fetch_error = True
                 break
         

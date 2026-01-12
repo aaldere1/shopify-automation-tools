@@ -173,7 +173,7 @@ class ProgramBookAnalyzer:
                 response = requests.get(url, headers=self.headers, params=params)
                 response.raise_for_status()
                 data = response.json()
-                orders = data.get('orders', [])
+                orders = data.get('orders') or []
                 
                 if not orders:
                     break
@@ -254,7 +254,7 @@ class ProgramBookAnalyzer:
             source_name = order.get('source_name') or 'web'
             
             # Check each line item
-            for item in order.get('line_items', []):
+            for item in (order.get('line_items') or []):
                 if self.is_program_book(item):
                     # Use 'or' pattern for null safety (API may return null for existing keys)
                     title = item.get('title') or ''
@@ -265,8 +265,8 @@ class ProgramBookAnalyzer:
                     
                     # Handle partial refunds
                     refunded_qty = 0
-                    for refund in order.get('refunds', []):
-                        for refund_item in refund.get('refund_line_items', []):
+                    for refund in (order.get('refunds') or []):
+                        for refund_item in (refund.get('refund_line_items') or []):
                             if refund_item.get('line_item_id') == item.get('id'):
                                 refunded_qty += refund_item.get('quantity') or 0
                     

@@ -402,12 +402,18 @@ class ProgramBookAnalyzer:
         
         return summary
     
+    # Currency symbol mapping for display
+    CURRENCY_SYMBOLS = {'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$'}
+    
+    def _get_currency_symbol(self, currency: str) -> str:
+        """Get the display symbol for a currency code."""
+        return self.CURRENCY_SYMBOLS.get(currency, f'{currency} ')
+    
     def _format_revenue(self, revenue_by_currency: Dict[str, float]) -> str:
         """Format revenue dict as string with currency symbols."""
-        currency_symbols = {'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$'}
         parts = []
         for currency, amount in sorted(revenue_by_currency.items(), key=lambda x: -x[1]):
-            symbol = currency_symbols.get(currency, f'{currency} ')
+            symbol = self._get_currency_symbol(currency)
             parts.append(f"{symbol}{amount:,.2f}")
         return ' + '.join(parts) if parts else '$0.00'
     
@@ -442,7 +448,7 @@ class ProgramBookAnalyzer:
         print(f"  Total Revenue:          {self._format_revenue(total_revenue_by_currency)}")
         print(f"  Total Orders:           {summary['total_orders']:,}")
         print(f"  Unique Products:        {summary['unique_products']}")
-        print(f"  Avg Price per Unit:     ${summary['avg_unit_price']:.2f} ({primary_currency})")
+        print(f"  Avg Price per Unit:     {self._get_currency_symbol(primary_currency)}{summary['avg_unit_price']:.2f} ({primary_currency})")
         print(f"  Avg Units per Order:    {summary['avg_units_per_order']:.2f}")
         print(f"  Date Range:             {summary['date_range']['first_sale']} to {summary['date_range']['last_sale']}")
         print()

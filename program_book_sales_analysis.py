@@ -210,7 +210,9 @@ class ProgramBookAnalyzer:
             fulfillment_status = order.get('fulfillment_status', '') or 'unfulfilled'
             currency = order.get('currency', 'USD')
             
-            # Skip cancelled/refunded orders
+            # Skip cancelled orders (check cancelled_at timestamp) and fully refunded orders
+            if order.get('cancelled_at') is not None:
+                continue
             if financial_status in ['refunded', 'voided']:
                 continue
             
@@ -390,8 +392,12 @@ class ProgramBookAnalyzer:
         return ' + '.join(parts) if parts else '$0.00'
     
     def _get_total_revenue(self, revenue_by_currency: Dict[str, float], primary_currency: str) -> float:
-        """Get total revenue in primary currency (for percentage calculations)."""
-        return revenue_by_currency.get(primary_currency, sum(revenue_by_currency.values()))
+        """Get total revenue in primary currency (for sorting and percentage calculations).
+        
+        Returns only the primary currency amount to ensure consistent behavior
+        between sorting and percentage display.
+        """
+        return revenue_by_currency.get(primary_currency, 0)
     
     def print_report(self, summary: Dict[str, Any]):
         """Print formatted report to console."""

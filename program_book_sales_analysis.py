@@ -141,10 +141,16 @@ class ProgramBookAnalyzer:
     
     def fetch_all_orders(self, 
                          created_at_min: Optional[str] = None,
-                         created_at_max: Optional[str] = None) -> List[Dict[str, Any]]:
-        """Fetch all orders with line item details."""
+                         created_at_max: Optional[str] = None) -> Tuple[List[Dict[str, Any]], bool]:
+        """Fetch all orders with line item details.
+        
+        Returns:
+            Tuple of (orders list, success boolean).
+            If success is False, the orders list may be incomplete due to network errors.
+        """
         all_orders = []
         url = f'{self.base_url}/orders.json'
+        fetch_error = False
         
         params = {
             'status': 'any',
@@ -194,10 +200,16 @@ class ProgramBookAnalyzer:
                     
             except requests.exceptions.RequestException as e:
                 print(f"❌ Error fetching orders: {str(e)}")
+                fetch_error = True
                 break
         
-        print(f"✅ Total orders fetched: {len(all_orders)}\n")
-        return all_orders
+        if fetch_error:
+            print(f"⚠️  WARNING: Fetch incomplete due to error. Only {len(all_orders)} orders retrieved.")
+            print(f"   Data may be missing - results should not be used for official reports!\n")
+        else:
+            print(f"✅ Total orders fetched: {len(all_orders)}\n")
+        
+        return all_orders, not fetch_error
     
     def extract_program_book_sales(self, orders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Extract all program book line items from orders."""
@@ -642,11 +654,14 @@ Examples:
         created_at_max = f"{args.to_date}T23:59:59Z"
     
     # Fetch all orders
-    orders = analyzer.fetch_all_orders(created_at_min, created_at_max)
+    orders, fetch_complete = analyzer.fetch_all_orders(created_at_min, created_at_max)
     
     if not orders:
         print("❌ No orders found. Check your credentials and date range.")
         sys.exit(1)
+    
+    # Warn user if data is incomplete
+    data_incomplete = not fetch_complete
     
     # Extract program book sales
     print("🔍 Analyzing orders for program book sales...")
@@ -691,7 +706,14 @@ Examples:
     if args.json:
         print(f"📋 Raw JSON:       {base_filename}_raw.json")
     print()
-    print("These files can be opened in Excel/Google Sheets for the MinaLima presentation.")
+    
+    if data_incomplete:
+        print("⚠️  WARNING: DATA MAY BE INCOMPLETE!")
+        print("   A network error occurred during fetch. Some orders may be missing.")
+        print("   Do NOT use these results for official reports without re-running.")
+        print()
+    else:
+        print("These files can be opened in Excel/Google Sheets for the MinaLima presentation.")
     print("=" * 80)
 
 

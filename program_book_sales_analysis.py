@@ -45,9 +45,13 @@ class ProgramBookAnalyzer:
     ]
     
     # SKU patterns that identify program books
-    BOOK_SKU_PATTERNS = [
+    # SKU suffixes that identify program books (use endswith matching)
+    BOOK_SKU_SUFFIXES = [
         'BOOK',      # HP1USABOOK, HP2BOOK, etc.
         'SOUV',      # HP1USASOUV (souvenir programs)
+    ]
+    # Exact SKU prefixes for specific products
+    BOOK_SKU_PREFIXES = [
         'POLARBOOK', # Polar Express book
     ]
     
@@ -72,9 +76,14 @@ class ProgramBookAnalyzer:
             if keyword in title or keyword in variant_title:
                 return True
         
-        # Check SKU patterns
-        for pattern in self.BOOK_SKU_PATTERNS:
-            if pattern in sku:
+        # Check SKU suffixes (e.g., HP1USABOOK ends with BOOK)
+        for suffix in self.BOOK_SKU_SUFFIXES:
+            if sku.endswith(suffix):
+                return True
+        
+        # Check SKU prefixes (e.g., POLARBOOK starts with POLARBOOK)
+        for prefix in self.BOOK_SKU_PREFIXES:
+            if sku.startswith(prefix):
                 return True
         
         # Additional check for "book" in title (case insensitive)
@@ -170,7 +179,7 @@ class ProgramBookAnalyzer:
         
         while True:
             try:
-                response = requests.get(url, headers=self.headers, params=params)
+                response = requests.get(url, headers=self.headers, params=params, timeout=30)
                 response.raise_for_status()
                 data = response.json()
                 orders = data.get('orders') or []

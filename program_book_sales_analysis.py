@@ -85,8 +85,9 @@ class ProgramBookAnalyzer:
     
     def extract_show_name(self, title: str, sku: str) -> str:
         """Extract the show/film name from product title or SKU."""
-        title_lower = title.lower()
-        sku_upper = sku.upper() if sku else ''
+        # Defensive null handling in case called with None values
+        title_lower = (title or '').lower()
+        sku_upper = (sku or '').upper()
         
         # Harry Potter detection
         if 'harry potter' in title_lower or sku_upper.startswith('HP'):
@@ -126,7 +127,7 @@ class ProgramBookAnalyzer:
             return "Elf"
         
         # Generic extraction - remove common suffixes from the END of the title
-        clean_title = title
+        clean_title = title or ''
         for suffix in ['- Program Book', '- Souvenir Program', 'Program Book', 'Souvenir Program', 
                        '- Collector Edition', 'Collector Book']:
             # Use rfind to find the LAST occurrence (typically at the end)
@@ -216,11 +217,12 @@ class ProgramBookAnalyzer:
         book_sales = []
         
         for order in orders:
-            order_number = order.get('name', '')
-            order_date = order.get('created_at', '')
-            financial_status = order.get('financial_status', '')
-            fulfillment_status = order.get('fulfillment_status', '') or 'unfulfilled'
-            currency = order.get('currency', 'USD')
+            # Use 'or' pattern for null safety (API may return null for existing keys)
+            order_number = order.get('name') or ''
+            order_date = order.get('created_at') or ''
+            financial_status = order.get('financial_status') or ''
+            fulfillment_status = order.get('fulfillment_status') or 'unfulfilled'
+            currency = order.get('currency') or 'USD'
             
             # Skip cancelled orders (check cancelled_at timestamp) and fully refunded orders
             if order.get('cancelled_at') is not None:
@@ -228,24 +230,30 @@ class ProgramBookAnalyzer:
             if financial_status in ['refunded', 'voided']:
                 continue
             
+            # Skip orders without dates (can't process them)
+            if not order_date:
+                continue
+            
             # Customer info
-            customer = order.get('customer', {}) or {}
-            customer_email = order.get('email', '')
+            customer = order.get('customer') or {}
+            customer_email = order.get('email') or ''
             
             # Shipping address for geographic analysis
-            shipping = order.get('shipping_address', {}) or {}
-            country = shipping.get('country', '') or shipping.get('country_code', '')
-            state = shipping.get('province', '') or shipping.get('province_code', '')
-            city = shipping.get('city', '')
+            shipping = order.get('shipping_address') or {}
+            country = (shipping.get('country') or shipping.get('country_code')) or ''
+            state = (shipping.get('province') or shipping.get('province_code')) or ''
+            city = shipping.get('city') or ''
             
             # Sales channel
-            source_name = order.get('source_name', 'web')
+            source_name = order.get('source_name') or 'web'
             
             # Check each line item
             for item in order.get('line_items', []):
                 if self.is_program_book(item):
-                    title = item.get('title', '')
-                    sku = item.get('sku', '')
+                    # Use 'or' pattern for null safety (API may return null for existing keys)
+                    title = item.get('title') or ''
+                    sku = item.get('sku') or ''
+                    variant_title = item.get('variant_title') or ''
                     quantity = item.get('quantity') or 0
                     price = float(item.get('price') or 0)
                     
@@ -270,7 +278,7 @@ class ProgramBookAnalyzer:
                         'quarter': self._get_quarter(order_date),
                         'year': datetime.fromisoformat(order_date.replace('Z', '+00:00')).strftime('%Y'),
                         'product_title': title,
-                        'variant_title': item.get('variant_title', ''),
+                        'variant_title': variant_title,
                         'sku': sku,
                         'show_name': show_name,
                         'quantity': net_quantity,

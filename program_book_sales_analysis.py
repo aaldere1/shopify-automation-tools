@@ -246,15 +246,15 @@ class ProgramBookAnalyzer:
                 if self.is_program_book(item):
                     title = item.get('title', '')
                     sku = item.get('sku', '')
-                    quantity = item.get('quantity', 0)
-                    price = float(item.get('price', 0))
+                    quantity = item.get('quantity') or 0
+                    price = float(item.get('price') or 0)
                     
                     # Handle partial refunds
                     refunded_qty = 0
                     for refund in order.get('refunds', []):
                         for refund_item in refund.get('refund_line_items', []):
                             if refund_item.get('line_item_id') == item.get('id'):
-                                refunded_qty += refund_item.get('quantity', 0)
+                                refunded_qty += refund_item.get('quantity') or 0
                     
                     net_quantity = quantity - refunded_qty
                     if net_quantity <= 0:

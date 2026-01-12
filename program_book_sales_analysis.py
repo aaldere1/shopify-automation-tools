@@ -109,8 +109,9 @@ class ProgramBookAnalyzer:
                 if 1 <= film_num <= 8:
                     return film_names.get(film_num, f"Harry Potter Film {film_num}")
             
-            # Check title patterns like "Film 1", "Film #1", "#1" with word boundaries
-            title_match = re.search(r'(?:film\s*#?|#)(\d+)\b', title_lower)
+            # Check title patterns like "Film 1", "Film #1" - require "film" to avoid
+            # matching item numbers like "#5" in "Item #5 - Harry Potter Film 2"
+            title_match = re.search(r'film\s*#?(\d+)\b', title_lower)
             if title_match:
                 film_num = int(title_match.group(1))
                 if 1 <= film_num <= 8:

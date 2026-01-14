@@ -20,6 +20,10 @@ All Python scripts are self-contained with class-based architecture and `argpars
 - `shopify_batch_refund.py` - Process batch refunds from CSV
 - `create_replacement_order.py` - Create $0 replacement orders for customers who didn't receive shipments
 
+**Sales Analysis & Reporting:**
+- `program_book_sales_analysis.py` - Analyze program book sales with breakdowns by show, time period, geography → exports CSV
+- `full_sales_analysis.py` - Comprehensive analysis of ALL products with category detection → exports multiple CSVs
+
 **Third-Party Clients:**
 - `amplifier_client.py` - Amplifier fulfillment API client
 - `printful_client.py` - Printful API v2 client
@@ -65,6 +69,18 @@ python3 shopify_batch_refund.py --store $SHOPIFY_STORE --token $TOKEN --input or
 python3 create_replacement_order.py CC5875
 python3 create_replacement_order.py CC5875 --dry-run
 python3 create_replacement_order.py CC5875 --no-email
+```
+
+### Sales Analysis
+```bash
+# Program book sales analysis (for partnership discussions)
+python3 program_book_sales_analysis.py
+
+# Full sales analysis (all products, all time)
+python3 full_sales_analysis.py
+
+# With date range filter
+python3 full_sales_analysis.py --from-date 2024-01-01 --to-date 2024-12-31
 ```
 
 ### TypeScript/Notion Sync

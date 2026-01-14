@@ -10,6 +10,11 @@ refund_log_*.txt
 shopify_orders_*.csv
 shopify_orders_*.json
 
+# Sales analysis output files (generated, contain customer data)
+program_book_sales_*.csv
+full_sales_*.csv
+full_sales_*.json
+
 # API credentials and tokens
 *token*
 *credentials*
